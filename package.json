@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean":"lerna clean --yes && rimraf node_modules",
+    "bootstrap": "yarn && lerna bootstrap",
+    "build": "lerna run build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/kesslerdev/quarkit#readme",
   "devDependencies": {
-    "lerna": "^2.0.0-rc.5"
+    "lerna": "^2.0.0-rc.5",
+    "rimraf": "^2.6.1"
   }
 }

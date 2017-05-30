@@ -1,0 +1,53 @@
+{
+  "name": "quarkit-modules",
+  "version": "0.0.2",
+  "description": "",
+  "main": "./build/quarkit-modules.js",
+  "types": "build/quarkit-modules.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "build:live": "tsc --watch",
+    "test": "jest",
+    "test:live": "jest --watch",
+    "cover": "jest --coverage",
+    "cover:report": "opener ./coverage/lcov-report/index.html"
+  },
+  "repository": "https://github.com/kesslerdev/quarkit/tree/master/packages/quarkit-modules",
+  "keywords": [],
+  "author": "kesslerdev",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.18",
+    "jest": "^20.0.3",
+    "nodemon": "^1.11.0",
+    "opener": "^1.4.3",
+    "ts-jest": "^20.0.4",
+    "tslint-config-skimia": "^1.0.0",
+    "typescript": "^2.3.2"
+  },
+  "jest": {
+    "mapCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.(ts|tsx)"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/build/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "dependencies": {
+    "quarkit-core": "^0.0.2",
+    "quarkit-mixin": "^0.0.2"
+  }
+}
