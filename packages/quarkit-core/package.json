@@ -1,10 +1,11 @@
 {
   "name": "quarkit-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./build/quarkit-core.js",
   "types": "build/quarkit-core.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "tsc",
     "build:live": "tsc --watch",
     "test": "jest",

@@ -1,10 +1,11 @@
 {
   "name": "quarkit-mixin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./build/quarkit-mixin.js",
   "types": "build/quarkit-mixin.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "tsc",
     "build:live": "tsc --watch",
     "test": "jest",
