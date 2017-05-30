@@ -1,0 +1,20 @@
+{
+  "extends": "tslint-config-skimia",
+  "rules": {
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "never",
+          "arrays": "never",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
+      }
+    ]
+  }
+}

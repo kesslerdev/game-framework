@@ -1,0 +1,15 @@
+{% assign baseurl = site.baseurl | append: '/modules' %}
+{% for module in include.modules %}
+    <h4 class="sidebar-title">{{module.name | capitalize }}</h4>
+    <ul class="sidebar-links">
+        {% for mixin in module.mixins %}
+            {% assign url = include.modules.name %}
+            {% if url == page.permalink %}
+                {% assign class = "active" %}
+            {% else %}
+                {% assign class = "" %}
+            {% endif %}
+            <li><h6 class="{{class}}"><a href="{{baseurl}}/{{module.name}}">{{mixin.name}}</a></h6></li>
+        {% endfor %}
+    </ul>
+{% endfor %}

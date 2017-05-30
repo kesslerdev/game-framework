@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "node"
+  - "8"
+  - "7"
+
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+
+install:
+  - yarn run bootstrap
+  - npm install -g codecov
+
+script:
+  - yarn run cover
+
+after_success:
+  - yarn run cover-upload
+  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript 
+  - cat ./packages/quarkit-core/coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript 
