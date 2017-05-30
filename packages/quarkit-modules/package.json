@@ -1,6 +1,6 @@
 {
   "name": "quarkit-modules",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "./build/quarkit-modules.js",
   "types": "build/quarkit-modules.d.ts",
