@@ -1,11 +1,10 @@
-/*import { Start } from '../src'
+import { GameObject } from '../src/quarkit-core'
 
 describe('start', () => {
   it('class Start can say hello world', () => {
-    const start = new Start()
+    const go = new GameObject('hello')
 
-    expect(start.hello()).toBe('Hello World')
+    expect(go.Slug).toBe('hello')
 
   })
 })
-*/
