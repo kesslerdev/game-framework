@@ -6,6 +6,19 @@
 [![Travis branch](https://img.shields.io/travis/kesslerdev/quarkit/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/kesslerdev/quarkit)
 [![Codecov branch](https://img.shields.io/codecov/c/github/kesslerdev/quarkit/master.svg?maxAge=2592000&style=flat-square)](https://codecov.io/gh/kesslerdev/quarkit)
 
+## Getting started
+
+### Running the demo
+
+```bash
+git clone git@github.com:kesslerdev/quarkit.git
+cd quarkit
+yarn run bootstrap
+cd example
+yarn
+yarn start
+```
+
 ### Core Packages
 
 | Package | Version | Dependencies |

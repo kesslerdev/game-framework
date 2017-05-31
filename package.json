@@ -2,6 +2,7 @@
   "name": "quarkit",
   "version": "0.1.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "clean": "lerna clean --yes && rimraf node_modules",
