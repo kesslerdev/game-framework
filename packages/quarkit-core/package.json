@@ -1,6 +1,6 @@
 {
   "name": "quarkit-core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "./build/quarkit-core.js",
   "types": "build/quarkit-core.d.ts",
