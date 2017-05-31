@@ -1,6 +1,6 @@
-# Skimia Game Framework Modules(SGF Modules)
+# Quarkit Game Framework Modules(QGF Modules)
 
-the goal of this project is handle game features (based on sef)
+the goal of this project is handle game features
 
 
 ## Install
@@ -8,11 +8,11 @@ the goal of this project is handle game features (based on sef)
 Install with [npm](https://www.npmjs.com/)
 
 ```sh
-npm i skimia-gf-modules --save
+npm i quarkit-modules --save
 ```
 
 ## TODO
 
-- [ ] gf module create price module
-- [ ] gf module create buyable module(use price to add the proprietary)
-- [ ] gf module create upgradable module (level)
+- [ ] module create price module
+- [ ] module create buyable module(use price to add the proprietary)
+- [ ] module create upgradable module (level)

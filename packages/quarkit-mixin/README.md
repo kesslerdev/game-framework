@@ -1,4 +1,4 @@
-# Skimia Extension Framework (SEF)
+# Quarkit Mixin
 
 the goal of this project is handle the new developpement way (such as php traits), using "mixin" decorators
 
@@ -8,14 +8,13 @@ the goal of this project is handle the new developpement way (such as php traits
 Install with [npm](https://www.npmjs.com/)
 
 ```sh
-npm i skimia-sef --save
+npm i quarkit-mixin --save
 ```
 
 ## TODO
 
-- [ ] find a way to configure mixins
+- [ ] can pass configuration to mixins
 - [ ] add events (on instance creation to call all "mixinConstructors")
-- [ ] export to a new package
 
 ## Exemple
 

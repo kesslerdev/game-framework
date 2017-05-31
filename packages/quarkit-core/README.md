@@ -1,6 +1,6 @@
 # Quarkit Game Framework (QGF)
 
-the goal of this project is handle a game (based on sef)
+the goal of this project is handle a game
 
 
 ## Install
