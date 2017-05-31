@@ -8,7 +8,9 @@
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build",
     "publish": "lerna publish",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "cover": "lerna run cover",
+    "cover-upload": "codecov"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.22",
+    "istanbul-merge": "^1.1.1",
     "lerna": "^2.0.0-rc.5",
     "rimraf": "^2.6.1"
   }

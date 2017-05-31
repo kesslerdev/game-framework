@@ -9,5 +9,8 @@ cache:
 
 install:
   - yarn run bootstrap
+  - npm install -g codecov
 script:
-  - yarn run test
+  - yarn run cover
+after_success:
+  - yarn run cover-upload
