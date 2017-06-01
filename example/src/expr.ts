@@ -1,4 +1,5 @@
-var jexl = require('jexl');
+var math = require('mathjs');
+
 import { Player, Resources, Shops } from './types';
 import { inspect } from 'util';
 
@@ -8,6 +9,7 @@ let StatedLemonStand = Shops.LemonStand.withState(Player);
 //keep in mind there is on a building
 var context = {
     this: StatedLemonStand,
+    ProductionBaseTime: StatedLemonStand.ProductionBaseTime,
     Player: Player,
     DB: {
         Resources: Resources,
@@ -15,11 +17,49 @@ var context = {
     }
 };
 
-//en gros ProductionBaseTime * 2
-jexl.eval('this.ProductionBaseTime * (3 - 1)', context, function(err, res) {
-    console.log("this.ProductionBaseTime * (3 - 1) = " + res);
-});
+console.log('\nevaluate expressions')
 
-jexl.eval('this.applyProduction(Player)', context, function(err, res) {
-    console.error(err); // Output: 72
-});
+p(math.eval('ProductionBaseTime * (3 - 1)', context),'math expr')
+
+//error
+try{
+    p(math.eval('this.ProductionBaseTime * (3 - 1)', context),'math expr')
+} catch(e) {
+    console.error(e.message);
+}
+
+
+i(Player, 'Kessler')
+p(math.eval('this.applyProduction(Player)', context),'apply prod (first init the state)')
+
+
+setTimeout(()=>{   
+    p(math.eval('this.applyProduction(Player)', context),'call expr')
+    i(Player, 'Kessler')
+},5000);
+
+
+
+/**
+ * Helper function to output a value in the console. Value will be formatted.
+ * @param {*} value
+ */
+function p (value, msg = '') {
+  if(msg != ''){
+    console.log(msg);
+    console.log('=========================');
+  }
+  var precision = 14;
+  console.log(math.format(value, precision));
+}
+/**
+ * Helper function to output a value in the console. Value will be formatted.
+ * @param {*} value
+ */
+function i (value, msg = '') {
+  if(msg != ''){
+    console.log(msg);
+    console.log('=========================');
+  }
+  console.log(inspect(value));
+}

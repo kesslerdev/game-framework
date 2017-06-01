@@ -9,6 +9,7 @@
     "postinstall": "linklocal -r",
     "start": "ts-node --inspect ./src/main.ts",
     "start:live": "nodemon --exec npm run start",
+    "expr": "ts-node --inspect ./src/expr.ts",
     "build": "tsc",
     "debug": "ts-node --inspect --debug-brk ./src/main.ts",
     "test": "jest",
@@ -20,7 +21,7 @@
   "author": "kesslerdev",
   "license": "MIT",
   "dependencies": {
-    "jexl": "^1.1.4",
+    "mathjs": "^3.13.3",
     "quarkit-core": "file:../packages/quarkit-core",
     "quarkit-mixin": "file:../packages/quarkit-mixin",
     "quarkit-modules": "file:../packages/quarkit-modules"
