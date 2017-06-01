@@ -1,5 +1,6 @@
 # Quarkit Game Framework (QGF)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c241b3c083a147bdb1d9863e5aebbee9)](https://www.codacy.com/app/kesslerdev/quarkit?utm_source=github.com&utm_medium=referral&utm_content=kesslerdev/quarkit&utm_campaign=badger)
 [![license](https://img.shields.io/github/license/kesslerdev/quarkit.svg?maxAge=2592000&style=flat-square)](https://github.com/kesslerdev/quarkit/blob/master/LICENSE)
 [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?maxAge=2592000&style=flat-square)]()
 
