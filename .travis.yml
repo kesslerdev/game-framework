@@ -15,3 +15,4 @@ script:
   - yarn run cover
 after_success:
   - yarn run cover-upload
+  - yarn run codacy-cover-upload
