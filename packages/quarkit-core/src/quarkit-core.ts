@@ -1,8 +1,11 @@
+import { EventEmitter } from 'events'
+import { IExtendable, Extendable } from 'quarkit-mixin'
 
-export class GameObject{
+export class GameObject extends Extendable implements IGameObject{
     Slug:string;
 
     constructor(slug:string){
+        super()
         this.Slug = slug;
     }
 
@@ -11,7 +14,7 @@ export class GameObject{
     }
 }
 
-export interface IGameObject{
+export interface IGameObject extends IExtendable{
     Slug:string;
     Equals(obj:IGameObject) : boolean
 }

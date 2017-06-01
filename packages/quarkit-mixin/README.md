@@ -14,7 +14,7 @@ npm i quarkit-mixin --save
 ## TODO
 
 - [ ] can pass configuration to mixins
-- [ ] add events (on instance creation to call all "mixinConstructors")
+- [ ] can use a class with a constructor as "mixin"
 
 ## Exemple
 
@@ -31,7 +31,11 @@ const Resource = mixin('MixinName', {
         this._is_premium = value
         return this
     }
-}, {
+},
+go => {
+    go.Events...
+},
+   {
     //Array of mixinNames dependent for this mixin
     dependencies: []
 });

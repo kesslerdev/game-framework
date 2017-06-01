@@ -41,7 +41,13 @@ export const Production = mixin('Production', {
         }
         return this;        
     }
-},{
+},
+go => {
+    go.Events.on('stateprovider:set', stateProvider => {
+        console.log(stateProvider);
+    })
+},
+{
     dependencies:[
         'Stateful'
     ]

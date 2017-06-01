@@ -12,6 +12,7 @@
     "expr": "ts-node --inspect ./src/expr.ts",
     "build": "tsc",
     "debug": "ts-node --inspect --debug-brk ./src/main.ts",
+    "debug:expr": "ts-node --inspect --debug-brk ./src/expr.ts",
     "test": "jest",
     "test:live": "jest --watch",
     "cover": "jest --coverage",
@@ -21,8 +22,8 @@
   "author": "kesslerdev",
   "license": "MIT",
   "dependencies": {
-    "mathjs": "^3.13.3",
     "quarkit-core": "file:../packages/quarkit-core",
+    "quarkit-mathjs": "^0.0.1",
     "quarkit-mixin": "file:../packages/quarkit-mixin",
     "quarkit-modules": "file:../packages/quarkit-modules"
   },

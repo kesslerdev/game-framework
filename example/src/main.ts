@@ -9,6 +9,7 @@ setInterval(()=>{
     StatedLemonStand.applyProduction(Player)
     StatedNewsPaperDelivery.applyProduction(Player)
     console.log('=========================')
-    console.info(inspect(Player,true,5,true))
+    //console.info(inspect(Player,true,5,true))
+    console.info(inspect(StatedLemonStand.Constructors,true,10,true))
 },5000);
 

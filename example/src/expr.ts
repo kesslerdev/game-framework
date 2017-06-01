@@ -1,7 +1,8 @@
-var math = require('mathjs');
+var math = require('quarkit-mathjs');
 
 import { Player, Resources, Shops } from './types';
 import { inspect } from 'util';
+
 
 let StatedLemonStand = Shops.LemonStand.withState(Player);
 
@@ -9,7 +10,6 @@ let StatedLemonStand = Shops.LemonStand.withState(Player);
 //keep in mind there is on a building
 var context = {
     this: StatedLemonStand,
-    ProductionBaseTime: StatedLemonStand.ProductionBaseTime,
     Player: Player,
     DB: {
         Resources: Resources,
@@ -17,9 +17,8 @@ var context = {
     }
 };
 
-console.log('\nevaluate expressions')
 
-p(math.eval('ProductionBaseTime * (3 - 1)', context),'math expr')
+console.log('\nevaluate expressions')
 
 //error
 try{
@@ -27,7 +26,6 @@ try{
 } catch(e) {
     console.error(e.message);
 }
-
 
 i(Player, 'Kessler')
 p(math.eval('this.applyProduction(Player)', context),'apply prod (first init the state)')

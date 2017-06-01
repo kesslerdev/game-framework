@@ -13,6 +13,7 @@ export const Stateful = mixin('Stateful', {
     withState(stateProvider : IStateProvider) {
         let newThis = clone(this, true)
         newThis.__state = stateProvider.getState(this.StateKey);
+        this.Events.emit('stateprovider:set', stateProvider)
         return newThis;
     },
 

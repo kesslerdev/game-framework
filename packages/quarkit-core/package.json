@@ -45,5 +45,8 @@
       "tsx",
       "js"
     ]
+  },
+  "dependencies": {
+    "quarkit-mixin": "^0.0.2"
   }
 }

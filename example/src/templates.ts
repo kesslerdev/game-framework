@@ -28,9 +28,9 @@ class Capitalist extends GameObject{
 
 // FIX
 // little Fix show => https://github.com/Microsoft/TypeScript/issues/4881#issuecomment-187903272
-interface ResourceTemplate extends IResource, IExtendable, IGameObject {}
-interface ShopTemplate extends IStateful, IProduction, IExtendable, IGameObject {}
-interface Capitalist extends IStateProvider, IResourceBag, IExtendable, IGameObject {}
+interface ResourceTemplate extends IResource {}
+interface ShopTemplate extends IStateful, IProduction {}
+interface Capitalist extends IStateProvider, IResourceBag {}
 
 
 // Export GameObjects (Each can be a collection)

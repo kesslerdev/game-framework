@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events'
 
 declare global {
   interface Function{
@@ -16,6 +17,24 @@ Function.prototype.curry = function () : any {
 export * from './mixin'
 export * from './clone'
 
+export class Extendable implements IExtendable{
+  private __constructors:Function[]
+  private __mixins:string[]
+
+  Events:EventEmitter
+
+  constructor(){
+    this.Events = new EventEmitter();
+    this.Constructors.map(fn => {
+      fn(this)
+    })
+  }
+
+  Extensions:string[]
+  Constructors:Function[]
+}
 export interface IExtendable{
-  Extensions() : string
+  Extensions : string[]
+  Constructors : Function[]
+  Events:EventEmitter
 }
