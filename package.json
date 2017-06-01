@@ -27,6 +27,7 @@
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.22",
     "lerna": "^2.0.0-rc.5",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "tslint-config-skimia": "^1.0.1"
   }
 }
