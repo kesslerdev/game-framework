@@ -4,7 +4,8 @@ import { IGameObject, GameObject } from 'quarkit-core'
 import { 
     IProduction, Production,
     Resource, IResource, ResourceBag, IResourceBag,
-    IStateful, Stateful, IStateProvider, StateProvider, StateGameObject
+    IStateful, Stateful, IStateProvider, StateProvider, StateGameObject,
+    IExpressionContainer, ExpressionContainer
 } from 'quarkit-modules'
 
 import { IExtendable } from 'quarkit-mixin';
@@ -16,7 +17,8 @@ class ResourceTemplate extends GameObject{
 }
 
 @Production
-@Stateful 
+@Stateful
+@ExpressionContainer
 class ShopTemplate extends StateGameObject{
 }
 
@@ -29,7 +31,7 @@ class Capitalist extends GameObject{
 // FIX
 // little Fix show => https://github.com/Microsoft/TypeScript/issues/4881#issuecomment-187903272
 interface ResourceTemplate extends IResource {}
-interface ShopTemplate extends IStateful, IProduction {}
+interface ShopTemplate extends IStateful, IProduction, IExpressionContainer {}
 interface Capitalist extends IStateProvider, IResourceBag {}
 
 

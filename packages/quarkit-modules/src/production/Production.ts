@@ -1,13 +1,14 @@
 import { mixin } from 'quarkit-mixin';
 
 import { IResource, IResourceBag } from '../resource';
+import { IVariable } from '../expression';
 
 export class ProductionSlot{
-    constructor(resource: IResource, amount:number) {
+    constructor(resource: IResource, amount:IVariable) {
         this.Resource = resource;
         this.Amount = amount;
     }
-    Amount = 0;
+    Amount:IVariable;
     Resource:IResource;
 }
 export const Production = mixin('Production', {
@@ -24,8 +25,8 @@ export const Production = mixin('Production', {
     get ProductionSlots() : Array<ProductionSlot> {
         return this._production_slots || (this._production_slots = new Array<ProductionSlot>())
     },
-    addProductionSlot(resource:IResource, amount:number) : IProduction {
-        this.ProductionSlots.push(new ProductionSlot(resource, amount));
+    addProductionSlot(resource:IResource, amount:any) : IProduction {
+        this.ProductionSlots.push(new ProductionSlot(resource, this.createVariable(amount)));
         return this;
     },
     applyProduction(resourceBag:IResourceBag) : IProduction {
@@ -36,7 +37,7 @@ export const Production = mixin('Production', {
             this.State._last_production_time = Date.now();
             let production = this.ProductionSlots;
             for (let key in production) {
-                resourceBag.increaseResource(production[key].Resource, productionIterations * production[key].Amount);
+                resourceBag.increaseResource(production[key].Resource, productionIterations * production[key].Amount.getValue());
             }
         }
         return this;        
@@ -44,12 +45,13 @@ export const Production = mixin('Production', {
 },
 go => {
     go.Events.on('stateprovider:set', stateProvider => {
-        console.log(stateProvider);
+        //console.log(stateProvider);
     })
 },
 {
     dependencies:[
-        'Stateful'
+        'Stateful',
+        'ExpressionContainer'
     ]
 });
 
@@ -59,7 +61,7 @@ export interface IProduction{
     //States
     LastProductionTime : number
 
-    addProductionSlot(resource:IResource, amount:number) : IProduction
+    addProductionSlot(resource:IResource, amount:any) : IProduction
 
     applyProduction(resourceBag:IResourceBag) : IProduction
     

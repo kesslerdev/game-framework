@@ -1,5 +1,6 @@
 import { mixin, clone } from 'quarkit-mixin';
 import { IStateProvider } from './StateProvider';
+import { EventEmitter } from 'events'
 
 export const Stateful = mixin('Stateful', {
     get State() : any {
@@ -13,7 +14,13 @@ export const Stateful = mixin('Stateful', {
     withState(stateProvider : IStateProvider) {
         let newThis = clone(this, true)
         newThis.__state = stateProvider.getState(this.StateKey);
-        this.Events.emit('stateprovider:set', stateProvider)
+
+        // TODO: do better implementation
+        newThis.Events = new EventEmitter();
+        newThis.Constructors.map(fn => {
+            fn(newThis)
+        })
+        newThis.Events.emit('stateprovider:set', stateProvider)
         return newThis;
     },
 
