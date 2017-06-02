@@ -18,8 +18,6 @@ export * from './mixin'
 export * from './clone'
 
 export class Extendable implements IExtendable{
-  private __constructors:Function[]
-  private __mixins:string[]
 
   Events:EventEmitter
 

@@ -17,7 +17,7 @@ function constructorsAccessor(target: any) {
 
 export function mixin(mixinTag: string, behaviour: any, constructor?:any, options : { dependencies?:Array<string> } = {}) {
     const instanceKeys = Reflect.ownKeys(behaviour);
-    const typeTag = Symbol('isa');
+    const typeTag = Symbol('quarkit-mixin');
 
     function _mixin(target: any): any | IExtendable {
 
@@ -64,7 +64,7 @@ export function mixin(mixinTag: string, behaviour: any, constructor?:any, option
     }
     //for instanceof
     Object.defineProperty(_mixin, Symbol.hasInstance, {
-        value: (i: any) => !!i[typeTag]
+        value: (i: any) => !!i[typeTag] && i.Extensions.includes(mixinTag)
     });
 
     return _mixin;

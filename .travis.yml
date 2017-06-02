@@ -16,3 +16,5 @@ script:
 after_success:
   - yarn run cover-upload
   - yarn run codacy-cover-upload
+  - find ./packages/*/coverage -name 'lcov.info' -exec bash -c 'cat {} ' \\;
+  - find ./packages/*/coverage -name 'lcov.info' -exec bash -c 'cat {} | ./node_modules/.bin/codacy-coverage' \\;

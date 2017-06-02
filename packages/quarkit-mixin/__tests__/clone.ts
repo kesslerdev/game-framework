@@ -1,11 +1,11 @@
 import { inspect } from 'util'
-import { clone } from '../src/clone'
+import { clone } from '../src/quarkit-mixin'
 
 
 class Y{
-  protected Test:[]
+  Test:string[]
 
-  protected claxx:Y
+  claxx:Y
 
   testM(){}
 }
