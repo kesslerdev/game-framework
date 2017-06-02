@@ -13,7 +13,7 @@
     "test": "lerna run test",
     "cover": "lerna run cover",
     "cover-upload": "codecov",
-    "codacy-cover-upload": "cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
+    "codacy-cover-upload": "find ./packages/*/coverage -name 'lcov.info' -exec bash -c 'cat {} | ./node_modules/.bin/codacy-coverage' \\;"
   },
   "repository": {
     "type": "git",
