@@ -4,6 +4,7 @@
 [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?maxAge=2592000&style=flat-square)]()
 
 [![Travis branch](https://img.shields.io/travis/kesslerdev/quarkit/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/kesslerdev/quarkit)
+[![Codacy Badge](https://img.shields.io/codacy/grade/8cd5ef074c3f40339d5836197a136c7a.svg?maxAge=2592000&style=flat-square)](https://www.codacy.com/app/kesslerdev/quarkit)
 [![Codecov branch](https://img.shields.io/codecov/c/github/kesslerdev/quarkit/master.svg?maxAge=2592000&style=flat-square)](https://codecov.io/gh/kesslerdev/quarkit)
 
 ## Getting started
