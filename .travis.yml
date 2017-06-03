@@ -18,4 +18,4 @@ script:
 
 after_success:
   - yarn run cover-upload
-  - lerna exec cat ./coverage/lcov.info | ../../node_modules/.bin/codacy-coverage
+  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
