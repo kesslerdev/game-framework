@@ -5,6 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
+    "build:docs": "node docs.build.js",
     "clean": "lerna clean --yes && rimraf node_modules",
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build",
