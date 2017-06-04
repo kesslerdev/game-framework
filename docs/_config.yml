@@ -5,8 +5,9 @@ description: > # this means to ignore newlines until "baseurl:"
   Quarkit GF documentation. A decorated game framework
 baseurl: "/quarkit" # the subpath of your site, e.g. /blog/
 url: "https://kesslerdev.github.io/" # the base hostname & protocol for your site
-twitter_username: kesslerdev
+#twitter_username: kesslerdev
 github_username:  kesslerdev/quarkit
+github_url: https://github.com/kesslerdev/quarkit
 
 # Build settings
 markdown: kramdown

@@ -57,5 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
-#project ignores
+# project ignores
 build/
+
+# docs
+
+docs/.sass-cache
+docs/_site

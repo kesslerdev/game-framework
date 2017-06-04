@@ -15,14 +15,13 @@ layout: default
    <section class="page-sidebar">
       {% comment %} There has to be a better way than this... {% endcomment %}
 
-      {% capture develop_len %}{{site.data.develop_sidebar.url | size}}{% endcapture %}
-      {% assign maybe_develop_url = page.url | remove: site.baseurl | truncate: develop_len,"" %}
-
+      {% capture modules_len %}{{'/modules' | size}}{% endcapture %}
+      {% assign maybe_modules_url = page.url | remove: site.baseurl | truncate: modules_len,"" %}
+      
       {% capture usage_len %}{{site.data.usage_sidebar.url | size}}{% endcapture %}
       {% assign maybe_usage_url = page.url | remove: site.baseurl | truncate: usage_len,"" %}
-
-      {% if maybe_develop_url == site.data.develop_sidebar.url %}
-         {% include sidebar.html sidebar=site.data.develop_sidebar %}
+      {% if maybe_modules_url == '/modules' %}
+         {% include sidebar-mixins.html modules=site.data.modules %}
       {% elsif maybe_usage_url == site.data.usage_sidebar.url %}
          {% include sidebar.html sidebar=site.data.usage_sidebar %}
       {% endif %}

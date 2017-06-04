@@ -1,7 +1,7 @@
 ---
-title: site.title
+title: Quarkit GF
 layout: default
-subtitle: An extensible linter for the TypeScript language.
+subtitle: A decorated way for rts games
 ---
 
 TSLint is an extensible static analysis tool that checks [TypeScript][0] code for readability, maintainability, and functionality errors. It is widely supported across modern editors & build systems and can be customized with your own lint rules, configurations, and formatters.
@@ -9,20 +9,22 @@ TSLint is an extensible static analysis tool that checks [TypeScript][0] code fo
 ## Quick start
 
 ```sh
-# Install the global CLI and its peer dependency
-yarn global add tslint typescript
+# get the source
+git clone git@github.com:kesslerdev/quarkit.git
+cd quarkit
 
-# Navigate to to your sources folder
-cd path/to/project
+# bootsrap sub packages
+yarn run bootstrap
 
-# Generate a basic configuration file
-tslint --init
+# go to demo
+cd example
 
-# Lint TypeScript source globs
-tslint -c tslint.json 'src/**/*.ts'
+# install & start
+yarn
+yarn start
 ```
 
 Check out [the full usage guide][1] to learn more.
 
 [0]: http://www.typescriptlang.org/
-[1]: usage/cli
+[1]: modules
