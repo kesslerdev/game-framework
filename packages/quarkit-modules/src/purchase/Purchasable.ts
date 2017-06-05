@@ -4,9 +4,10 @@ import { IPossessor } from '../quarkit-modules'
 
 export const Purchasable = mixin('Purchasable', {
   purchase(owner:IPossessor) {
-    // TODO: do verifs
+    // TODO: do verifs if has the price
     const cost = this.DefaultCost
-    console.log(cost)
+    // console.log(cost)
+    // TODO: remove cost in resrs bag
     const act = owner.createPossessionAct(this)
     owner.Possessions.push(act)
 

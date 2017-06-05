@@ -8,7 +8,8 @@ console.log('First Buy Shops=========================')
 // buy lemon stand for player
 Shops.LemonStand.purchase(Player)
 
-console.log(Player.Possessions)
+console.log(inspect(Player,true,5 ,true))
+console.log(inspect(Player.PossessionsObjects[0], true, 5, true))
 
 console.log('TYPES INIT VVVVV=========================')
 /*
