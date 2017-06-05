@@ -1,6 +1,6 @@
 
-import { IExtendable } from './quarkit-mixin';
-import { inspect } from 'util';
+import { IExtendable } from './quarkit-mixin'
+import { inspect } from 'util'
 
 function mixinsAccessor(target: any) {
     return function () {
