@@ -16,6 +16,7 @@ Function.prototype.curry = function () : any {
 
 export * from './mixin'
 export * from './clone'
+export * from './class-mixin'
 
 export class Extendable implements IExtendable{
 

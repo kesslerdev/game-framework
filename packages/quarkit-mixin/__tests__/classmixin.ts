@@ -1,12 +1,14 @@
 import { inspect } from 'util'
-import { mixin, Extendable } from '../src/quarkit-mixin'
+import { mixin, Extendable, classAsMixin } from '../src/quarkit-mixin'
 
 
 describe('mixin', () => {
 
   it('should create Properties needed if not present', () => {
+    class X{}
     //create mixin
-    let mx = mixin('X',{})
+    let mx = classAsMixin(X)
+
     class cx {}
     //apply mixin
     mx(cx)
@@ -18,13 +20,14 @@ describe('mixin', () => {
   });
 
   it('should create Properties', () => {
-    //create mixin
-    let mx = mixin('X',{
+    class X{
       get value() : boolean {
         return true
       }
-      
-    })
+    }
+    //create mixin
+    let mx = classAsMixin(X)
+
     class cx {}
     //apply mixin
     mx(cx)
@@ -36,13 +39,14 @@ describe('mixin', () => {
   });
 
   it('do not replace a property if exists', () => {
-    //create mixin
-    let mx = mixin('X',{
+    class X{
       get value() : boolean {
         return true
       }
-      
-    })
+    }
+    //create mixin
+    let mx = classAsMixin(X)
+
     class cx {
       get value(){
         return false
@@ -57,9 +61,12 @@ describe('mixin', () => {
   });
 
   it('an instance of a class decorated by a mixin should have instance of mixin', () => {
+    class X{}
+    class Y{}
     //create mixin
-    let mx = mixin('X',{})
-    let my = mixin('Y',{})
+    let mx = classAsMixin(X)
+    let my = classAsMixin(Y)
+    
     class cx {}
     //apply mixin
     mx(cx)
@@ -71,12 +78,13 @@ describe('mixin', () => {
   });
 
   it('a mixin can declare an another mixin required', () => {
+    class X{}
+    class Y{}
     //create mixin
-    let mx = mixin('X',{},null,{
+    let mx = classAsMixin(X,{
       dependencies:['Y']
     })
-
-    let my = mixin('Y',{})
+    let my = classAsMixin(Y)
 
     class cx {}
 
@@ -95,8 +103,9 @@ describe('mixin', () => {
   });
 
   it('a mixin cannot be applyed twice', () => {
+    class X{}
     //create mixin
-    let mx = mixin('X',{})
+    let mx = classAsMixin(X)
 
     class cx {}
 
@@ -110,9 +119,13 @@ describe('mixin', () => {
 
   it('mixin have theses constructor linked to decorated class', () => {
     
+    class X{
+      initialize() {
+        this.x = 1
+      }
+    }
     //create mixin
-    let mx = mixin('X', {}, _ => {
-    })
+    let mx = classAsMixin(X)
 
     class cx {}
 
@@ -129,14 +142,19 @@ describe('mixin', () => {
 
   it('decorated class have to call constructors ', () => {
 
+    class X{
+      initialize(){
+        this.called = true
+      }
+    }
+    class Y{
+      initialize(){
+        this.called = true
+      }
+    }
     //create mixin
-    let mx = mixin('X', {}, _ => {
-      _.called = true
-    })
-
-    let my = mixin('Y', {}, _ => {
-      _.called = true
-    })
+    let mx = classAsMixin(X)
+    let my = classAsMixin(Y)
 
     class cx {}
 
@@ -157,4 +175,18 @@ describe('mixin', () => {
     expect(iy.called).toBe(true)
   });
 
+  it('a class mixin cannot not have a constructor', () => {
+    
+    class X{
+    }
+    class Y{
+      constructor(){
+
+      }
+    }
+    let mx = classAsMixin(X)
+    //create mixin with error
+    //TODO: this line should thorw an error
+    let my = classAsMixin(Y)
+  });
 });
