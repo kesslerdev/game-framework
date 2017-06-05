@@ -1,6 +1,6 @@
 {
   "name": "quarkit-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "./build/quarkit-core.js",
   "types": "build/quarkit-core.d.ts",
@@ -47,6 +47,6 @@
     ]
   },
   "dependencies": {
-    "quarkit-mixin": "^0.2.0"
+    "quarkit-mixin": "^0.3.0"
   }
 }
