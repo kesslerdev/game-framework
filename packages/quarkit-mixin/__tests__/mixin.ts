@@ -128,17 +128,14 @@ describe('mixin', () => {
   });
 
   it('decorated class have to call constructors ', () => {
-        
-    let mx_called = false
-    let my_called = false
 
     //create mixin
     let mx = mixin('X', {}, _ => {
-      mx_called = true
+      _.called = true
     })
 
     let my = mixin('Y', {}, _ => {
-      my_called = true
+      _.called = true
     })
 
     class cx {}
@@ -156,8 +153,8 @@ describe('mixin', () => {
     //apply mixin with error
     //console.log(typeof ix.Constructors)
 
-    expect(mx_called).toBe(false)
-    expect(my_called).toBe(true)
+    expect(ix.called).toBeFalsy()
+    expect(iy.called).toBe(true)
   });
 
 });
