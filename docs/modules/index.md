@@ -13,11 +13,16 @@ Quarkit __modules__ provide decorators to add features on yours games objects, s
 {% assign modules = site.data.modules %}
 {% for module in modules %}
 
-* [{{module.name}}]({{module.name}}) - {{module.description | markdownify | remove:"<p>" | remove: "</p>"}}
+## [{{module.name | capitalize }}]({{module.name}})
 
-{% if module.mixins %}{% for mixin in module.mixins %}
+{{module.description | markdownify | remove:"<p>" | remove: "</p>"}}
 
-    * [{{mixin.name}}]({{module.name}}#{{mixin.name | slugify}}) - {{mixin.description | markdownify | remove:"<p>" | remove: "</p>"}}
+{% if module.mixins %}
+Mixins:
+{% for mixin in module.mixins %}
+
+* [{{mixin.name}}]({{module.name}}#{{mixin.name | slugify}}) - {{mixin.description | markdownify | remove:"<p>" | remove: "</p>"}}
  
-{% endfor %}{% endif %}
+{% endfor %}
+{% endif %}
 {% endfor %}

@@ -22,10 +22,12 @@ export class Extendable implements IExtendable{
   Events:EventEmitter
 
   constructor(){
-    this.Events = new EventEmitter();
+
+    this.Events = new EventEmitter(); 
     this.Constructors.map(fn => {
       fn(this)
     })
+    this.Events.emit('constructors:after')
   }
 
   Extensions:string[]

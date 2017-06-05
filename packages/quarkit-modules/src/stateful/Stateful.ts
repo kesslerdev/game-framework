@@ -11,16 +11,23 @@ export const Stateful = mixin('Stateful', {
         return this.__state;
     },
 
-    withState(stateProvider : IStateProvider) {
-        let newThis = clone(this, true)
-        newThis.__state = stateProvider.getState(this.StateKey);
+    withState(stateProvider : IStateProvider, clone:boolean = true) {
 
-        // TODO: do better implementation
-        newThis.Events = new EventEmitter();
-        newThis.Constructors.map(fn => {
-            fn(newThis)
-        })
-        newThis.Events.emit('stateprovider:set', stateProvider)
+        if (clone) {
+            let newThis = clone(this, true)
+            // Reinit
+            // TODO: do better implementation for decoupling from other
+            newThis.Events = new EventEmitter();
+
+            newThis.Constructors.map(fn => {
+                fn(newThis)
+            })
+
+            newThis.Events.emit('constructors:after')
+        }
+        
+        newThis.__state = stateProvider.getState(this.StateKey);
+        newThis.Events.emit('set:stateprovider', stateProvider, newThis.__state)
         return newThis;
     },
 

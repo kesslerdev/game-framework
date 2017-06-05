@@ -15,10 +15,9 @@ export const ExpressionContainer = mixin('ExpressionContainer', {
         this: go
     }
     go.Events.on('context:provide', (key, value) => {
-        console.log('provide context for ' + key)
         go.Context[key] = value
-        console.log(go.Context)
     })
+    // works well with stateprovider
     go.Events.on('stateprovider:set', stateProvider => {
         go.Events.emit('context:provide','stateProvider', stateProvider)
     })

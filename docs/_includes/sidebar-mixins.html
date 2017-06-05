@@ -1,6 +1,6 @@
 {% assign baseurl = site.baseurl | append: '/modules' %}
 {% for module in include.modules %}
-    <h4 class="sidebar-title">{{module.name}}</h4>
+    <h4 class="sidebar-title">{{module.name | capitalize }}</h4>
     <ul class="sidebar-links">
         {% for mixin in module.mixins %}
             {% assign url = include.modules.name %}
