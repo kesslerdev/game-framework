@@ -2,7 +2,18 @@ import { inspect } from 'util'
 import { mixin, Extendable, classAsMixin } from '../src/quarkit-mixin'
 
 
-describe('mixin', () => {
+describe('classAsMixin', () => {
+
+  it('classAsMixin should only works with a constructor', () => {
+    class X{}
+
+    let ix = new X
+
+    //create mixin with error
+    expect(_=>{
+       classAsMixin(ix)
+    }).toThrow()
+  });
 
   it('should create Properties needed if not present', () => {
     class X{}

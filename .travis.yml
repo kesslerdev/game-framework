@@ -18,4 +18,5 @@ script:
 
 after_success:
   - yarn run cover-upload
-  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript 
+  - cat ./packages/quarkit-core/coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript 

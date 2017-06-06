@@ -13,8 +13,7 @@
     "publish": "lerna publish",
     "test": "lerna run test",
     "cover": "lerna run cover",
-    "cover-upload": "codecov",
-    "codacy-cover-upload": "find ./packages/*/coverage -name 'lcov.info' -exec bash -c 'cat {} | ./node_modules/.bin/codacy-coverage' \\;"
+    "cover-upload": "codecov"
   },
   "repository": {
     "type": "git",
