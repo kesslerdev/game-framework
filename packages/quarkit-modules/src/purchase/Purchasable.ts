@@ -3,7 +3,7 @@ import { IGameObject } from 'quarkit-core'
 import { IPossessor } from '../quarkit-modules'
 
 export const Purchasable = mixin('Purchasable', {
-  purchase(owner:IPossessor) {
+  purchaseFor(owner:IPossessor) {
     // TODO: do verifs if has the price
     const cost = this.DefaultCost
     // console.log(cost)
@@ -18,5 +18,5 @@ export const Purchasable = mixin('Purchasable', {
 })
 
 export interface IPurchasable{
-  purchase(owner:IPossessor) : this
+  purchaseFor(owner:IPossessor) : this
 }

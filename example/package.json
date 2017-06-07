@@ -9,7 +9,6 @@
     "postinstall": "linklocal -r",
     "start": "ts-node --inspect ./src/main.ts",
     "start:live": "nodemon --exec npm run start",
-    "expr": "ts-node --inspect ./src/expr.ts",
     "build": "tsc",
     "debug": "ts-node --inspect --debug-brk ./src/main.ts",
     "debug:expr": "ts-node --inspect --debug-brk ./src/expr.ts",
@@ -23,7 +22,6 @@
   "license": "MIT",
   "dependencies": {
     "quarkit-core": "file:../packages/quarkit-core",
-    "quarkit-mathjs": "^0.0.1",
     "quarkit-mixin": "file:../packages/quarkit-mixin",
     "quarkit-modules": "file:../packages/quarkit-modules"
   },
