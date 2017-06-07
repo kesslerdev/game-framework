@@ -1,4 +1,4 @@
-var math = require('quarkit-mathjs');
+var math = require('quarkit-mathjs')
 
 export class StaticVariable{
     Value : any

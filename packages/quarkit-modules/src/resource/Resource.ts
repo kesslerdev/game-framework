@@ -1,4 +1,5 @@
 import { mixin } from 'quarkit-mixin'
+import { IGameObject } from 'quarkit-core'
 
 export const Resource = mixin('Resource', {
   get Premium() {
@@ -9,6 +10,6 @@ export const Resource = mixin('Resource', {
   },
 })
 
-export interface IResource{
+export interface IResource extends IGameObject{
   Premium:boolean
 }

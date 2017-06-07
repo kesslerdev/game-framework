@@ -19,7 +19,6 @@ export const Possessor = mixin('Possessor', {
   get PossessionsObjects() : IGameObject[]|any[] {
     const possessions = this.Possessions
     return possessions.map((possession:any) => {
-      
       if (this instanceof StateProvider && possession.Possession instanceof Stateful) {
         return possession.Possession.withState(this)
       }

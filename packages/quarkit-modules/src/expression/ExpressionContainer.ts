@@ -1,5 +1,5 @@
-import { mixin } from 'quarkit-mixin';
-import { VariableCreator, ExpressionVariable, IVariable } from './Variable';
+import { mixin } from 'quarkit-mixin'
+import { VariableCreator, ExpressionVariable, IVariable } from './Variable'
 
 
 export const ExpressionContainer = mixin('ExpressionContainer', {

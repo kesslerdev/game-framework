@@ -1,4 +1,4 @@
 
-export { IResource, Resource } from './Resource';
+export * from './Resource'
 
-export { IResourceBag, ResourceBag } from './ResourceBag';
+export  *  from './ResourceBag'

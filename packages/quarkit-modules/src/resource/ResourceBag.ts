@@ -1,4 +1,5 @@
 import { mixin } from 'quarkit-mixin'
+import { IGameObject } from 'quarkit-core'
 import { IResource } from './Resource'
 
 export class ResourceSlot{
@@ -29,7 +30,7 @@ export const ResourceBag = mixin('ResourceBag', {
   },
 })
 
-export interface IResourceBag{
+export interface IResourceBag extends IGameObject{
   InnerBag : ResourceSlot[]
   addResourceSlot(resource:IResource) : IResourceBag
   increaseResource(resource:IResource, amount:number) : IResourceBag
