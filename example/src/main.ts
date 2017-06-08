@@ -11,6 +11,16 @@ client.printPlayer()
 // buy lemon stand for player
 client.buyShop(Shops.LemonStand)
 client.buyShop(Shops.NewsPaperDelivery)
+client.buyShop(Shops.AnciantFabric)
 
 client.printPlayer()
-setTimeout(_ => client.printPlayer(), 2000)
+let i = 0
+setInterval(() => {
+  //process.stdout.write("\u001b[0J\u001b[1J\u001b[2J\u001b[0;0H\u001b[0;0W")
+
+  client.printPlayer()
+  i++
+
+  if (i > 100) process.exit(0)
+
+} , 1000)

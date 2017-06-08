@@ -18,15 +18,20 @@ export const Possessor = mixin('Possessor', {
 
   get PossessionsObjects() : IGameObject[]|any[] {
     const possessions = this.Possessions
-    return possessions.map((possession:any) => {
-      if (this instanceof StateProvider && possession.Possession instanceof Stateful) {
-        return possession.Possession.withState(this)
-      }
-      return possession.Possession
-    })
+    if (!this.cache.possessionObjects) {
+      this.cache.possessionObjects = possessions.map((possession:any) => {
+        if (this instanceof StateProvider && possession.Possession instanceof Stateful) {
+          return possession.Possession.withState(this)
+        }
+        return possession.Possession
+      })
+    }
+    return this.cache.possessionObjects
   },
 
   createPossessionAct(possession:IGameObject) : PossessionAct {
+    //TODO: cache invalidate not here (but at the push in this._possessions)
+    delete this.cache.possessionObjects
     return new PossessionAct(possession)
   },
 })

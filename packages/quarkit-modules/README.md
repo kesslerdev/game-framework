@@ -27,7 +27,7 @@ Api wanted
 export class Production extends Object implements IExpressionContainer{
 
   constructor(go) {
-    go.Events.on('stateprovider:set', stateProvider => go.LastProductionTime)
+    go.Events.on('set:stateprovider', stateProvider => go.LastProductionTime)
   }
 
   get ProductionBaseTime() : number {

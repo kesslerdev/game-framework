@@ -21,6 +21,7 @@
   "author": "kesslerdev",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.1.2",
     "moment": "^2.18.1",
     "quarkit-core": "file:../packages/quarkit-core",
     "quarkit-mixin": "file:../packages/quarkit-mixin",

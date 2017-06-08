@@ -22,9 +22,15 @@ NewsPaperDelivery.addCostSlot(Cash, 10)
 NewsPaperDelivery.ProductionBaseTime = 3000
 NewsPaperDelivery.addProductionSlot(Cash, 7)
 
+const AnciantFabric = new ShopTemplate('Anciant_Fabric')
+AnciantFabric.addCostSlot(Cash, 700000)
+AnciantFabric.ProductionBaseTime = 10000
+AnciantFabric.addProductionSlot(Cash, 'Player.InnerBag[0].Amount')
+
 const Shops = {
     LemonStand,
-    NewsPaperDelivery
+    NewsPaperDelivery,
+    AnciantFabric
 }
 
 const Player = new Capitalist('Kessler')

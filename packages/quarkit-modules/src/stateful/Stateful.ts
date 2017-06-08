@@ -17,9 +17,14 @@ export const Stateful = mixin('Stateful', {
 
     if (cloneNew) {
       newThis = clone(this, true)
+      newThis.clearCache()
       // Reinit
       // TODO: do better implementation for decoupling from other
       newThis.Events = new EventEmitter()
+
+      if (Reflect.has(newThis, 'registerEvents')) {
+        newThis.registerEvents(newThis.Events)
+      }
 
       newThis.Constructors.map((fn) => {
         fn(newThis)

@@ -25,6 +25,13 @@ class ResourceTemplate extends GameObject{
 // Then declare behaviors mixins 
 @Stateful @ExpressionContainer
 class ShopTemplate extends StateGameObject{
+    registerEvents() {
+        //super()
+        this.Events.on('set:stateprovider', stateProvider => {
+            console.log('provide player')
+            this.Events.emit('context:provide','Player', stateProvider)
+        })
+    }
 }
 
 @Possessor

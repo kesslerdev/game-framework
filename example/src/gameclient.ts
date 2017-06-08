@@ -1,6 +1,7 @@
 import { ResourceTemplate, ShopTemplate, Capitalist } from './templates'
 import { IGameObject } from 'quarkit-core'
 import { ResourceSlot, Production, IProduction } from 'quarkit-modules'
+import { Colors } from './lib/Colors'
 
 const moment = require('moment')
 
@@ -12,7 +13,7 @@ export class GameClient {
 
   buyShop(shop:ShopTemplate) {
     shop.purchaseFor(this._player)
-    console.log(`Player ${this._player.Slug} buy Shop ${shop.Slug}`)
+    console.log(`Player ${Colors.slug(this._player.Slug)} buy Shop ${Colors.slug(shop.Slug)}`)
   }
 
   getInnerBag() : ResourceSlot[] {
@@ -25,13 +26,15 @@ export class GameClient {
   }
 
   printPlayer() {
+    console.log(Colors.lite("=============================="))
     const resBag = this.getInnerBag().map(e => `${e.Resource.Slug} = ${e.Amount}`).join(', ')
-    console.log(`Player ${this._player.Slug} (${resBag})`)
+    console.log(`Player ${Colors.slug(this._player.Slug)} (${resBag})`)
     this._player.PossessionsObjects.map(this.printAct)
+    console.log(Colors.lite("=============================="))
   }
 
   printAct(go:IProduction&IGameObject) {
-    console.log(`  Shop ${go.Slug} (lastprod ${printSpan(go.LastProductionTime)})`)
+    console.log(`  Shop ${Colors.slug(go.Slug)} (lastprod ${printSpan(go.LastProductionTime)})`)
   }
 }
 

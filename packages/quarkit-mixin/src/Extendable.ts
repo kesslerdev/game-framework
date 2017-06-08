@@ -5,12 +5,16 @@ export class Extendable implements IExtendable{
 
   Events:EventEmitter
 
-  constructor(){
+  constructor() {
 
-    this.Events = new EventEmitter(); 
+    this.Events = new EventEmitter()
+
+    this.registerEvents(this.Events)
+
     this.Constructors.map(fn => {
       fn(this)
     })
+
     this.Events.emit('constructors:after')
   }
 
@@ -21,11 +25,13 @@ export class Extendable implements IExtendable{
   get Constructors() : Function[] {
     return this.__constructors || (this.__constructors = new Array<Function>())
   }
+
+  registerEvents(event:EventEmitter){console.log('super register event')}
 }
 
 
 export interface IExtendable{
-  Extensions : string[]
-  Constructors : Function[]
+  readonly Extensions : string[]
+  readonly Constructors : Function[]
   Events:EventEmitter
 }
