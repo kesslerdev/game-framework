@@ -21,7 +21,7 @@ export const Possessor = mixin('Possessor', {
     if (!this.cache.possessionObjects) {
       this.cache.possessionObjects = possessions.map((possession:any) => {
         if (this instanceof StateProvider && possession.Possession instanceof Stateful) {
-          return possession.Possession.withState(this)
+          return possession.Possession.withState(this,false)
         }
         return possession.Possession
       })

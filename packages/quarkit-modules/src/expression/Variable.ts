@@ -1,30 +1,35 @@
-var math = require('quarkit-mathjs')
+const math = require('quarkit-mathjs')
 
 export class StaticVariable{
-    Value : any
+  Value : any
     
-    constructor(value: any) {
-        this.Value = value
-    }
+  constructor(value: any) {
+    this.Value = value
+  }
 
-    getValue() : any{
-        return this.Value
-    }
+  getValue() : any {
+    return this.Value
+  }
 }
 
 export class ExpressionVariable{
     Expression : string
-    Context : any
+    private _contextAccessor:Function
+
+    get Context() : any {
+        return this._contextAccessor()
+    }
     
     constructor(expr: string) {
         this.Expression = expr
     }
 
-    setContext(context : any) {
-        this.Context = context
+    setContextAccessor(contextAccessor : Function) {
+        this._contextAccessor = contextAccessor
     }
 
-    getValue() : any{
+    getValue() : any {
+        console.log(Reflect.ownKeys(this.Context))
         return math.eval(this.Expression, this.Context)
     }
 }
