@@ -6,7 +6,6 @@ export const Purchasable = mixin('Purchasable', {
   purchaseFor(owner:IPossessor) {
     // TODO: do verifs if has the price
     const cost = this.DefaultCost
-    // console.log(cost)
     // TODO: remove cost in resrs bag
     const act = owner.createPossessionAct(this)
     owner.Possessions.push(act)

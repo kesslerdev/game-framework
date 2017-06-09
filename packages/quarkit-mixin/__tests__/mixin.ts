@@ -121,9 +121,6 @@ describe('mixin', () => {
     //create instance
     let ix:any = new cx
 
-    //apply mixin with error
-    //console.log(typeof ix.Constructors)
-
     expect(ix.Constructors.length).toEqual(1)
   });
 
@@ -149,9 +146,6 @@ describe('mixin', () => {
     //create instance
     let ix:any = new cx
     let iy:any = new cy
-
-    //apply mixin with error
-    //console.log(typeof ix.Constructors)
 
     expect(ix.called).toBeFalsy()
     expect(iy.called).toBe(true)

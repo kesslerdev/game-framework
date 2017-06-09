@@ -29,7 +29,6 @@ export class ExpressionVariable{
     }
 
     getValue() : any {
-        console.log(Reflect.ownKeys(this.Context))
         return math.eval(this.Expression, this.Context)
     }
 }

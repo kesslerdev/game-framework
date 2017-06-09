@@ -26,7 +26,7 @@ export class Extendable implements IExtendable{
     return this.__constructors || (this.__constructors = new Array<Function>())
   }
 
-  registerEvents(event:EventEmitter){console.log('super register event')}
+  registerEvents(event:EventEmitter){}
 }
 
 

@@ -4,7 +4,23 @@ import { ResourceSlot, Production, IProduction } from 'quarkit-modules'
 import { Colors } from './lib/Colors'
 
 const moment = require('moment')
-
+moment.updateLocale('en', {
+    relativeTime : {
+        future: "in %s",
+        past:   "%s ago",
+        s:  "%d seconds",
+        m:  "a minute",
+        mm: "%d minutes",
+        h:  "an hour",
+        hh: "%d hours",
+        d:  "a day",
+        dd: "%d days",
+        M:  "a month",
+        MM: "%d months",
+        y:  "a year",
+        yy: "%d years"
+    }
+});
 export class GameClient {
   private _player:Capitalist
   constructor (player:Capitalist) {
@@ -34,7 +50,7 @@ export class GameClient {
   }
 
   printAct(go:IProduction&IGameObject) {
-    console.log(`  Shop ${Colors.slug(go.Slug)} (lastprod ${printSpan(go.LastProductionTime)})`)
+    console.log(`  Shop ${Colors.slug(go.Slug)} (next ${printSpan(go.LastProductionTime + go.ProductionBaseTime)})`)
   }
 }
 

@@ -16,11 +16,11 @@ client.buyShop(Shops.AnciantFabric)
 client.printPlayer()
 let i = 0
 setInterval(() => {
-  //process.stdout.write("\u001b[0J\u001b[1J\u001b[2J\u001b[0;0H\u001b[0;0W")
+  process.stdout.write("\u001b[0J\u001b[1J\u001b[2J\u001b[0;0H\u001b[0;0W")
 
   client.printPlayer()
   i++
 
-  if (i > 100) process.exit(0)
+  if (i > 200) process.exit(0)
 
 } , 1000)

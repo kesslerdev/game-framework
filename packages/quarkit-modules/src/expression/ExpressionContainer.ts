@@ -6,19 +6,14 @@ export const ExpressionContainer = mixin('ExpressionContainer', {
     createVariable(value:string) : IVariable {
         let variable = VariableCreator(value)
         if (variable instanceof ExpressionVariable) {
-            // TODO: in this case newly added var context not added in var context use a function accessor
             variable.setContextAccessor(() => {
-                console.log('access to context ' + this.constructor.name)
-                console.log(Reflect.ownKeys(this.Context))
                 return this.Context
             })
         }
         return variable
     },
     setContext(key,value) {
-        console.log(`providecontext ${key}`)
         this.Context[key] = value
-        console.log(Reflect.ownKeys(this.Context))
     }
 }, go => {
     go.Context = {
