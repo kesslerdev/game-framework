@@ -1,9 +1,11 @@
 import { inspect } from 'util'
 import { Player, Resources, Shops } from './types'
 import { GameClient } from './gameclient'
+import { DataBase } from './lib/DB'
 
 console.log('First Buy Shops=========================')
 
+DataBase
 const client = new GameClient(Player)
 
 client.printPlayer()
@@ -16,10 +18,10 @@ client.buyShop(Shops.AnciantFabric)
 client.printPlayer()
 let i = 0
 setInterval(() => {
-  process.stdout.write("\u001b[0J\u001b[1J\u001b[2J\u001b[0;0H\u001b[0;0W")
+  process.stdout.write('\u001b[0J\u001b[1J\u001b[2J\u001b[0;0H\u001b[0;0W')
 
   client.printPlayer()
-  i++
+  i += 1
 
   if (i > 200) process.exit(0)
 
