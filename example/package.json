@@ -8,11 +8,12 @@
   "scripts": {
     "postinstall": "linklocal -r",
     "start": "ts-node --inspect ./src/main.ts",
+    "bstart": "cd .. && yarn run build && cd example && ts-node --inspect ./src/main.ts",
     "mongo": "ts-node --inspect ./src/mongo.ts",
+    "bmongo": "cd .. && yarn run build && cd example && ts-node --inspect ./src/mongo.ts",
     "start:live": "nodemon --exec npm run start",
     "build": "tsc",
     "debug": "ts-node --inspect --debug-brk ./src/main.ts",
-    "debug:expr": "ts-node --inspect --debug-brk ./src/expr.ts",
     "test": "jest",
     "test:live": "jest --watch",
     "cover": "jest --coverage",
@@ -27,6 +28,7 @@
     "camo": "^0.12.3",
     "colors": "^1.1.2",
     "moment": "^2.18.1",
+    "mongodb": "^2.2.28",
     "quarkit-core": "file:../packages/quarkit-core",
     "quarkit-mixin": "file:../packages/quarkit-mixin",
     "quarkit-modules": "file:../packages/quarkit-modules"
