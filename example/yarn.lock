@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/camo@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@types/camo/-/camo-0.12.0.tgz#4bd97ae859484eb641e2bdf16570a83dcf2522ac"
-
 "@types/jest@^19.2.3":
   version "19.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-19.2.3.tgz#61748040e8589a891dfc2ec1d16a2dd74482980e"
@@ -1144,6 +1140,10 @@ http-signature@~1.1.0:
     assert-plus "^0.2.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+humanize-plus@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/humanize-plus/-/humanize-plus-1.8.2.tgz#a65b34459ad6367adbb3707a82a3c9f916167030"
 
 iconv-lite@0.4.13:
   version "0.4.13"

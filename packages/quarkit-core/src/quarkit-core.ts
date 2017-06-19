@@ -1,14 +1,18 @@
 import { EventEmitter } from 'events'
-import { IExtendable, Extendable } from 'quarkit-mixin'
+import { IExtendable, Extendable, classAsMixin } from 'quarkit-mixin'
 
 export class GameObject extends Extendable implements IGameObject{
     Slug:string;
 
     cache:object;
 
-    constructor(slug:string){
+    constructor(slug:string) {
         super()
         this.Slug = slug
+        this.initialize()
+    }
+
+    initialize() {
         this.cache = {}
     }
 
@@ -20,6 +24,11 @@ export class GameObject extends Extendable implements IGameObject{
         this.cache = {}
     }
 }
+
+// Inheritance not work on mixins ()
+export const GameObjectMixin = classAsMixin(GameObject, {
+    dependencies: ['Extendable'],// classAsMixin uses class name in this case Extendable
+})
 
 export interface IGameObject extends IExtendable{
     Slug:string;

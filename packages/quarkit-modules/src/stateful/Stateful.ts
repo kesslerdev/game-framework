@@ -33,13 +33,14 @@ export const Stateful = mixin('Stateful', {
       newThis.Events.emit('constructors:after')
     }
         
-    newThis.__state = stateProvider.getState(this.StateKey)
+    newThis.__state = stateProvider.getState(this.stateKeyAccessor())
     newThis.Events.emit('set:stateprovider', stateProvider, newThis.__state)
     return newThis
   },
 
-  get StateKey() : string {
-    throw new Error('please redefine get StateKey() in your stateful')
+  stateKeyAccessor() : string {
+    if (!this.StateKey) throw new Error('please redefine get StateKey() in your stateful')
+    return this.StateKey
   },
 })
 

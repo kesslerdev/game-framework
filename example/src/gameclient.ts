@@ -2,6 +2,7 @@ import { ResourceTemplate, ShopTemplate, Capitalist } from './templates'
 import { IGameObject } from 'quarkit-core'
 import { ResourceSlot, Production, IProduction } from 'quarkit-modules'
 import { Colors } from './lib/Colors'
+import * as Humanize from 'humanize-plus'
 
 const moment = require('moment')
 moment.updateLocale('en', {
@@ -43,7 +44,7 @@ export class GameClient {
 
   printPlayer() {
     console.log(Colors.lite("=============================="))
-    const resBag = this.getInnerBag().map(e => `${e.Resource.Slug} = ${e.Amount}`).join(', ')
+    const resBag = this.getInnerBag().map(e => `${e.Resource.Slug} = ${Humanize.intComma(e.Amount)}`).join(', ')
     console.log(`Player ${Colors.slug(this._player.Slug)} (${resBag})`)
     this._player.PossessionsObjects.map(this.printAct)
     console.log(Colors.lite("=============================="))

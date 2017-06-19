@@ -1,5 +1,5 @@
 // Imports
-import { IGameObject, GameObject } from 'quarkit-core'
+import { IGameObject, GameObject, GameObjectMixin } from 'quarkit-core'
 
 import { 
     IProduction, Production,
@@ -12,12 +12,19 @@ import {
     
 } from 'quarkit-modules'
 
-import { IExtendable } from 'quarkit-mixin'
+import { IExtendable, ExtendableMixin } from 'quarkit-mixin'
 
 
 // Type declaration
 @Resource
-class ResourceTemplate extends GameObject{
+@GameObjectMixin
+@ExtendableMixin
+class ResourceTemplate{
+  [x: string]: any
+  constructor(slug) {
+    this.Slug = slug
+    this.initializeExtendable()
+  }
 }
 
 // First declare Feature mixin

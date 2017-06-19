@@ -5,13 +5,6 @@ export function classAsMixin(proto, options : { dependencies?:Array<string> } = 
   if (typeof proto !== 'function') {
     throw new Error('classAsMixin must be used on a class not a ' + typeof proto)
   }
-
-  console.log(Object.getOwnPropertyNames(proto))
-  console.log(Object.getOwnPropertySymbols(proto))
-  console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(proto)))
-  console.log(Object.getOwnPropertySymbols(Object.getPrototypeOf(proto)))
-  console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(proto).prototype))
-  console.log(Object.getOwnPropertySymbols(Object.getPrototypeOf(proto).prototype))
   
   const propsNames = Reflect
                       .ownKeys(proto.prototype)

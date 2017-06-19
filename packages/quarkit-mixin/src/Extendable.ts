@@ -1,3 +1,4 @@
+import { classAsMixin } from './class-mixin'
 import { EventEmitter } from 'events'
 
 export class Extendable implements IExtendable{
@@ -6,12 +7,15 @@ export class Extendable implements IExtendable{
   Events:EventEmitter
 
   constructor() {
+    this.initializeExtendable()
+  }
+  initializeExtendable() {
 
     this.Events = new EventEmitter()
 
     this.registerEvents(this.Events)
 
-    this.Constructors.map(fn => {
+    this.Constructors.map((fn) => {
       fn(this)
     })
 
@@ -29,6 +33,7 @@ export class Extendable implements IExtendable{
   registerEvents(event:EventEmitter){}
 }
 
+export const ExtendableMixin = classAsMixin(Extendable)
 
 export interface IExtendable{
   readonly Extensions : string[]
