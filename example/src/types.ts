@@ -7,7 +7,7 @@ const Gold = new ResourceTemplate('Gold')
 Gold.Premium = true
 
 const Resources = {
-    Cash , Gold
+  Cash , Gold
 }
 
 const LemonStand = new ShopTemplate('Lemon_Stand')
@@ -24,7 +24,7 @@ NewsPaperDelivery.ProductionBaseTime = 10000
 
 const AnciantFabric = new ShopTemplate('Anciant_Fabric')
 AnciantFabric.addCostSlot(Cash, 700000)
-AnciantFabric.ProductionBaseTime = 42000
+AnciantFabric.ProductionBaseTime = 13000
 AnciantFabric.addProductionSlot(Cash, 'Player.InnerBag[1].Amount')
 
 const Shops = {

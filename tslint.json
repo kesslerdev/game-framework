@@ -1,7 +1,24 @@
 {
   "extends": "tslint-config-skimia",
   "rules": {
-    "semicolon": [true, "never"],
-    "indent-size": [true, 4]
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "indent-size": [
+      true,
+      4
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "never",
+          "arrays": "never",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
+      }
+    ]
   }
 }

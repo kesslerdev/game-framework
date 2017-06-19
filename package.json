@@ -9,10 +9,11 @@
     "clean": "lerna clean --yes && rimraf node_modules",
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build",
-    "demo": "npm run build && cd example && yarn start",
+    "demo": "yarn run build && cd example && yarn start",
     "publish": "lerna publish",
     "test": "lerna run test",
     "cover": "lerna run cover",
+    "demo-bs": "yarn run bootstrap  && cd example && yarn && yarn start",
     "cover-upload": "codecov"
   },
   "repository": {

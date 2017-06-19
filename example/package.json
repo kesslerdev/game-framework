@@ -8,6 +8,7 @@
   "scripts": {
     "postinstall": "linklocal -r",
     "start": "ts-node --inspect ./src/main.ts",
+    "mongo": "ts-node --inspect ./src/mongo.ts",
     "start:live": "nodemon --exec npm run start",
     "build": "tsc",
     "debug": "ts-node --inspect --debug-brk ./src/main.ts",
@@ -15,16 +16,17 @@
     "test": "jest",
     "test:live": "jest --watch",
     "cover": "jest --coverage",
-    "cover:report": "opener ./coverage/lcov-report/index.html"
+    "cover:report": "opener ./coverage/lcov-report/index.html",
+    "updb": "docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no --rm --name quarkit-demo-db tutum/mongodb",
+    "dndb": "docker stop quarkit-demo-db"
   },
   "keywords": [],
   "author": "kesslerdev",
   "license": "MIT",
   "dependencies": {
-    "@decorators/mongoose": "^2.0.0",
+    "camo": "^0.12.3",
     "colors": "^1.1.2",
     "moment": "^2.18.1",
-    "mongoose": "^4.10.5",
     "quarkit-core": "file:../packages/quarkit-core",
     "quarkit-mixin": "file:../packages/quarkit-mixin",
     "quarkit-modules": "file:../packages/quarkit-modules"
