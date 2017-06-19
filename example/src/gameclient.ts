@@ -44,14 +44,14 @@ export class GameClient {
 
   printPlayer() {
     console.log(Colors.lite("=============================="))
-    const resBag = this.getInnerBag().map(e => `${e.Resource.Slug} = ${Humanize.intComma(e.Amount)}`).join(', ')
+    const resBag = this.getInnerBag().map(e => `${e.Resource.Slug} = ${Humanize.intComma(e.Amount)}`,1).join(', ')
     console.log(`Player ${Colors.slug(this._player.Slug)} (${resBag})`)
     this._player.PossessionsObjects.map(this.printAct)
     console.log(Colors.lite("=============================="))
   }
 
   printAct(go:IProduction&IGameObject) {
-    console.log(`  Shop ${Colors.slug(go.Slug)} (next ${printSpan(go.LastProductionTime + go.ProductionBaseTime)})`)
+    console.log(`  Shop ${Colors.slug(go.Slug)} (next ${Humanize.intComma(go.ProductionSlots[0].Amount)} ${printSpan(go.LastProductionTime + go.ProductionBaseTime)})`)
   }
 }
 

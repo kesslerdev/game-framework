@@ -10,7 +10,7 @@ export class ProductionSlot{
     this._amount = amount
   }
 
-  get Amount() : IVariable {
+  get Amount() : any {
     if (typeof this._amount === 'object' && this._amount.getValue) {
       return this._amount.getValue()
     }
