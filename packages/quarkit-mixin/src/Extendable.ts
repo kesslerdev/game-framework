@@ -4,14 +4,11 @@ import { EventEmitter } from 'events'
 export class Extendable implements IExtendable{
   [x: string]: any;
 
-  Events:EventEmitter
 
   constructor() {
     this.initializeExtendable()
   }
   initializeExtendable() {
-
-    this.Events = new EventEmitter()
 
     this.registerEvents(this.Events)
 
@@ -20,6 +17,10 @@ export class Extendable implements IExtendable{
     })
 
     this.Events.emit('constructors:after')
+  }
+  
+  get Events():EventEmitter {
+    return this._events || (this._events = new EventEmitter())
   }
 
   get Extensions() : string[] {
@@ -30,7 +31,7 @@ export class Extendable implements IExtendable{
     return this.__constructors || (this.__constructors = new Array<Function>())
   }
 
-  registerEvents(event:EventEmitter){}
+  registerEvents(event:EventEmitter) {}
 }
 
 export const ExtendableMixin = classAsMixin(Extendable)

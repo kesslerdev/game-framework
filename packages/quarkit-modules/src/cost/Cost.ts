@@ -10,7 +10,7 @@ export class CostSlot{
         this.Resource = resource
         this.Amount = amount
     }
-    Amount:IVariable;
+    Amount:IVariable
     Resource:IResource
 }
 
@@ -21,21 +21,21 @@ export const Cost = mixin('Cost', {
     },
 
     getCostList(name:string) : Array<CostSlot> {
-        if (!this._costs) {
-            this._costs = {}
-            this._costs[DefaultCostList] = new Array<CostSlot>()
+        if (!this.costs) {
+            this.costs = {}
+            this.costs[DefaultCostList] = new Array<CostSlot>()
         }
 
-        if (!this._costs[name]) {
-            this._costs[name] = new Array<CostSlot>()
+        if (!this.costs[name]) {
+            this.costs[name] = new Array<CostSlot>()
         }
 
-        return this._costs[name]
+        return this.costs[name]
     },
 
     addCostSlot(resource:IResource, amount:any, list:string = DefaultCostList) : ICost {
-        this.getCostList(list).push(new CostSlot(resource, this.createVariable(amount)));
-        return this;
+        this.getCostList(list).push(new CostSlot(resource, this.createVariable(amount)))
+        return this
     }
 }, null,
 {

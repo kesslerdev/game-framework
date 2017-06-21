@@ -13,7 +13,7 @@ export class ResourceSlot{
 export const ResourceBag = mixin('ResourceBag', {
   // AsDictonnary
   get InnerBag() : ResourceSlot[] {
-    return this._inner_bag || (this._inner_bag = [])
+    return this.innerBag || (this.innerBag = [])
   },
   addResourceSlot(resource:IResource) : IResourceBag {
     this.InnerBag.push(new ResourceSlot(resource))

@@ -3,9 +3,9 @@ import { IStateful } from './Stateful'
 
 export const StateProvider = mixin('StateProvider', {
   getState(key:string) : any {
-    if (!this._internal_states) this._internal_states = {}
+    if (!this.internalStates) this.internalStates = {}
 
-    return this._internal_states[key] || (this._internal_states[key] = {})
+    return this.internalStates[key] || (this.internalStates[key] = {})
   },
 })
 

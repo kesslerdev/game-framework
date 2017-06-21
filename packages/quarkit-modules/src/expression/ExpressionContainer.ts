@@ -4,19 +4,23 @@ import { VariableCreator, ExpressionVariable, IVariable } from './Variable'
 
 export const ExpressionContainer = mixin('ExpressionContainer', {
     createVariable(value:string) : IVariable {
-        let variable = VariableCreator(value)
+        const variable = VariableCreator(value)
         if (variable instanceof ExpressionVariable) {
             variable.setContextAccessor(() => {
-                return this.Context
+                return this.__context
             })
         }
         return variable
     },
     setContext(key,value) {
-        this.Context[key] = value
+        this.__context[key] = value
+    },
+
+    get Context() {
+        return this.__context
     }
 }, go => {
-    go.Context = {
+    go.__context = {
         this: go
     }
     go.Events.on('context:provide', (key, value) => {

@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "quarkit-core": "^0.1.2",
-    "quarkit-mathjs": "^0.0.2",
+    "quarkit-mathjs": "^0.0.4",
     "quarkit-mixin": "^0.3.0"
   }
 }

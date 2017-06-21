@@ -1,3 +1,4 @@
+import { MongoGameObject } from './lib/MongoGameObject'
 // Imports
 import { IGameObject, GameObject, GameObjectMixin } from 'quarkit-core'
 
@@ -17,14 +18,8 @@ import { IExtendable, ExtendableMixin } from 'quarkit-mixin'
 
 // Type declaration
 @Resource
-@GameObjectMixin
-@ExtendableMixin
-class ResourceTemplate{
+class ResourceTemplate extends MongoGameObject{
   [x: string]: any
-  constructor(slug) {
-    this.Slug = slug
-    this.initializeExtendable()
-  }
 }
 
 // First declare Feature mixin
@@ -43,8 +38,8 @@ class ShopTemplate extends StateGameObject{
 @Possessor
 @ResourceBag
 @StateProvider
-class Capitalist extends GameObject{
-    
+class Capitalist extends MongoGameObject{
+  [x: string]: any
 }
 
 // FIX

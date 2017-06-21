@@ -25,23 +25,23 @@ export const Production = mixin(
   'Production', 
   {
     get ProductionBaseTime() : number {
-      return this._production_base_time.getValue() 
-        || (this._production_base_time = this.createVariable(100))
+      return this.productionBaseTime.getValue() 
+        || (this.productionBaseTime = this.createVariable(100))
     },
     set ProductionBaseTime(time:number) {
-      this._production_base_time = this.createVariable(time)
+      this.productionBaseTime = this.createVariable(time)
     },
     setProductionBaseTime(time:any) {
-      this._production_base_time = this.createVariable(time)
+      this.productionBaseTime = this.createVariable(time)
       return this
     },
 
     get LastProductionTime() : number {
-      return this.State._last_production_time || (this.State._last_production_time = Date.now())
+      return this.State.lastProductionTime || (this.State.lastProductionTime = Date.now())
     },
     // as Dictionnary
     get ProductionSlots() : ProductionSlot[] {
-      return this._production_slots || (this._production_slots = [])
+      return this.productionSlots || (this.productionSlots = [])
     },
     addProductionSlot(resource:IResource, amount:any) : IProduction {
       this.ProductionSlots.push(new ProductionSlot(resource, this.createVariable(amount)))
@@ -53,7 +53,7 @@ export const Production = mixin(
         Math.trunc((Date.now() - this.LastProductionTime) / this.ProductionBaseTime)
 
       if (productionIterations) {
-        this.State._last_production_time = Date.now()
+        this.State.lastProductionTime = Date.now()
         const production = this.ProductionSlots
         for (const key in production) {
           resourceBag.increaseResource(

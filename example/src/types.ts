@@ -1,43 +1,67 @@
 // Imports
 import { ResourceTemplate, ShopTemplate, Capitalist } from './templates'
 
-
-const Cash = new ResourceTemplate('Cash')
-const Gold = new ResourceTemplate('Gold')
-Gold.Premium = true
+function getCash() {
+  return (ResourceTemplate as any).create({ Slug: `Cash` })
+}
 
 const Resources = {
-  Cash , Gold
+  get Cash() {
+    return this._cash || (this._cash = getCash())
+  }
 }
 
-const LemonStand = new ShopTemplate('Lemon_Stand')
-LemonStand.addCostSlot(Cash, 1)
-// with upgrade lvl 2 double earnings
-// upgrade price 4 for 2 4.28 for 3, 4.58 for 4, 4.90,5.24,5.61
-LemonStand.ProductionBaseTime = 3000
-LemonStand.addProductionSlot(Cash, '4 * (1 + round(Player.InnerBag[1].Amount / 500) )')
+function getLemonStand() {
+  const lemonStand = new ShopTemplate('Lemon_Stand')
+  lemonStand.addCostSlot(Resources.Cash, 1)
+  // with upgrade lvl 2 double earnings
+  // upgrade price 4 for 2 4.28 for 3, 4.58 for 4, 4.90,5.24,5.61
+  lemonStand.ProductionBaseTime = 3000
+  lemonStand.addProductionSlot(Resources.Cash, '4 * (1 + round(Player.InnerBag[1].Amount / 500) )')
 
-const NewsPaperDelivery = new ShopTemplate('News_Paper_Delivery')
-NewsPaperDelivery.addCostSlot(Cash, 10)
-NewsPaperDelivery.addProductionSlot(Cash, '9 * (1 + round(Player.InnerBag[1].Amount / 555) )')
-NewsPaperDelivery.ProductionBaseTime = 10000
+  return lemonStand
+}
 
-const AnciantFabric = new ShopTemplate('Anciant_Fabric')
-AnciantFabric.addCostSlot(Cash, 700000)
-AnciantFabric.ProductionBaseTime = 13000
-AnciantFabric.addProductionSlot(Cash, 'Player.InnerBag[1].Amount')
+function getNewsPaperDelivery(){
+  const newsPaperDelivery = new ShopTemplate('News_Paper_Delivery')
+  newsPaperDelivery.addCostSlot(Resources.Cash, 10)
+  newsPaperDelivery.addProductionSlot(Resources.Cash, '9 * (1 + round(Player.InnerBag[1].Amount / 555) )')
+  newsPaperDelivery.ProductionBaseTime = 10000
+
+  return newsPaperDelivery
+
+}
+
+function getAnciantFabric() {
+  const anciantFabric = new ShopTemplate('Anciant_Fabric')
+  anciantFabric.addCostSlot(Resources.Cash, 700000)
+  anciantFabric.ProductionBaseTime = 13000
+  anciantFabric.addProductionSlot(Resources.Cash, 'Player.InnerBag[1].Amount')
+
+  return anciantFabric
+}
 
 const Shops = {
-    LemonStand,
-    NewsPaperDelivery,
-    AnciantFabric
+  get LemonStand() {
+    return this._lemon_stand || (this._lemon_stand = getLemonStand())
+  },
+  get NewsPaperDelivery() {
+    return this._news_paper_delivery || (this._news_paper_delivery = getNewsPaperDelivery())
+  },
+  get AnciantFabric() {
+    return this._anciant_fabric || (this._anciant_fabric = getAnciantFabric())
+  }
 }
 
-const Player = new Capitalist('Kessler')
-Player
-    .addResourceSlot(Cash)
-    .addResourceSlot(Gold)
+export function createPlayer(name:string) {
+  const player = (Capitalist as any).create({ Slug: name })
+  player
+    .addResourceSlot(Resources.Cash)
+
+
+  return player
+}
 
 export {
-    Resources, Shops, Player,
+    Resources, Shops,
 }
