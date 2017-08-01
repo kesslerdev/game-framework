@@ -4,20 +4,20 @@ import { inspect } from 'util'
 
 function mixinsAccessor(target: any) {
     return function () {
-        return target.__mixins || (target.__mixins = []);
+        return target.__mixins || (target.__mixins = [])
     }
 }
 
 function constructorsAccessor(target: any) {
     return function () {
-        return target.__constructors || (target.__constructors = []);
+        return target.__constructors || (target.__constructors = [])
     }
 }
 
 
 export function mixin(mixinTag: string, behaviour: any, constructor?:any, options : { dependencies?:Array<string> } = {}) {
-    const instanceKeys = Reflect.ownKeys(behaviour);
-    const typeTag = Symbol('quarkit-mixin');
+    const instanceKeys = Reflect.ownKeys(behaviour)
+    const typeTag = Symbol('quarkit-mixin')
 
     function _mixin(target: any): any | IExtendable {
 
@@ -35,7 +35,7 @@ export function mixin(mixinTag: string, behaviour: any, constructor?:any, option
             Object.defineProperty(target.prototype, typeTag, { value: true })
         }
 
-        //# Checks
+        // Checks
         if (Reflect.has(options, 'dependencies')) {
             for (let dep in options.dependencies) {
                 if(!target.prototype.Extensions.includes(options.dependencies[dep])) {
@@ -43,7 +43,7 @@ export function mixin(mixinTag: string, behaviour: any, constructor?:any, option
                 }
             }
         }
-        //not twice
+        // not twice
         if(target.prototype.Extensions.includes(mixinTag)) {
             throw new Error(`Cannot set already added mixin "${mixinTag}"`)
         } else {
@@ -60,12 +60,17 @@ export function mixin(mixinTag: string, behaviour: any, constructor?:any, option
                 Object.defineProperty(target.prototype, property, Object.getOwnPropertyDescriptor(behaviour, property))
             }
         }
-        return target;
+        return target
     }
-    //for instanceof
+    // for instanceof
     Object.defineProperty(_mixin, Symbol.hasInstance, {
         value: (i: any) => !!i[typeTag] && i.Extensions.includes(mixinTag)
-    });
+    })
 
-    return _mixin;
+    // if is in factory mode return the function or normal
+    // be carefull if factory you must call the decorator with () !!
+    return function () {
+        // insert here the factory code ()
+        return _mixin
+    }
 }

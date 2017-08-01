@@ -11,7 +11,7 @@
     "build": "lerna run build",
     "demo": "yarn run build && cd example && yarn start",
     "publish": "lerna publish",
-    "test": "lerna run test",
+    "test": "lerna run test --stream",
     "cover": "lerna run cover",
     "demo-bs": "yarn run bootstrap  && cd example && yarn && yarn start",
     "cover-upload": "codecov"

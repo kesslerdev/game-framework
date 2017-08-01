@@ -54,6 +54,13 @@ const Shops = {
 }
 
 export function createPlayer(name:string) {
+
+  // use promise & return
+  (Capitalist as any).findOne({ Slug: name }).then((l) => {
+    console.log('Player from DB =>')
+    console.log(l)
+  })
+
   const player = (Capitalist as any).create({ Slug: name })
   player
     .addResourceSlot(Resources.Cash)
