@@ -3,15 +3,15 @@ import { IExtendable } from './quarkit-mixin'
 import { inspect } from 'util'
 
 function mixinsAccessor(target: any) {
-    return function () {
-        return target.__mixins || (target.__mixins = [])
-    }
+  return function () {
+    return target.__mixins || (target.__mixins = [])
+  }
 }
 
 function constructorsAccessor(target: any) {
-    return function () {
-        return target.__constructors || (target.__constructors = [])
-    }
+  return function () {
+    return target.__constructors || (target.__constructors = [])
+  }
 }
 
 
@@ -66,6 +66,6 @@ export function mixin(mixinTag: string, behaviour: any, constructor?:any, option
     Object.defineProperty(_mixin, Symbol.hasInstance, {
         value: (i: any) => !!i[typeTag] && i.Extensions.includes(mixinTag)
     })
-    
+
     return _mixin
 }
