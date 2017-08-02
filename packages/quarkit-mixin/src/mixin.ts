@@ -66,11 +66,6 @@ export function mixin(mixinTag: string, behaviour: any, constructor?:any, option
     Object.defineProperty(_mixin, Symbol.hasInstance, {
         value: (i: any) => !!i[typeTag] && i.Extensions.includes(mixinTag)
     })
-
-    // if is in factory mode return the function or normal
-    // be carefull if factory you must call the decorator with () !!
-    return function () {
-        // insert here the factory code ()
-        return _mixin
-    }
+    
+    return _mixin
 }
