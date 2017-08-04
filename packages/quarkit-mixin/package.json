@@ -45,5 +45,8 @@
       "tsx",
       "js"
     ]
+  },
+  "dependencies": {
+    "@vestergaard-company/js-mixin": "^1.0.3"
   }
 }
