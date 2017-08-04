@@ -3,11 +3,9 @@
   "version": "0.3.0",
   "description": "",
   "main": "./build/quarkit-mixin.js",
-  "types": "build/quarkit-mixin.d.ts",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc",
-    "build:live": "tsc --watch",
+    "build": "babel src -d build",
     "test": "jest",
     "test:live": "jest --watch --verbose",
     "cover": "jest --coverage --verbose",
@@ -20,33 +18,9 @@
   "devDependencies": {
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.18",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "jest": "^20.0.3",
-    "nodemon": "^1.11.0",
-    "opener": "^1.4.3",
-    "ts-jest": "^20.0.4",
-    "tslint-config-skimia": "^1.0.0",
-    "typescript": "^2.3.2"
-  },
-  "jest": {
-    "mapCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.(ts|tsx)"
-    ],
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/build/"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
-  },
-  "dependencies": {
-    "@vestergaard-company/js-mixin": "^1.0.3"
+    "opener": "^1.4.3"
   }
 }
