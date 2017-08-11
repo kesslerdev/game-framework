@@ -1,4 +1,4 @@
-import { Mixin } from 'quarkit-mixin'
+import { Mixin, mix } from 'quarkit-mixin'
 
 export const ResourceSlotMixin = Mixin((superclass) => class extends superclass {
 
@@ -20,8 +20,8 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
     return this._resourceSlotClass || (this._resourceSlotClass = ResourceSlot)
   }
 
-  static set ResourceSlotClass(resourceSlot) {
-    return this._resourceSlotClass = resourceSlot
+  static set ResourceSlotClass(resourceSlotClass) {
+    return this._resourceSlotClass = resourceSlotClass
   }
   // AsDictonnary
   get InnerBag() {
@@ -29,7 +29,7 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
   }
 
   addResourceSlot(resource) {
-    this.InnerBag.push(new (this.ResourceSlotClass).createResourceSlot(resource))
+    this.InnerBag.push(this.constructor.ResourceSlotClass.createResourceSlot(resource))
     return this
   }
 

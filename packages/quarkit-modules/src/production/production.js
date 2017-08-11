@@ -1,16 +1,16 @@
-import { mixin } from 'quarkit-mixin'
+import { Mixin } from 'quarkit-mixin'
 
-import { IResource, IResourceBag } from '../resource'
-import { IVariable } from '../expression'
 
-export class ProductionSlot{
-  private _amount:any
-  constructor(resource: IResource, amount:any) {
-    this.Resource = resource
-    this._amount = amount
+export const ProductionSlotMixin = Mixin((superclass) => class extends superclass {
+
+  static createResourceSlot(resource, amount) {
+    const i = new this()
+    i.Resource = resource
+    i._amount = amount
+    return i
   }
 
-  get Amount() : any {
+  get Amount() {
     if (typeof this._amount === 'object' && this._amount.getValue) {
       return this._amount.getValue()
     }
@@ -18,9 +18,13 @@ export class ProductionSlot{
     return this._amount
   }
 
-  Resource:IResource
-}
+  _amount
+  Resource
+})
 
+export class ProductionSlot extends mix().with(ProductionSlotMixin) {}
+
+/*
 export const Production = mixin(
   'Production', 
   {
@@ -78,14 +82,4 @@ export const Production = mixin(
     ],
   })
 
-export interface IProduction{
-  ProductionSlots : ProductionSlot[]
-  ProductionBaseTime : number
-    // States
-  LastProductionTime : number
-
-  setProductionBaseTime(time:any) : IProduction
-  addProductionSlot(resource:IResource, amount:any) : IProduction
-  
-  applyProduction(resourceBag:IResourceBag) : IProduction  
-}
+*/

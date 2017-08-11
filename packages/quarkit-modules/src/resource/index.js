@@ -1,3 +1,3 @@
 
 export * from './resource'
-export  *  from './resource-bag'
+export * from './resource-bag'
