@@ -1,9 +1,12 @@
-import { Mixin } from 'quarkit-mixin'
+import { Mixin, mix } from 'quarkit-mixin'
+import { GameObjectMixin } from 'quarkit-core'
+import { StatefullMixin } from '../stateful'
+import { ExpressionContainerMixin } from '../expression'
 
 
 export const ProductionSlotMixin = Mixin((superclass) => class extends superclass {
 
-  static createResourceSlot(resource, amount) {
+  static createProductionSlot(resource, amount) {
     const i = new this()
     i.Resource = resource
     i._amount = amount
@@ -24,62 +27,67 @@ export const ProductionSlotMixin = Mixin((superclass) => class extends superclas
 
 export class ProductionSlot extends mix().with(ProductionSlotMixin) {}
 
-/*
-export const Production = mixin(
-  'Production', 
-  {
-    get ProductionBaseTime() : number {
-      return this.productionBaseTime.getValue() 
-        || (this.productionBaseTime = this.createVariable(100))
-    },
-    set ProductionBaseTime(time:number) {
-      this.productionBaseTime = this.createVariable(time)
-    },
-    setProductionBaseTime(time:any) {
-      this.productionBaseTime = this.createVariable(time)
-      return this
-    },
 
-    get LastProductionTime() : number {
-      return this.State.lastProductionTime || (this.State.lastProductionTime = Date.now())
-    },
-    // as Dictionnary
-    get ProductionSlots() : ProductionSlot[] {
-      return this.productionSlots || (this.productionSlots = [])
-    },
-    addProductionSlot(resource:IResource, amount:any) : IProduction {
-      this.ProductionSlots.push(new ProductionSlot(resource, this.createVariable(amount)))
-      return this
-    },
-    applyProduction(resourceBag:IResourceBag) : IProduction {
-      const prod  = 1
-      const productionIterations = 
-        Math.trunc((Date.now() - this.LastProductionTime) / this.ProductionBaseTime)
+export const ProductionMixin = Mixin((superclass) => class extends mix(superclass).with(GameObjectMixin,StatefullMixin,ExpressionContainerMixin) {
 
-      if (productionIterations) {
-        this.State.lastProductionTime = Date.now()
-        const production = this.ProductionSlots
-        for (const key in production) {
-          resourceBag.increaseResource(
-            production[key].Resource,
-            productionIterations * production[key].Amount,
-          )
-        }
-      }
-      return this      
-    },
-  },
-  (go) => {
-    go.Events.on(
+  constructor(...args) {
+    super(...args)
+    this.Events.on(
       'set:stateprovider', 
       stateProvider => go.LastProductionTime,
     )
-  },                            
-  {
-    dependencies:[
-      'Stateful',
-      'ExpressionContainer',
-    ],
-  })
+  }
 
-*/
+  static get ProductionSlotClass() {
+    return this._productionSlotClass || (this._productionSlotClass = ProductionSlot)
+  }
+
+  static set ProductionSlotClass(productionSlotClass) {
+    return this._productionSlotClass = productionSlotClass
+  }
+
+  get ProductionBaseTime() {
+    return this.productionBaseTime.getValue() 
+      || (this.productionBaseTime = this.createVariable(100))
+  }
+
+  set ProductionBaseTime(time) {
+    this.productionBaseTime = this.createVariable(time)
+  }
+
+  setProductionBaseTime(time) {
+    this.productionBaseTime = this.createVariable(time)
+    return this
+  }
+
+  get LastProductionTime() {
+    return this.State.lastProductionTime || (this.State.lastProductionTime = Date.now())
+  }
+    // as Dictionnary
+  get ProductionSlots() {
+    return this.productionSlots || (this.productionSlots = [])
+  }
+
+  addProductionSlot(resource, amount) {
+    this.ProductionSlots.push(this.constructor.ProductionSlotClass.createProductionSlot(resource, this.createVariable(amount)))
+    return this
+  }
+
+  applyProduction(resourceBag) {
+    const prod  = 1
+    const productionIterations = 
+      Math.trunc((Date.now() - this.LastProductionTime) / this.ProductionBaseTime)
+    if (productionIterations) {
+      this.State.lastProductionTime = Date.now()
+      const production = this.ProductionSlots
+      for (const key in production) {
+        resourceBag.increaseResource(
+          production[key].Resource,
+          productionIterations * production[key].Amount,
+        )
+      }
+    }
+    return this      
+  }
+
+})

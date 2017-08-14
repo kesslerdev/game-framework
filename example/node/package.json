@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "postinstall": "linklocal -r",
-    "start": "ts-node --inspect ./src/main.ts",
+    "start": "nodemon src/index.js --exec babel-node",
     "bstart": "cd .. && yarn run build && cd example && ts-node --inspect ./src/main.ts",
     "mongo": "ts-node --inspect ./src/mongo.ts",
     "bmongo": "cd .. && yarn run build && cd example && ts-node --inspect ./src/mongo.ts",
@@ -30,39 +30,19 @@
     "humanize-plus": "^1.8.2",
     "moment": "^2.18.1",
     "mongodb": "^2.2.28",
-    "quarkit-core": "file:../packages/quarkit-core",
-    "quarkit-mixin": "file:../packages/quarkit-mixin",
-    "quarkit-modules": "file:../packages/quarkit-modules"
+    "quarkit-core": "file:../../packages/quarkit-core",
+    "quarkit-mixin": "file:../../packages/quarkit-mixin",
+    "quarkit-modules": "file:../../packages/quarkit-modules"
   },
   "devDependencies": {
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.18",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "jest": "^20.0.3",
-    "linklocal": "^2.8.0",
+    "linklocal": "^2.8.1",
     "nodemon": "^1.11.0",
-    "opener": "^1.4.3",
-    "ts-jest": "^20.0.4",
-    "ts-node": "^3.0.4",
-    "tslint-config-skimia": "^1.0.0",
-    "typescript": "^2.3.2"
-  },
-  "jest": {
-    "mapCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.(ts|tsx)"
-    ],
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/build/"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "opener": "^1.4.3"
   }
 }

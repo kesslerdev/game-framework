@@ -244,6 +244,12 @@ class MixinBuilder {
    * @return {Function} a subclass of `superclass` with `mixins` applied
    */
   with(...mixins) {
-    return mixins.reduce((c, m) => m(c), this.superclass);
+    return mixins.reduce((c, m) => {
+      if(m == undefined) {
+        throw new Error(`with(...mixins) mixin at ${mixins.indexOf(m) + 1} position is undefined`)
+      }
+
+      return m(c)
+    }, this.superclass);
   }
 }
