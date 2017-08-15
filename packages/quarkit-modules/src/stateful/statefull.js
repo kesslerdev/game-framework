@@ -1,7 +1,7 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { GameObjectMixin } from 'quarkit-core'
 
-export const StatefullMixin = Mixin((superclass) => class extends superclass {
+export const StatefullMixin = Mixin((superclass) => class extends GameObjectMixin(superclass) {
   get State() {
     if (!this.__state) {
       throw new Error('unable to use an Uninitialized State please call withState() before')
@@ -11,9 +11,10 @@ export const StatefullMixin = Mixin((superclass) => class extends superclass {
   }
 
   withState(stateProvider) {
-        
     this.__state = stateProvider.getState(this.stateKeyAccessor())
-    return newThis
+    this.Events.emit('set:stateprovider', stateProvider)
+
+    return this
   }
 
   stateKeyAccessor() {
@@ -23,7 +24,7 @@ export const StatefullMixin = Mixin((superclass) => class extends superclass {
 
 })
 
-export class StatefullGameObject extends mix().with(GameObjectMixin, StatefullMixin) {
+export class StatefullGameObject extends mix().with(StatefullMixin) {
   get StateKey() {
         return this.constructor.name + '#' + this.slug
     }

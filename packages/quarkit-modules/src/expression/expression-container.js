@@ -17,6 +17,9 @@ export const ExpressionContainerMixin = Mixin((superclass) => class extends mix(
 
     this.Events.on('context:provide', (key, value) => {
       this.setContext(key, value)
+      if(value instanceof Object) {
+        this.setContext(value.constructor.name, value)
+      }
     })
     // works well with stateprovider
     this.Events.on('set:stateprovider', stateProvider => {

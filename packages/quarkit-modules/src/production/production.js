@@ -34,7 +34,7 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
     super(...args)
     this.Events.on(
       'set:stateprovider', 
-      stateProvider => go.LastProductionTime,
+      stateProvider => this.LastProductionTime,
     )
   }
 

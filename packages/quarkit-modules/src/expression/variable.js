@@ -29,7 +29,9 @@ export class ExpressionVariable{
     }
 
     getValue() {
-        return math.eval(this.expression, this.Context)
+      const value = math.eval(this.expression, this.Context)
+      console.log(this.expression, value)
+      return value
     }
 }
 

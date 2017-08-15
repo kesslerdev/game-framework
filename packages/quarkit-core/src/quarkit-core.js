@@ -29,6 +29,7 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     i.slug = slug
     return i
   }
+  
 
 })
 
