@@ -1,0 +1,30 @@
+{
+  "name": "quarkit-redux",
+  "version": "0.1.2",
+  "description": "",
+  "main": "./build/quarkit-redux.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src -d build",
+    "test": "jest",
+    "test:live": "jest --watch --verbose",
+    "cover": "jest --coverage --verbose",
+    "cover:report": "opener ./coverage/lcov-report/index.html"
+  },
+  "repository": "https://github.com/kesslerdev/quarkit/tree/master/packages/quarkit-redux",
+  "keywords": [],
+  "author": "kesslerdev",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.18",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^20.0.3",
+    "opener": "^1.4.3"
+  },
+  "dependencies": {
+    "quarkit-modules": "^0.3.0"
+  }
+}
