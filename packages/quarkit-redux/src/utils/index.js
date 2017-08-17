@@ -1,4 +1,4 @@
-
+import { ResourceBagMixin } from 'quarkit-modules'
 
 export const getGameObjectReference = (go) => {
   return {
@@ -7,9 +7,18 @@ export const getGameObjectReference = (go) => {
   }
 }
 
-export const stateFromGameObject = (go) => {
+export const stateFromResourceBagMixin = (go) => {
   return {
-    reference: getGameObjectReference(go)
-    // all other values such as innerbag or other based on mixin of gameobject
+
   }
+}
+export const stateFromGameObject = (go) => {
+  let state = {
+    reference: getGameObjectReference(go)
+  }
+
+  if(go instanceof ResourceBagMixin) 
+    state.innerBag = stateFromResourceBagMixin(go)
+  
+  return state
 }
