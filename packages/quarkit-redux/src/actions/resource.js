@@ -14,12 +14,14 @@ export const INCRASE_RESOURCE = 'INCRASE_RESOURCE'
 
 export function addResource(resource) {
   return { 
+    type: ADD_RESOURCE,
     resource: getGameObjectReference(resource)
   }
 }
 
 export function incraseResource(resource, newValue) {
   return { 
+    type: INCRASE_RESOURCE,
     resource: getGameObjectReference(resource),
     newAmount: newValue
   }

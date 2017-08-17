@@ -6,3 +6,10 @@ export const getGameObjectReference = (go) => {
     slug: go.slug
   }
 }
+
+export const stateFromGameObject = (go) => {
+  return {
+    reference: getGameObjectReference(go)
+    // all other values such as innerbag or other based on mixin of gameobject
+  }
+}
