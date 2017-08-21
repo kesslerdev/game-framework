@@ -1,8 +1,8 @@
 import { createStore } from 'redux'
 import quarkit from './reducers'
 
-export const store = createStore(quarkit)
+export const store = createStore(rootReducer)
 
 let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
+  console.log("STATE:", store.getState())
 )
