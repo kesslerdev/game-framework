@@ -45,8 +45,8 @@ function getNewsPaperDelivery(){
 function getAnciantFabric() {
   const anciantFabric = ShopTemplate.createGameObject('Anciant_Fabric')
   anciantFabric.addCostSlot(Resources.Cash, 700000)
-  anciantFabric.ProductionBaseTime = 13000
-  anciantFabric.addProductionSlot(Resources.Cash, 'Capitalist.innerBag[1].Amount')
+  anciantFabric.ProductionBaseTime = 35000
+  anciantFabric.addProductionSlot(Resources.Cash, 'round(sqrt(Capitalist.innerBag[1].Amount))')
 
   return anciantFabric
 }

@@ -9,7 +9,7 @@ export const getGameObjectReference = (go) => {
 
 export const stateFromResourceBagMixin = (go) => {
   return {
-
+    game: false
   }
 }
 export const stateFromGameObject = (go) => {
