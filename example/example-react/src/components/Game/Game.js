@@ -11,11 +11,13 @@ class Game extends Component {
       <div className="Game">
         <Header connected={this.props.player? true: false} player={this.props.player}/>
         <div className="Game-intro">
-          <PurchasableList market={this.props.purchasable} possesor={this.props.player} />
+
         </div>
       </div>
     );
   }
 }
 
+
+/*<PurchasableList market={this.props.purchasable} possesor={this.props.player} />*/
 export default Game;

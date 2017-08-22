@@ -1,1 +1,1 @@
-export { Resources, Shops, createPlayer } from './game'
+export * from './game'

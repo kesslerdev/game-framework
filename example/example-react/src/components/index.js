@@ -1,6 +1,17 @@
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as login from '../actions/player'
 
 import Main from './Main'
-import Game from './Game/Game'
 
+const mapStateToProps = (state) => ({ state })
 
-export {Main, Game}
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+    ...login,
+  }, dispatch),
+})
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Main)
+
+export default App

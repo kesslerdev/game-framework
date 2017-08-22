@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Login from '../Login'
-import GameInfo from '../Infos/GameInfo'
+import Login from '../Login/Login'
+import GameInfo from '../Infos/GameInfo/GameInfo'
 
 import logo from './logo.svg'
 import './Header.css'
@@ -23,4 +23,14 @@ Header.propTypes = {
   connected: PropTypes.bool.isRequired
 }
 
-export default Header
+const Test = ({ state, actions }) => {
+  const player = state.player
+  const connected = state.player.reference ? true : false
+  const onClick = () => {
+    actions.addPlayer('kesslerdev')
+  }
+
+  return (<Header {...{ player, connected, onClick }} />)
+}
+
+export default Test

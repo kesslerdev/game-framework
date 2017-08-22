@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ResourceBag from '../Resource/ResourceBag'
+
 const GameInfo = ({ player }) => (
   <div>
     <h2>Welcome to the game {this.props.player.slug}</h2>
