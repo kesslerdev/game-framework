@@ -10,7 +10,7 @@ import './Header.css'
 const Header = ({ onClick, connected, player }) => (
   <div className="Header">
     <img src={logo} className="Header-logo" alt="logo" />
-    {this.props.connected ? 
+    {connected ? 
       <GameInfo player={player} />
     : <Login onClick={onClick} />
     }
@@ -25,7 +25,7 @@ Header.propTypes = {
 
 const Test = ({ state, actions }) => {
   const player = state.player
-  const connected = state.player.reference ? true : false
+  const connected = state.player.slug ? true : false
   const onClick = () => {
     actions.addPlayer('kesslerdev')
   }

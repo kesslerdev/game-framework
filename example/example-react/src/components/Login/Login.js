@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Login = ({ onClick }) => (
-  <button onClick={onClick}>
+  <div>
+    <button onClick={onClick}>
       Login
-  </button>
+    </button>
+  </div>
 )
 
 Login.propTypes = {

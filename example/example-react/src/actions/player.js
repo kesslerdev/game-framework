@@ -12,7 +12,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
  */
 
 export function addPlayer(name) {
-
   const player = createPlayer(name)
 
   return { 

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from './Header/Header'
+import './Main.css'
 
 window.addEventListener('keydown', (e) => {
   if (e.keyCode === 82 && e.ctrlKey && e.shiftKey) {

@@ -5,13 +5,13 @@ import ResourceBag from '../Resource/ResourceBag'
 
 const GameInfo = ({ player }) => (
   <div>
-    <h2>Welcome to the game {this.props.player.slug}</h2>
-    <ResourceBag player={this.props.player} bag={this.props.player.innerBag}/>
+    <h2>Welcome to the game {player.slug}</h2>
+    
   </div>
 )
 
 GameInfo.propTypes = {
   player: PropTypes.object.isRequired
 }
-
+ //<ResourceBag player={player} bag={player.innerBag}/>
 export default GameInfo
