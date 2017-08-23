@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
 
 import player from './player'
+import go from './game-object'
 
 
 
 const appReducer = combineReducers({
   player,
+  go,
 })
 
 const rootReducer = (state, action) => {
