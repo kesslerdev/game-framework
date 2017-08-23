@@ -7,16 +7,22 @@ export const getGameObjectReference = (go) => {
   }
 }
 
-export const stateFromResourceBagMixin = (go) => {
+export const stateFromResourceBagMixin = (state, go) => {
   return {
-    game: false
+    ...state,
+    innerBag: go.innerBag.map((rez) => {
+      return {
+        resource: getGameObjectReference(rez.Resource),
+        amount: rez.Amount
+      }
+    })
   }
 }
 export const stateFromGameObject = (go) => {
   let state = getGameObjectReference(go)
 
-  if(go instanceof ResourceBagMixin) 
-    state.innerBag = stateFromResourceBagMixin(go)
+  if(go.innerBag) 
+    state = stateFromResourceBagMixin(state, go)
   
   return state
 }
