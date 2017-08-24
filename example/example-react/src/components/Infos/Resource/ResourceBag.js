@@ -6,7 +6,7 @@ import ResourceSlot from './ResourceSlot'
 const ResourceBag = ({ bag }) => (
   <div>
     {bag.map((v, i) =>
-      <ResourceSlot key={i.toString()} name={v.resource.slug} value={v.amount} premium={false}/>
+      <ResourceSlot key={i.toString()} resourceRef={v.resource} value={v.amount}/>
     )}
   </div>
 )
