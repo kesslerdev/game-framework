@@ -1,17 +1,26 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
+import { getPurchasables } from '../../../selectors'
 import Purchasable from './Purchasable'
 
-class PurchasableList extends React.Component {
+const PurchasableList = ({ market, player }) => (
+  <div>
+    {market.map((v, i) =>
+      <Purchasable key={i.toString()} purchasable={v} possesor={player}/>
+    )}
+  </div>
+)
 
-  render() {
-    return (
-      <div>
-         {this.props.market.map((v, i) =>
-          <Purchasable key={i.toString()} purchasable={v} possesor={this.props.possesor} />
-        )}
-      </div>
-    );
-  }
+PurchasableList.propTypes = {
+  market: PropTypes.array.isRequired
 }
 
-export default PurchasableList
+const Test = ({ state, actions }) => {
+  const player = state.player
+  const market = getPurchasables(state)
+
+  return (<PurchasableList {...{ player, market }} />)
+}
+
+export default Test

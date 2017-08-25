@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from './Header/Header'
+import PurchasableList from './Infos/Purchasable/PurchasableList'
 import { Resources, Shops } from '../game'
 import './Main.css'
 
@@ -24,7 +25,8 @@ class Main extends React.Component {
       <div className="Game">
         <Header state={this.props.state} actions={this.props.actions}/>
         <div className="Game-intro">
-
+          {this.props.state.player.slug ? 
+            <PurchasableList state={this.props.state} actions={this.props.actions}/> : <div>please connect</div>}
         </div>
       </div>
     )

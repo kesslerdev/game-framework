@@ -37,6 +37,12 @@ export const stateFromResourceMixin = (state, go) => {
   })
 }
 
+export const stateFromPurchasableMixin = (state, go) => {
+  return Object.assign({}, state, {
+    purchasable: go.purchaseFor ? true : false
+  })
+}
+
 export const stateFromGameObject = (go) => {
   let state = getGameObjectReference(go)
 
@@ -48,6 +54,9 @@ export const stateFromGameObject = (go) => {
 
   if(go.premium) 
     state = stateFromResourceMixin(state, go)
+
+  if(go.purchaseFor) 
+    state = stateFromPurchasableMixin(state, go)
   
   return state
 }

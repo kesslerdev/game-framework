@@ -12,7 +12,8 @@ class Purchasable extends React.Component {
   }
 
   isPurchased() {
-    return this.props.possesor.PossessionsObjects.includes(this.props.purchasable)
+    return this.props.possesor.possessions.find(
+      go => go.slug === this.props.purchasable.slug && go.typeName === this.props.purchasable.typeName) !== undefined
   }
 
   purchase() {
