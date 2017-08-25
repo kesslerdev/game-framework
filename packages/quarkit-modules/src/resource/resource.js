@@ -2,11 +2,11 @@ import { Mixin } from 'quarkit-mixin'
 
 export const ResourceMixin = Mixin((superclass) => class extends superclass {
   get Premium() {
-    return this.isPremium || (this.isPremium = false)
+    return this.premium || (this.premium = false)
   }
   
   set Premium(value) {
-    this.isPremium = value
+    this.premium = value
   }
 
 })

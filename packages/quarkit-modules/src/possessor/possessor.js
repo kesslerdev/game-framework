@@ -27,7 +27,7 @@ export const PossessorMixin = Mixin((superclass) => class extends superclass {
     return this._possessionActClass = possessionActClass
   }
   get Possessions(){
-    return this._possessions || (this._possessions = [])
+    return this.possessions || (this.possessions = [])
   }
 
   get PossessionsObjects(){

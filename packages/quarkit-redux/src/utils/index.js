@@ -19,9 +19,21 @@ export const stateFromResourceBagMixin = (state, go) => {
   }
 }
 
+export const stateFromPossesorMixin = (state, go) => {
+  return {
+    ...state,
+    possessions: go.PossessionsObjects.map((poss) => {
+      return {
+        possession: getGameObjectReference(poss),
+        state: poss.withState ? poss.__state : false
+      }
+    })
+  }
+}
+
 export const stateFromResourceMixin = (state, go) => {
   return Object.assign({}, state, {
-    premium: go.Premium
+    premium: go.premium
   })
 }
 
@@ -31,7 +43,10 @@ export const stateFromGameObject = (go) => {
   if(go.innerBag) 
     state = stateFromResourceBagMixin(state, go)
 
-  if(go.Premium) 
+  if(go.possessions) 
+    state = stateFromPossesorMixin(state, go)
+
+  if(go.premium) 
     state = stateFromResourceMixin(state, go)
   
   return state
