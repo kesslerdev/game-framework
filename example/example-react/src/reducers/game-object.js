@@ -5,7 +5,7 @@ const go = (state = [], action) => {
     case REGISTER_GAME_OBJECT:
       return [
         ...state,
-        { ...action.go }
+        Object.assign({ ...action.stateGO }, { go: action.go })
       ]
     default:
       return state

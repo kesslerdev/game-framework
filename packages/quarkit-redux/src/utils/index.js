@@ -46,13 +46,13 @@ export const stateFromPurchasableMixin = (state, go) => {
 export const stateFromGameObject = (go) => {
   let state = getGameObjectReference(go)
 
-  if(go.innerBag) 
+  if(go.InnerBag) 
     state = stateFromResourceBagMixin(state, go)
 
-  if(go.possessions) 
+  if(go.Possessions) 
     state = stateFromPossesorMixin(state, go)
 
-  if(go.premium) 
+  if(go.Premium) 
     state = stateFromResourceMixin(state, go)
 
   if(go.purchaseFor) 

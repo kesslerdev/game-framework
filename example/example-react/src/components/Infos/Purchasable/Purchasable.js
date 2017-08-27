@@ -1,37 +1,38 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { purchaseFor } from '../../../actions/purchasable'
 import Purchase from './Purchase'
 import './Purchasable.css'
 
-class Purchasable extends React.Component {
 
-  getButton() {
-    if(!this.isPurchased()) {
-      return <Purchase onClick={() => this.purchase()} possesor={this.props.possesor}/>
-    }
-    return null
+const Purchasable = ({ purchasable, possesor, onPurchaseClick}) => {
+
+  const isPurchased = () => {
+    return possesor.possessions.find(
+      go => go.possession.slug === purchasable.slug && go.possession.typeName === purchasable.typeName) !== undefined
   }
 
-  isPurchased() {
-    return this.props.possesor.possessions.find(
-      go => go.slug === this.props.purchasable.slug && go.typeName === this.props.purchasable.typeName) !== undefined
-  }
-
-  purchase() {
-    this.props.purchasable.purchaseFor(this.props.possesor)
-    this.forceUpdate()
-  }
-
-  render() {
-    //const isPossesed = this.state.mine
-    const className = 'Purchasable ' + (this.isPurchased() ? 'Purchasable-mine' :'')
-    return (
-
-      <div className={className}>
-        Building : {this.props.purchasable.slug}
-        {this.getButton()}
-      </div>
-    );
-  }
+  //const isPossesed = this.state.mine
+  const className = 'Purchasable ' + (isPurchased() ? 'Purchasable-mine' :'')
+  return (
+    <div className={className}>
+      Building : {purchasable.slug}
+      {isPurchased() ? '' :
+        <Purchase onPurchaseClick={()=>onPurchaseClick(purchasable, possesor)} />}
+    </div>
+  );
 }
 
-export default Purchasable
+const mapDispatchToProps = dispatch => {
+  return {
+    onPurchaseClick: (purchasable, possesor) => {
+      dispatch(purchaseFor(purchasable, possesor))
+    }
+  }
+}
+const DataPurchasable = connect(
+  null,
+  mapDispatchToProps
+)(Purchasable)
+ //
+export default DataPurchasable

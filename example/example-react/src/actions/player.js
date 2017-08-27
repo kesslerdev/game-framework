@@ -16,6 +16,7 @@ export function addPlayer(name) {
 
   return { 
     type: LOGIN_SUCCESS,
-    player: stateFromGameObject(player)
+    player: stateFromGameObject(player),
+    playerGO: player,
   }
 }

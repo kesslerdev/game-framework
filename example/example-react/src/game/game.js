@@ -27,7 +27,7 @@ function getLemonStand() {
   // with upgrade lvl 2 double earnings
   // upgrade price 4 for 2 4.28 for 3, 4.58 for 4, 4.90,5.24,5.61
   lemonStand.ProductionBaseTime = 3000
-  lemonStand.addProductionSlot(Resources.Cash, '4 * (1 + round(Capitalist.innerBag[1].Amount / 500) )')
+  lemonStand.addProductionSlot(Resources.Cash, 4)
 
   return lemonStand
 }
@@ -35,7 +35,7 @@ function getLemonStand() {
 function getNewsPaperDelivery(){
   const newsPaperDelivery = ShopTemplate.createGameObject('News_Paper_Delivery')
   newsPaperDelivery.addCostSlot(Resources.Cash, 10)
-  newsPaperDelivery.addProductionSlot(Resources.Cash, '9 * (1 + round(Capitalist.innerBag[1].Amount / 555) )')
+  newsPaperDelivery.addProductionSlot(Resources.Cash, 9)
   newsPaperDelivery.ProductionBaseTime = 10000
 
   return newsPaperDelivery

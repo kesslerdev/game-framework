@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import { getPurchasables } from '../../../selectors'
 import Purchasable from './Purchasable'
@@ -16,11 +17,15 @@ PurchasableList.propTypes = {
   market: PropTypes.array.isRequired
 }
 
-const Test = ({ state, actions }) => {
-  const player = state.player
-  const market = getPurchasables(state)
-
-  return (<PurchasableList {...{ player, market }} />)
+const mapStateToProps = (state, props) => {
+  return {
+    player: state.player,
+    market: getPurchasables(state)
+  }
 }
 
-export default Test
+const DataPurchasableList = connect(
+  mapStateToProps
+)(PurchasableList)
+ //
+export default DataPurchasableList

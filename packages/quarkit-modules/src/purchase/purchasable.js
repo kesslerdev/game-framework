@@ -7,7 +7,12 @@ export const PurchasableMixin = Mixin((superclass) => class extends mix(supercla
     const cost = this.DefaultCost
     // TODO: remove cost in resrs bag
     const act = owner.createPossessionAct(this)
+    if (act.Possession.withState && owner.getState) {
+      act.Possession.withState(owner,false)
+    }
     owner.Possessions.push(act)
+
+    
 
     return this
   }

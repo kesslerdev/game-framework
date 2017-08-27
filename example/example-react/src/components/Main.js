@@ -1,4 +1,5 @@
 import React from 'react'
+import { updateResourceBagIfNeeded } from '../actions/resource'
 
 import Header from './Header/Header'
 import PurchasableList from './Infos/Purchasable/PurchasableList'
@@ -19,6 +20,12 @@ class Main extends React.Component {
       this.props.actions.registerGameObject(Shops.AnciantFabric)
       this.props.actions.registerGameObject(Shops.LemonStand)
       this.props.actions.registerGameObject(Shops.NewsPaperDelivery)
+
+      setInterval(()=>{
+        if(this.props.state.player.slug) {
+          updateResourceBagIfNeeded(this.props.state.player)
+        }
+      }, 300)
     }
   
     render = () => (

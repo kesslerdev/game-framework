@@ -13,6 +13,7 @@ export const REGISTER_GAME_OBJECT = 'REGISTER_GAME_OBJECT'
 export function registerGameObject(go) {
   return { 
     type: REGISTER_GAME_OBJECT,
-    go: stateFromGameObject(go)
+    stateGO: stateFromGameObject(go),
+    go
   }
 }
