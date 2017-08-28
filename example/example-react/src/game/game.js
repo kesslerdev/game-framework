@@ -12,13 +12,8 @@ function getGold() {
 }
 
 const Resources = {
-  get Cash() {
-    return this._cash || (this._cash = getCash())
-  },
-
-  get Gold() {
-    return this._gold || (this._gold = getGold())
-  }
+  Cash: getCash(),
+  Gold: getGold(),
 }
 
 function getLemonStand() {
@@ -52,15 +47,9 @@ function getAnciantFabric() {
 }
 
 const Shops = {
-  get LemonStand() {
-    return this._lemon_stand || (this._lemon_stand = getLemonStand())
-  },
-  get NewsPaperDelivery() {
-    return this._news_paper_delivery || (this._news_paper_delivery = getNewsPaperDelivery())
-  },
-  get AnciantFabric() {
-    return this._anciant_fabric || (this._anciant_fabric = getAnciantFabric())
-  }
+  LemonStand: getLemonStand(),
+  NewsPaperDelivery: getNewsPaperDelivery(),
+  AnciantFabric: getAnciantFabric(),
 }
 
 export function createPlayer(name) {

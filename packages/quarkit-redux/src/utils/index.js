@@ -1,11 +1,8 @@
 import { ResourceBagMixin } from 'quarkit-modules'
+import objectToArray from './objectToArray'
 
-export const getGameObjectReference = (go) => {
-  return {
-    typeName: go.constructor.name,
-    slug: go.slug
-  }
-}
+export * from './reference'
+export { objectToArray }
 
 export const stateFromResourceBagMixin = (state, go) => {
   return {
