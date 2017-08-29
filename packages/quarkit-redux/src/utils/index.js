@@ -1,8 +1,10 @@
 import { ResourceBagMixin } from 'quarkit-modules'
 import objectToArray from './objectToArray'
+import Registry from './registry'
 
 export * from './reference'
-export { objectToArray }
+
+export { objectToArray, Registry }
 
 export const stateFromResourceBagMixin = (state, go) => {
   return {

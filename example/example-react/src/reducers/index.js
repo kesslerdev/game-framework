@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
-
+import { goArrayReducer as go } from 'quarkit-redux'
 import player from './player'
-import go from './game-object'
 
 
 

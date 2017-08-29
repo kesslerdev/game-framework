@@ -4,8 +4,11 @@ export const defaultState = {
 }
 
 export const resourceBagReducer = (state = defaultState, action) => {
+
   switch (action.type) {
     case ADD_RESOURCE:
+      if(action.resourceBag.slug !== state.slug && action.resourceBag.typeName !== state.typeName)
+        return state
       return Object.assign({}, state, {
         innerBag: [
           ...state.innerBag,
@@ -16,6 +19,8 @@ export const resourceBagReducer = (state = defaultState, action) => {
         ]
       })
     case INCRASE_RESOURCE:
+      if(action.resourceBag.slug !== state.slug && action.resourceBag.typeName !== state.typeName)
+        return state
       return Object.assign({}, state, {
         innerBag: state.innerBag.map((slot) => {
           if (

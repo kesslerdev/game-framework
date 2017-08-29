@@ -1,21 +1,21 @@
 import { REGISTER_GAME_OBJECT, LOAD_ALL_GAME_OBJECT } from '../actions/quarkit'
 
-export const go = (state = [], action) => {
+export const goReducer = (state = [], action) => {
   return state
 }
 
 
-export const gos = (state = [], action) => {
+export const goArrayReducer = (state = [], action) => {
   switch (action.type) {
     case REGISTER_GAME_OBJECT:
       return [
         ...state,
-        ...action.go
+        { ...action.go }
       ]
     case LOAD_ALL_GAME_OBJECT:
       return [
         ...state,
-        { ...action.go }
+        ...action.go,
       ]
     default:
       return state.map((el) => go(el, action))

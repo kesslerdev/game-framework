@@ -1,11 +1,12 @@
 //import { stateFromGameObject } from 'quarkit-redux'
 import Registry from '../utils/registry'
 import objectToArray from '../utils/objectToArray'
+
 /*
  * action types
  */
 
-export const REGISTER_GAME_OBJECT     = 'REGISTER_GAME_OBJECT'
+export const REGISTER_GAME_OBJECT = 'REGISTER_GAME_OBJECT'
 export const LOAD_ALL_GAME_OBJECT = 'LOAD_ALL_GAME_OBJECT'
 
 

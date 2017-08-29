@@ -10,6 +10,12 @@ class Registry {
     this.GO[getGOStringReference(go)] = go
   }
 
+  hasGO(reference) {
+    if(reference.typeName && reference.slug)
+      reference = getStateGOStringReference(reference)
+    
+    return this._objects[reference] ? true : false
+  }
   getGO(reference) {
     if(reference.typeName && reference.slug)
       reference = getStateGOStringReference(reference)
