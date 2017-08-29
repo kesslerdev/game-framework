@@ -1,4 +1,5 @@
 import { getReference } from '../utils'
+import { getResourceSlot } from '../selectors'
 import Registry from '../utils/registry'
 /*
  * action types
