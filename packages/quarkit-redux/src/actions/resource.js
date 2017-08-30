@@ -31,6 +31,8 @@ export function incraseResource(resourceBag, resource, newValue) {
 }
 
 // see http://redux.js.org/docs/advanced/AsyncActions.html
+// see to add a middleware afin de gérer la gameLoop (boucle d'action du jeu)
+// typiquement cette fonctionnalité est gérée par la boucle
 export function updateResourceBagIfNeeded(resourceBag) {
   return function (dispatch) {
 
