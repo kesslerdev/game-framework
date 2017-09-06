@@ -23,7 +23,7 @@ export function registerGameObject(go) {
   }
 }
 
-export function loadAllGameObject() {
+export function loadAllGameObjects() {
   return { 
     type: LOAD_ALL_GAME_OBJECT,
     go: objectToArray(Registry.GO).map((go) => stateFromGameObject(go))

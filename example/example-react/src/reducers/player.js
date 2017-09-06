@@ -1,5 +1,3 @@
-/*import { posessorReducer } from './purchasable'
-import { resourceBagReducer } from 'quarkit-redux'*/
 import { goReducer } from 'quarkit-redux'
 
 const player = (state = {}, action) => {

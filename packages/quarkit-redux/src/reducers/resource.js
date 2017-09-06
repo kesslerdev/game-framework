@@ -1,5 +1,6 @@
 import { ADD_RESOURCE, INCRASE_RESOURCE } from '../actions'
-export const defaultState = {
+
+const defaultState = {
   innerBag : []
 }
 

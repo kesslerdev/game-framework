@@ -1,7 +1,7 @@
 import { PURCHASE_FOR } from '../actions/purchasable'
 import Registry from '../utils/registry'
 
-export const defaultState = {
+const defaultState = {
   possessions : []
 }
 

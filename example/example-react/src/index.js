@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker'
 
+import game from './game'
+
 import './index.css'
 import App from './components'
 import {store} from './store'

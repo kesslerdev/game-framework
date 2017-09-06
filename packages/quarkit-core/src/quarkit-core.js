@@ -8,7 +8,7 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     // constructor signature, or 3) pass along all arguments.
 
     super(...args)
-    
+    this.slug = args[0]
     this.Events = new EventEmitter()
   }
 
@@ -24,10 +24,8 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     this._cache = {}
   }
 
-  static createGameObject(slug) {
-    const i = new this()
-    i.slug = slug
-    return i
+  static createGameObject(...args) {
+    return new this(...args)
   }
   
 

@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { updateResourceBagIfNeeded } from 'quarkit-redux/actions'//need remove
-
 import Header from './Header/Header'
 import PurchasableList from './Infos/Purchasable/PurchasableList'
-import { Resources, Shops } from '../game'
+
 import './Main.css'
 
 window.addEventListener('keydown', (e) => {
@@ -16,15 +14,12 @@ window.addEventListener('keydown', (e) => {
 class Main extends React.Component {
   
     componentDidMount = () => {
-      this.props.actions.registerGameObject(Resources.Cash)
-      this.props.actions.registerGameObject(Resources.Gold)
-      this.props.actions.registerGameObject(Shops.AnciantFabric)
-      this.props.actions.registerGameObject(Shops.LemonStand)
-      this.props.actions.registerGameObject(Shops.NewsPaperDelivery)
+      this.props.actions.loadAllGameObjects()
 
       setInterval(()=>{
         if(this.props.state.player.slug) {
-          updateResourceBagIfNeeded(this.props.state.player)
+          this.props.actions.updateResourceBagIfNeeded(this.props.state.player)
+          console.log('updt')
         }
       }, 300)
     }

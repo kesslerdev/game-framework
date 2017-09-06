@@ -1,4 +1,5 @@
 import { getReference } from '../utils'
+import { stateFromGameObject } from '../state'
 import { getResourceSlot } from '../selectors'
 import Registry from '../utils/registry'
 /*
@@ -36,6 +37,7 @@ export function incraseResource(resourceBag, resource, newValue) {
 export function updateResourceBagIfNeeded(resourceBag) {
   return function (dispatch) {
 
+    console.log(Registry.GO)
     const goBag = Registry.getGO(resourceBag)
     const old = stateFromGameObject(goBag)
 
