@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { getPurchasables } from '../../../selectors'
+import {gameObjectSelectors} from '../../../selectors'
 import Purchasable from './Purchasable'
 
 const PurchasableList = ({ market, player }) => (
@@ -20,7 +20,7 @@ PurchasableList.propTypes = {
 const mapStateToProps = (state, props) => {
   return {
     player: state.player,
-    market: getPurchasables(state)
+    market: gameObjectSelectors.getPurchasables(state)
   }
 }
 

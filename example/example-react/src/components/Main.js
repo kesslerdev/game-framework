@@ -1,5 +1,6 @@
 import React from 'react'
-import { updateResourceBagIfNeeded } from '../actions/resource'
+
+import { updateResourceBagIfNeeded } from 'quarkit-redux/actions'//need remove
 
 import Header from './Header/Header'
 import PurchasableList from './Infos/Purchasable/PurchasableList'

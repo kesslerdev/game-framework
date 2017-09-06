@@ -1,4 +1,7 @@
+import { createGameObjectSelectors } from 'quarkit-redux'
 
-export * from './game-object'
-export * from './resource'
-export * from './purchasable'
+const getGameObjects = (state) => state.go
+
+export const gameObjectSelectors = createGameObjectSelectors(getGameObjects)
+
+export default gameObjectSelectors

@@ -1,4 +1,4 @@
-//import { stateFromGameObject } from 'quarkit-redux'
+import { stateFromGameObject } from '../state'
 import Registry from '../utils/registry'
 import objectToArray from '../utils/objectToArray'
 

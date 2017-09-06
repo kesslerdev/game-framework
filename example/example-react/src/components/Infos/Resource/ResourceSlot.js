@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as Humanize from 'humanize-plus'
 
-import { getGameObject } from '../../../selectors'
+import {gameObjectSelectors} from '../../../selectors'
 import './ResourceSlot.css'
 
 const ResourceSlot = ({ resourceRef, value, resource }) => (
@@ -22,7 +22,7 @@ ResourceSlot.propTypes = {
 const mapStateToProps = (state, props) => {
   return {
     // WARNING: THE FOLLOWING SELECTOR DOES NOT CORRECTLY MEMOIZE
-    resource: getGameObject(state, props.resourceRef)
+    resource: gameObjectSelectors.getGameObject(state, props.resourceRef)
   }
 }
 

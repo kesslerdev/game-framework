@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { purchaseFor } from '../../../actions/purchasable'
+import { purchaseFor } from 'quarkit-redux/actions'
 import Purchase from './Purchase'
 import './Purchasable.css'
 
