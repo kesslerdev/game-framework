@@ -24,6 +24,10 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     this._cache = {}
   }
 
+  getRelated() {
+    return []
+  }
+
   static createGameObject(slug) {
     const i = new this()
     i.slug = slug
