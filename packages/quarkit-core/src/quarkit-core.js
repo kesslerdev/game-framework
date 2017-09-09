@@ -27,6 +27,11 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
   static createGameObject(...args) {
     return new this(...args)
   }
+
+  getRelated() {
+    return []
+  }
+
   
 
 })

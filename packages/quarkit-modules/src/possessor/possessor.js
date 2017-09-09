@@ -19,6 +19,13 @@ export class PossessionAct extends mix().with(GameObjectMixin, PossessionActMixi
 
 export const PossessorMixin = Mixin((superclass) => class extends superclass {
 
+  getRelated() {
+    const related = super()
+    this.PossessionsObjects.map((go) => related.push(go))
+
+    return related
+  }
+
   static get PossessionActClass() {
     return this._possessionActClass || (this._possessionActClass = PossessionAct)
   }
