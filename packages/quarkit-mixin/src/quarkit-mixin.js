@@ -178,7 +178,7 @@ export const DeDupe = (mixin) => wrap(mixin, (superclass) =>
  * @return {MixinFunction} the given mixin function
  */
 export const HasInstance = (mixin) => {
-  if (Symbol && Symbol.hasInstance && !mixin[Symbol.hasInstance]) {
+  if (Symbol && Symbol.hasInstance && !mixin.hasOwnProperty(Symbol.hasInstance)) {
     Object.defineProperty(mixin, Symbol.hasInstance, {
       value(o) {
         return hasMixin(o, mixin);

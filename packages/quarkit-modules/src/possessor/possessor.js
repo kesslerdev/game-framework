@@ -20,7 +20,7 @@ export class PossessionAct extends mix().with(GameObjectMixin, PossessionActMixi
 export const PossessorMixin = Mixin((superclass) => class extends superclass {
 
   getRelated() {
-    const related = super()
+    const related = super.getRelated()
     this.PossessionsObjects.map((go) => related.push(go))
 
     return related
@@ -41,7 +41,7 @@ export const PossessorMixin = Mixin((superclass) => class extends superclass {
     const possessions = this.Possessions
     if (!this.Cache.possessionObjects) {
       this.Cache.possessionObjects = possessions.map((possession) => {
-        if (possession.Possession.withState && this.getState) {
+        if (possession.Possession instanceof StatefullMixin && this instanceof StateProviderMixin) {
           return possession.Possession.withState(this,false)
         }
         return possession.Possession

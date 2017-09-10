@@ -1,5 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { ExpressionContainerMixin } from '../expression'
+import { ResourceMixin } from '../resource'
 
 export const CostSlotMixin = Mixin((superclass) => class extends superclass {
   static createCostSlot(resource, amount) {
@@ -46,6 +47,9 @@ export const CostMixin = Mixin((superclass) => class extends mix(superclass).wit
   }
 
   addCostSlot(resource, amount, list = DefaultCostList) {
+    if(!(resource instanceof ResourceMixin)) {
+      throw new Error('addCostSlot must be used with ResourceMixin')
+    }
     this.getCostList(list).push(this.constructor.CostSlotClass.createCostSlot(resource, this.createVariable(amount)))
         return this
     }

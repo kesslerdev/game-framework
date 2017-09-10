@@ -37,17 +37,15 @@ export function incraseResource(resourceBag, resource, newValue) {
 export function updateResourceBagIfNeeded(resourceBag) {
   return function (dispatch) {
 
-    console.log(Registry.GO)
+    if (!resourceBag.innerBag) {
+      return
+    }
+
     const goBag = Registry.getGO(resourceBag)
     const old = stateFromGameObject(goBag)
 
-    if(goBag.PossessionsObjects)
-      goBag.PossessionsObjects.map(go =>{
-        if(go.applyProduction)
-          go.applyProduction(goBag)
-      })
-  
-      
+    goBag.loop()
+   
     const _new = stateFromGameObject(goBag)
   
     _new.innerBag.map((slot)=>{

@@ -30,10 +30,9 @@
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.22",
     "codacy-coverage": "^2.0.2",
-    "lerna": "^2.0.0-rc.5",
-    "rimraf": "^2.6.1",
-    "tslint": "^5.4.2",
-    "tslint-config-skimia": "^1.0.1",
-    "typescript": "^2.3.4"
-  }
+    "lerna": "^2.1.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

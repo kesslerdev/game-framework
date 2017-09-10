@@ -1,4 +1,5 @@
 import { Mixin, mix } from 'quarkit-mixin'
+import { ResourceMixin } from './resource'
 
 export const ResourceSlotMixin = Mixin((superclass) => class extends superclass {
 
@@ -29,11 +30,18 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
   }
 
   addResourceSlot(resource) {
+    if(!(resource instanceof ResourceMixin)) {
+      throw new Error('addResourceSlot must be used with ResourceMixin')
+    }
     this.InnerBag.push(this.constructor.ResourceSlotClass.createResourceSlot(resource))
     return this
   }
 
   increaseResource(resource, amount) {
+    if(!(resource instanceof ResourceMixin)) {
+      throw new Error('increaseResource must be used with ResourceMixin')
+    }
+
     for (const entry of this.InnerBag) {
       if (entry.Resource.equals(resource)) {
         entry.Amount += amount

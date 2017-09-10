@@ -19,7 +19,6 @@ class Main extends React.Component {
       setInterval(()=>{
         if(this.props.state.player.slug) {
           this.props.actions.updateResourceBagIfNeeded(this.props.state.player)
-          console.log('updt')
         }
       }, 300)
     }

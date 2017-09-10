@@ -1,5 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { GameObjectMixin } from 'quarkit-core'
+import { StateProviderMixin } from './state-provider'
 
 export const StatefullMixin = Mixin((superclass) => class extends GameObjectMixin(superclass) {
   get State() {
@@ -11,6 +12,9 @@ export const StatefullMixin = Mixin((superclass) => class extends GameObjectMixi
   }
 
   withState(stateProvider) {
+    if(!(stateProvider instanceof StateProviderMixin)) {
+      throw new Error('addCostSlot must be used with ResourceMixin')
+    }
     this.__state = stateProvider.getState(this.stateKeyAccessor())
     this.Events.emit('set:stateprovider', stateProvider)
 

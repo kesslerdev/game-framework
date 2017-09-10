@@ -26,6 +26,7 @@
     "opener": "^1.4.3"
   },
   "dependencies": {
+    "quarkit-core": "^0.3.0",
     "quarkit-mixin": "^0.3.0",
     "quarkit-modules": "^0.3.0",
     "reselect": "^3.0.1"

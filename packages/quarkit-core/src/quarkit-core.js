@@ -28,6 +28,18 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     return new this(...args)
   }
 
+  loop() {
+    this.getRelated().map(goRelated => {
+      if(goRelated instanceof GameObjectMixin) {
+        goRelated.loopRelated(this)
+      }
+    })
+  }
+
+  loopRelated(go) {
+
+  }
+
   getRelated() {
     return []
   }
