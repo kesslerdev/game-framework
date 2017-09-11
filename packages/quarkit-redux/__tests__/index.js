@@ -1,4 +1,4 @@
-import { GameObject } from '../src/quarkit-redux'
+import { GameObject } from 'quarkit-core'
 
 describe('start', () => {
   it('class Start can say hello world', () => {

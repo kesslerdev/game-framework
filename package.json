@@ -7,7 +7,6 @@
   "scripts": {
     "build:docs": "node docs.build.js",
     "clean": "lerna clean --yes && rimraf node_modules",
-    "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build",
     "demo": "yarn run build && cd example && yarn start",
     "publish": "lerna publish",
