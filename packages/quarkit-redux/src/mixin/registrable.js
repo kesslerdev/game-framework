@@ -1,6 +1,7 @@
 import { Mixin } from 'quarkit-mixin'
 import Registry from '../utils/registry'
 
+// create another mixin take dispatcher & set event handlers to can dispatch differents action for differents event of go
 export const RegistrableMixin = Mixin((superclass) => class extends superclass {
  
   constructor(...args) {

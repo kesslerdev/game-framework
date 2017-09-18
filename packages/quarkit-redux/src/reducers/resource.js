@@ -1,4 +1,4 @@
-import { ADD_RESOURCE, INCRASE_RESOURCE } from '../actions'
+import { ADD_RESOURCE, SET_RESOURCE_AMOUNT } from '../actions'
 
 const defaultState = {
   innerBag : []
@@ -19,7 +19,7 @@ export const resourceBagReducer = (state = defaultState, action) => {
           }
         ]
       })
-    case INCRASE_RESOURCE:
+    case SET_RESOURCE_AMOUNT:
       if(action.resourceBag.slug !== state.slug && action.resourceBag.typeName !== state.typeName)
         return state
       return Object.assign({}, state, {

@@ -23,3 +23,7 @@ please add examples
 
 - [ ] implements all test from [base-project](https://github.com/justinfagnani/mixwith.js/blob/master/test/mix-test.js) with jest
 - [ ] split code in more than one file ;)
+
+### Take care
+
+- if you reate a mixin with usage of mix().with() for ensure usage of depended mixin an error of mixin undefined car occur due depended mixin at line of usage of mix().with()

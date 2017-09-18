@@ -1,6 +1,7 @@
 
 import { getGOStringReference, getStateGOStringReference } from './reference'
 
+// can have an extended registry can provide dispatcher to all new mixin with dispatcher
 class Registry {
   get GO() {
     return this._objects || (this._objects = {})

@@ -13,16 +13,6 @@ window.addEventListener('keydown', (e) => {
 
 class Main extends React.Component {
   
-    componentDidMount = () => {
-      this.props.actions.loadAllGameObjects()
-
-      setInterval(()=>{
-        if(this.props.state.player.slug) {
-          this.props.actions.updateResourceBagIfNeeded(this.props.state.player)
-        }
-      }, 300)
-    }
-  
     render = () => (
       <div className="Game">
         <Header state={this.props.state} actions={this.props.actions}/>

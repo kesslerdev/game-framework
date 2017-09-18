@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// import the game for create instances & 
+import {createPlayer} from '../../game'
 
 import Login from '../Login/Login'
 import GameInfo from '../Infos/GameInfo/GameInfo'
@@ -27,7 +29,7 @@ const Test = ({ state, actions }) => {
   const player = state.player
   const connected = state.player.slug ? true : false
   const onClick = () => {
-    actions.addPlayer('kesslerdev')
+    actions.initGame(createPlayer('kesslerdev'))
   }
 
   return (<Header {...{ player, connected, onClick }} />)

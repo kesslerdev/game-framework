@@ -45,10 +45,9 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
     for (const entry of this.InnerBag) {
       if (entry.Resource.equals(resource)) {
         entry.Amount += amount
-        break
+        return entry.Amount
       }
     }
-    return this
   }
 
 })

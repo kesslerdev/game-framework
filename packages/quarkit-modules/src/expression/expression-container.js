@@ -27,6 +27,8 @@ export const ExpressionContainerMixin = Mixin((superclass) => class extends mix(
     })
   }
 
+  // use a new param to set name for set directly a property accessor for var.getValue()
+  // dispatch an event if property value has changed
   createVariable(value) {
       const variable = variableCreator(value)
       if (variable instanceof ExpressionVariable) {

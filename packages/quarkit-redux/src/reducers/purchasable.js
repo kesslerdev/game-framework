@@ -5,8 +5,7 @@ const defaultState = {
   possessions : []
 }
 
-export const posessorReducer = (state = defaultState, action) => {
-
+export const possessorReducer = (state = defaultState, action) => {
   switch (action.type) {
     case PURCHASE_FOR:
       if(action.possessor.slug !== state.slug && action.possessor.typeName !== state.typeName)

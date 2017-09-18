@@ -1,19 +1,12 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { PurchasableMixin } from 'quarkit-modules'
-import ReduxMixin from '../redux'
+import { ReduxMixin } from '../redux'
 
 export const PurchasableReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, PurchasableMixin) {
 
-  supportsReduce(action) {
-    return false
-  }
-
   defaultState(state = {}) {
-    return state
+    return Object.assign(state, super.defaultState(state), {
+      purchasable: true
+    })
   }
-
-  reduce(state = this.defaultState(), action) {
-
-  }
-
 })

@@ -1,3 +1,5 @@
 
 export * from './purchasable'
-export * from './posessor'
+export * from './possessor'
+export * from './resource'
+export * from './resourceBag'

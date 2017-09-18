@@ -1,23 +1,16 @@
 import { REGISTER_GAME_OBJECT, LOAD_ALL_GAME_OBJECT } from '../actions/quarkit'
 import Registry from '../utils/registry'
 import { ReduxMixin } from '../mixin'
-import { resourceBagReducer } from './resource'
-import { posessorReducer } from './purchasable'
 
 export const goReducer = (state = [], action) => {
-  const go = Registry.getGO(state)
-  
-  if(go instanceof ReduxMixin)
-    state = go.reduce(state, go)
-
-  //if is resourcebag
-  state = resourceBagReducer(state, action)
-  //if is possesor
-  state = posessorReducer(state, action)
+  if(Registry.hasGO(state)) {
+    const go = Registry.getGO(state)
+    if(go instanceof ReduxMixin && go.supportsReduce(state, action))
+      state = go.reduce(state, action)
+  }
 
   return state
 }
-
 
 export const goArrayReducer = (state = [], action) => {
   switch (action.type) {
