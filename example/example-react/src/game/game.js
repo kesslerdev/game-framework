@@ -7,7 +7,7 @@ function getCash() {
 function getGold() {
   const r = ResourceTemplate.createGameObject(`Gold`)
   r.Premium = true
-  
+
   return r
 }
 
@@ -16,73 +16,26 @@ const Resources = {
   Gold: getGold(),
 }
 
-function getLemonStand() {
-  const lemonStand = ShopTemplate.createGameObject('Lemon_Stand')
-  lemonStand.addCostSlot(Resources.Cash, 4)
-  // with upgrade lvl 2 double earnings
-  // upgrade price 4 for 2 4.28 for 3, 4.58 for 4, 4.90,5.24,5.61
-  lemonStand.addProductionSlot(Resources.Cash, 1)//x level
-  lemonStand.ProductionBaseTime = 1000
-
-  return lemonStand
-}
-
-function getNewsPaperDelivery(){
-  const newsPaperDelivery = ShopTemplate.createGameObject('News_Paper_Delivery')
-  newsPaperDelivery.addCostSlot(Resources.Cash, 60)
-  newsPaperDelivery.addProductionSlot(Resources.Cash, 60)
-  newsPaperDelivery.ProductionBaseTime = 3000
-
-  return newsPaperDelivery
-}
-
-function getCarWash(){
-  const carWash = ShopTemplate.createGameObject('Car_Wash')
-  carWash.addCostSlot(Resources.Cash,720)
-  carWash.addProductionSlot(Resources.Cash, 550)
-  carWash.ProductionBaseTime = 6000
-
-  return carWash
-}
-
-function getPizzaDelivery(){
-  const pizzaDelivery = ShopTemplate.createGameObject('Pizza_Delivery')
-  pizzaDelivery.addCostSlot(Resources.Cash, 8640)
-  pizzaDelivery.addProductionSlot(Resources.Cash, 4400)
-  pizzaDelivery.ProductionBaseTime = 12000
-
-  return pizzaDelivery
-}
-
-function getDonutShop(){
-  const donutShop = ShopTemplate.createGameObject('Donut_Shop')
-  donutShop.addCostSlot(Resources.Cash, 103680)
-  donutShop.addProductionSlot(Resources.Cash, 52000)
-  donutShop.ProductionBaseTime = 24000
-
-  return donutShop
-}
-
-function getAnciantFabric() {
-  const anciantFabric = ShopTemplate.createGameObject('Anciant_Fabric')
-  anciantFabric.addCostSlot(Resources.Cash, 700000)
-  anciantFabric.ProductionBaseTime = 35000
-  anciantFabric.addProductionSlot(Resources.Cash, 'round(sqrt(Capitalist.innerBag[1].Amount))')
+const createShop = (name, cost, productionTime, productionAmount) => {
+  const shop = ShopTemplate.createGameObject(name)
+  shop.addCostSlot(Resources.Cash, cost)
+  shop.ProductionBaseTime = productionTimegetNewsPaperDelivery()
+  shop.addProductionSlot(Resources.Cash, productionAmount)
 
   return anciantFabric
 }
 
 const Shops = {
-  LemonStand: getLemonStand(),
-  NewsPaperDelivery: getNewsPaperDelivery(),
-  CarWash: getCarWash(),
-  PizzaDelivery: getPizzaDelivery(),
-  DonutShop: getDonutShop(),
-  AnciantFabric: getAnciantFabric(),
+  LemonStand: createShop('Lemon_Stand', 4, 1000, 1),
+  NewsPaperDelivery: createShop('News_Paper_Delivery', 60, 3000, 60),
+  CarWash: createShop('Car_Wash', 720, 6000, 550),
+  PizzaDelivery: createShop('Pizza_Delivery', 8640, 12000, 4400),
+  DonutShop: createShop('Donut_Shop', 103680, 24000, 52000),
+  AnciantFabric:createShop('Anciant_Fabric', 700000, 35000, 'round(sqrt(Capitalist.innerBag[1].Amount))'),
 }
 
 export function createPlayer(name) {
-  
+
     // use promise & return
     const player = Capitalist.createGameObject(name)
     player
