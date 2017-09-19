@@ -39,6 +39,20 @@ export const ExpressionContainerMixin = Mixin((superclass) => class extends mix(
       return variable
   }
 
+  createProperty(key, value = null) {
+    if(!this[key]) {
+      Object.defineProperty(this, key, {
+        get : () => this[`__${key}`].getValue(),
+        set : (value) => this[`__${key}`] = this.createVariable(value),
+        enumerable : true,
+        configurable : true
+      });
+    }
+    
+    if(value)
+      this[key] = value
+  }
+
   setContext(key,value) {
       this.__context[key] = value
   }

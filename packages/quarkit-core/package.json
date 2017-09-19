@@ -6,6 +6,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src -d build",
+    "build:w": "babel -w src -d build",
     "test": "jest",
     "test:live": "jest --watch --verbose",
     "cover": "jest --coverage --verbose",

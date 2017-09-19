@@ -12,9 +12,7 @@ const Purchasable = ({ purchasable, possesor, onPurchaseClick}) => {
     return possesor.possessions.find(
       go => go.possession.slug === purchasable.slug && go.possession.typeName === purchasable.typeName) !== undefined
   }
-
-  //const isPossesed = this.state.mine
-  const className = 'Purchasable ' + (isPurchased() ? 'Purchasable-mine' :'')
+  
   return (
     <li className="mdc-list-item mdc-ripple-upgraded">
     <span className="mdc-list-item__start-detail grey-bg" role="presentation">
@@ -22,7 +20,7 @@ const Purchasable = ({ purchasable, possesor, onPurchaseClick}) => {
             </span>
     <span className="mdc-list-item__text">
     Building : {purchasable.slug}
-              <span className="mdc-list-item__text__secondary">Jan 9, 2014</span>
+              <span className="mdc-list-item__text__secondary">---</span>
     </span>
     {isPurchased() ? <i className="material-icons mdc-list-item__end-detail" style={{color:'green'}} aria-hidden="true">check</i> :
         <Purchase onPurchaseClick={()=>onPurchaseClick(purchasable, possesor)} />}
