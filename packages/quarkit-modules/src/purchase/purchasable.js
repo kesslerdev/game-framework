@@ -3,30 +3,31 @@ import { CostMixin } from '../cost'
 import { StateProviderMixin, StatefullMixin } from '../stateful'
 
 export const PurchasableMixin = Mixin((superclass) => class extends mix(superclass).with(CostMixin) {
+  canPurchaseFor(owner) {
+    return this.DefaultCost.every((cos) => {
+      return owner.getResourceSlot(cos.Resource).Amount >= cos.Amount.getValue()
+    })
+  }
+
   purchaseFor(owner) {
-    // TODO: do verifs if has the price
-    const cost = this.DefaultCost
+    if(!this.canPurchaseFor(owner)) {
+      throw new Error('cannot purchase pas la monnaie')
+    }
 
-    cost.map((cos) => {
-      console.log('check cash', cos.Resource, owner.getResourceAmount(cos.Resource), cos.Amount)
-      if(owner.getResourceAmount(cos.Resource) < cos.Amount) {
-        console.error('ça passe pas... tas pas les moyen ga! ')
-        throw new Error('impossible')
-      }
-    })
-    
-    cost.map((cos) => {
-      console.log('remove cash', cos.Resource, owner.getResourceAmount(cos.Resource), cos.Amount)
-      owner.decraseResource(cos.Resource, cos.Amount)
+    this.DefaultCost.map((cos) => {
+      console.log(`- ${cos.Amount.getValue()} ${cos.Resource.slug}`)
+      owner.decraseResource(cos.Resource, cos.Amount.getValue())
     })
 
-    // TODO: remove cost in resrs bag
+    return this.applyFor(owner)
+  }
+
+  applyFor(owner) {
     const act = owner.createPossessionAct(this)
     if (act.Possession instanceof StatefullMixin && owner instanceof StateProviderMixin) {
       act.Possession.withState(owner,false)
     }
     owner.Possessions.push(act)
-
     return this
   }
 })

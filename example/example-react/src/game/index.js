@@ -39,8 +39,10 @@ export function createPlayer(name) {
     player
       .addResourceSlot(Resources.Cash)
       .addResourceSlot(Resources.Gold)
+      .incraseResource(Resources.Gold, 1000)
+      .incraseResource(Resources.Cash, 50)
 
-    Shops.LemonStand.purchaseFor(player)
+    Shops.LemonStand.applyFor(player)
     return player
   }
 

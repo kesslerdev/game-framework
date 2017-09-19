@@ -34,14 +34,14 @@ export const ResourceBagReduxMixin = Mixin((superclass) => class extends mix(sup
   }
 
   incraseResource(resource, amount) {
-    const ret = super.incraseResource(resource, amount)
+    super.incraseResource(resource, amount)
     if(this.dispatch) {
       this.dispatch(
-        setResourceAmount(getGOReference(this), getGOReference(resource), ret)
+        setResourceAmount(getGOReference(this), getGOReference(resource), super.getResourceSlot(resource).Amount)
       )      
     }
 
-    return ret
+    return this
   }
 
   decraseResource(resource, amount) {

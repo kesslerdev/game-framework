@@ -48,6 +48,7 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
       }
     }
   }
+  
   incraseResource(resource, amount) {
     if(!(resource instanceof ResourceMixin)) {
       throw new Error('increaseResource must be used with ResourceMixin')
@@ -55,7 +56,7 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
     const slot = this.getResourceSlot(resource)
     slot.Amount += amount
 
-    return slot.Amount
+    return this
   }
 
   decraseResource(resource, amount) {
