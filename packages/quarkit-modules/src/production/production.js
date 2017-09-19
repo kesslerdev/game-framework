@@ -96,7 +96,7 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
       this.State.lastProductionTime = Date.now()
       const production = this.ProductionSlots
       for (const key in production) {
-        resourceBag.increaseResource(
+        resourceBag.incraseResource(
           production[key].Resource,
           productionIterations * production[key].Amount,
         )

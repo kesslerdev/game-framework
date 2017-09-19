@@ -1,5 +1,6 @@
 import Registry from '../utils/registry'
 import objectToArray from '../utils/objectToArray'
+import { ReduxMixin } from '../mixin/redux'
 
 import { addPlayer } from './player'
 
@@ -32,8 +33,12 @@ export function loadAllGameObjects() {
 export function initGame(player) {
   return function (dispatch) {
     console.info('Starting Quarkit..')
-    // TODO: check if is an ReduxMixin
-    objectToArray(Registry.GO).map((go) => go.dispatch = dispatch)
+    
+    objectToArray(Registry.GO).map((go) => {
+      if(go instanceof ReduxMixin)
+        go.dispatch = dispatch
+    })
+
     dispatch(loadAllGameObjects())
     dispatch(addPlayer(player))
     console.info('OK')

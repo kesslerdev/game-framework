@@ -33,8 +33,19 @@ export const ResourceBagReduxMixin = Mixin((superclass) => class extends mix(sup
      return resourceBagReducer(super.reduce(state, action), action)
   }
 
-  increaseResource(resource, amount) {
-    const ret = super.increaseResource(resource, amount)
+  incraseResource(resource, amount) {
+    const ret = super.incraseResource(resource, amount)
+    if(this.dispatch) {
+      this.dispatch(
+        setResourceAmount(getGOReference(this), getGOReference(resource), ret)
+      )      
+    }
+
+    return ret
+  }
+
+  decraseResource(resource, amount) {
+    const ret = super.decraseResource(resource, amount)
     if(this.dispatch) {
       this.dispatch(
         setResourceAmount(getGOReference(this), getGOReference(resource), ret)

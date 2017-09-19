@@ -37,17 +37,35 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
     return this
   }
 
-  increaseResource(resource, amount) {
+  getResourceSlot(resource) {
     if(!(resource instanceof ResourceMixin)) {
       throw new Error('increaseResource must be used with ResourceMixin')
     }
 
     for (const entry of this.InnerBag) {
       if (entry.Resource.equals(resource)) {
-        entry.Amount += amount
-        return entry.Amount
+        return entry
       }
     }
+  }
+  incraseResource(resource, amount) {
+    if(!(resource instanceof ResourceMixin)) {
+      throw new Error('increaseResource must be used with ResourceMixin')
+    }
+    const slot = this.getResourceSlot(resource)
+    slot.Amount += amount
+
+    return slot.Amount
+  }
+
+  decraseResource(resource, amount) {
+    if(!(resource instanceof ResourceMixin)) {
+      throw new Error('increaseResource must be used with ResourceMixin')
+    }
+    const slot = this.getResourceSlot(resource)
+    slot.Amount -= amount
+
+    return slot.Amount
   }
 
 })
