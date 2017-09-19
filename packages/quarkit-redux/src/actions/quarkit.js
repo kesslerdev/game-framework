@@ -32,6 +32,7 @@ export function loadAllGameObjects() {
 export function initGame(player) {
   return function (dispatch) {
     console.info('Starting Quarkit..')
+    // TODO: check if is an ReduxMixin
     objectToArray(Registry.GO).map((go) => go.dispatch = dispatch)
     dispatch(loadAllGameObjects())
     dispatch(addPlayer(player))

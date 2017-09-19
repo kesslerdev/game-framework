@@ -35,8 +35,6 @@ const Shops = {
 }
 
 export function createPlayer(name) {
-
-    // use promise & return
     const player = Capitalist.createGameObject(name)
     player
       .addResourceSlot(Resources.Cash)
