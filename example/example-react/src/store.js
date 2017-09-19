@@ -12,6 +12,6 @@ export const store = createStore(
 )
 
 // eslint-disable-next-line
-let unsubscribe = store.subscribe(() =>
+/*let unsubscribe = store.subscribe(() =>
   console.log("STATE:", store.getState())
-)
+)*/

@@ -55,6 +55,7 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
     }
     const slot = this.getResourceSlot(resource)
     slot.Amount += amount
+    //console.log(`+ ${amount} ${slot.Resource.slug}`)
 
     return this
   }

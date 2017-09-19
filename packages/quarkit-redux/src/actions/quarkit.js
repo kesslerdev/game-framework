@@ -46,6 +46,7 @@ export function initGame(player) {
     console.info('loop init ticks 300 ms')
 
     setInterval(()=>{
+      console.info('tick')
       player.loop()
     }, 300)
   }  
