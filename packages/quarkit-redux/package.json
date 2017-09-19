@@ -8,7 +8,7 @@
     "build": "babel src -d build",
     "build:w": "babel -w src -d build",
     "test": "jest",
-    "test:live": "jest --watch --verbose",
+    "test:w": "jest --watch --verbose",
     "cover": "jest --coverage --verbose",
     "cover:report": "opener ./coverage/lcov-report/index.html"
   },
