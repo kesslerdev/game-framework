@@ -1,6 +1,5 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { EventEmitter } from 'events'
-
 export const GameObjectMixin = Mixin((superclass) => class extends superclass {
 
   constructor(...args) {
@@ -44,7 +43,7 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     return []
   }
 
-  
+
 
 })
 
