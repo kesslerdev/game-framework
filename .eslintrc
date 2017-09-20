@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": "airbnb",
   "parserOptions": {
     "ecmaFeatures": {
@@ -10,8 +11,11 @@
     "jest"
   ],
   "rules": {
+    "new-cap": ["error", { "capIsNew": false }],
     "semi": ["error", "never"],
     "arrow-parens": 0,
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
     "no-unused-expressions": ["error", { "allowTernary": true }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-template-curly-in-string": 0,

@@ -4,17 +4,17 @@ import { StateProviderMixin, StatefullMixin } from '../quarkit-modules'
 
 
 export const PossessionActMixin = Mixin((superclass) => class extends superclass {
-  
+
 
   static createPossessionAct(possession) {
     const i = new this()
     i.Possession = possession
     return i
   }
-  
+
   Possession
 })
-  
+
 export class PossessionAct extends mix().with(GameObjectMixin, PossessionActMixin) {}
 
 export const PossessorMixin = Mixin((superclass) => class extends superclass {
@@ -31,18 +31,20 @@ export const PossessorMixin = Mixin((superclass) => class extends superclass {
   }
 
   static set PossessionActClass(possessionActClass) {
-    return this._possessionActClass = possessionActClass
+    this._possessionActClass = possessionActClass
+    return this._possessionActClass
   }
-  get Possessions(){
+
+  get Possessions() {
     return this.possessions || (this.possessions = [])
   }
 
-  get PossessionsObjects(){
+  get PossessionsObjects() {
     const possessions = this.Possessions
     if (!this.Cache.possessionObjects) {
       this.Cache.possessionObjects = possessions.map((possession) => {
         if (possession.Possession instanceof StatefullMixin && this instanceof StateProviderMixin) {
-          return possession.Possession.withState(this,false)
+          return possession.Possession.withState(this, false)
         }
         return possession.Possession
       })
@@ -51,7 +53,7 @@ export const PossessorMixin = Mixin((superclass) => class extends superclass {
   }
 
   createPossessionAct(possession) {
-    //TODO: cache invalidate not here (but at the push in this._possessions)
+    // TODO: cache invalidate not here (but at the push in this._possessions)
     delete this.Cache.possessionObjects
     return this.constructor.PossessionActClass.createPossessionAct(possession)
   }

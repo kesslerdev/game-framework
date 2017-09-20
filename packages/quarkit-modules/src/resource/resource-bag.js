@@ -22,7 +22,8 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
   }
 
   static set ResourceSlotClass(resourceSlotClass) {
-    return this._resourceSlotClass = resourceSlotClass
+    this._resourceSlotClass = resourceSlotClass
+    return this._resourceSlotClass
   }
   // AsDictonnary
   get InnerBag() {
@@ -30,7 +31,7 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
   }
 
   addResourceSlot(resource) {
-    if(!(resource instanceof ResourceMixin)) {
+    if (!(resource instanceof ResourceMixin)) {
       throw new Error('addResourceSlot must be used with ResourceMixin')
     }
     this.InnerBag.push(this.constructor.ResourceSlotClass.createResourceSlot(resource))
@@ -38,7 +39,7 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
   }
 
   getResourceSlot(resource) {
-    if(!(resource instanceof ResourceMixin)) {
+    if (!(resource instanceof ResourceMixin)) {
       throw new Error('increaseResource must be used with ResourceMixin')
     }
 
@@ -47,21 +48,23 @@ export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
         return entry
       }
     }
+
+    return null
   }
-  
+
   incraseResource(resource, amount) {
-    if(!(resource instanceof ResourceMixin)) {
+    if (!(resource instanceof ResourceMixin)) {
       throw new Error('increaseResource must be used with ResourceMixin')
     }
     const slot = this.getResourceSlot(resource)
     slot.Amount += amount
-    //console.log(`+ ${amount} ${slot.Resource.slug}`)
+    // console.log(`+ ${amount} ${slot.Resource.slug}`)
 
     return this
   }
 
   decraseResource(resource, amount) {
-    if(!(resource instanceof ResourceMixin)) {
+    if (!(resource instanceof ResourceMixin)) {
       throw new Error('increaseResource must be used with ResourceMixin')
     }
     const slot = this.getResourceSlot(resource)
