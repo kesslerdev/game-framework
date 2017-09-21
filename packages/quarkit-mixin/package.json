@@ -1,6 +1,6 @@
 {
   "name": "quarkit-mixin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "main": "./build/quarkit-mixin.js",
   "scripts": {
