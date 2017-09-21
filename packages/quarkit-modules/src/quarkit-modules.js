@@ -6,5 +6,3 @@ export * from './stateful'
 export * from './expression'
 export * from './possessor'
 export * from './purchase'
-
-

@@ -1,5 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { EventEmitter } from 'events'
+
 export const GameObjectMixin = Mixin((superclass) => class extends superclass {
 
   constructor(...args) {
@@ -16,7 +17,7 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
   }
 
   equals(obj) {
-    return obj.slug == this.slug && this.constructor.name == obj.constructor.name
+    return obj.slug === this.slug && this.constructor.name === obj.constructor.name
   }
 
   clearCache() {
@@ -28,21 +29,19 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
   }
 
   loop() {
-    this.getRelated().map(goRelated => {
-      if(goRelated instanceof GameObjectMixin) {
-        goRelated.loopRelated(this)
-      }
+    this.getRelated().map((goRelated) => {
+      if (goRelated instanceof GameObjectMixin) { return goRelated.loopRelated(this) }
+      return false
     })
   }
 
   loopRelated(go) {
-
+    return false
   }
 
   getRelated() {
     return []
   }
-
 
 
 })

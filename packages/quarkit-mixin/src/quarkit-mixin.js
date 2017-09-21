@@ -1,5 +1,3 @@
-
-
 // used by apply() and isApplicationOf()
 const _appliedMixin = '__mixwith_appliedMixin'
 
