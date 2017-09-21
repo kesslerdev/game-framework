@@ -6,14 +6,14 @@
   "main": "index.js",
   "scripts": {
     "build:docs": "node docs.build.js",
-    "clean": "lerna clean --yes && rimraf node_modules",
-    "bootstrap": "yarn && lerna bootstrap",
+    "clean": "lerna clean --yes && rimraf node_modules && rimraf ./example/example-react/node_modules",
     "build": "lerna run build",
-    "demo": "yarn run build && cd example && yarn start",
+    "build:w": "lerna run build:w --parallel",
     "publish": "lerna publish",
-    "test": "lerna run test --stream",
+    "test": "lerna run test",
+    "test:w": "lerna run test:w --parallel",
     "cover": "lerna run cover",
-    "demo-bs": "yarn run bootstrap  && cd example && yarn && yarn start",
+    "demo": "yarn && yarn run build && cd ./example/example-react/ && yarn && yarn run start",
     "cover-upload": "codecov"
   },
   "repository": {
@@ -29,11 +29,19 @@
   "devDependencies": {
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.22",
+    "babel-eslint": "^7.0.0",
     "codacy-coverage": "^2.0.2",
-    "lerna": "^2.0.0-rc.5",
-    "rimraf": "^2.6.1",
-    "tslint": "^5.4.2",
-    "tslint-config-skimia": "^1.0.1",
-    "typescript": "^2.3.4"
-  }
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-friendly-formatter": "^2.0.6",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.8.0",
+    "lerna": "^2.1.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

@@ -9,14 +9,29 @@ cache:
   directories:
     - "node_modules"
 
+before_install:
+  - chmod +x ./travis/install.sh
+  - ./travis/install.sh
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
 install:
-  - yarn run bootstrap
   - npm install -g codecov
+  - yarn
+  - lerna bootstrap
 
 script:
   - yarn run cover
 
 after_success:
   - yarn run cover-upload
-  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript 
-  - cat ./packages/quarkit-core/coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript 
+  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  - cat ./packages/quarkit-core/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+
+after_failure:
+  - ls -lsa ./node_modules/
+  - ls -lsa ./packages/
+  - ls -lsa ./packages/quarkit-core/node_modules/
+  - ls -lsa ./packages/quarkit-mixin/node_modules/
+  - ls -lsa ./packages/quarkit-modules/node_modules/
+  - ls -lsa ./packages/quarkit-redux/node_modules/

@@ -3,14 +3,13 @@
   "version": "0.1.2",
   "description": "",
   "main": "./build/quarkit-core.js",
-  "types": "build/quarkit-core.d.ts",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc",
-    "build:live": "tsc --watch",
+    "build": "babel src -d build",
+    "build:w": "babel -w src -d build",
     "test": "jest",
-    "test:live": "jest --watch",
-    "cover": "jest --coverage",
+    "test:w": "jest --watch --verbose",
+    "cover": "jest --coverage --verbose",
     "cover:report": "opener ./coverage/lcov-report/index.html"
   },
   "repository": "https://github.com/kesslerdev/quarkit/tree/master/packages/quarkit-core",
@@ -20,33 +19,18 @@
   "devDependencies": {
     "@types/jest": "^19.2.3",
     "@types/node": "^7.0.18",
+    "babel-cli": "^6.24.1",
+    "babel-jest": "^21.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "jest": "^20.0.3",
-    "nodemon": "^1.11.0",
-    "opener": "^1.4.3",
-    "ts-jest": "^20.0.4",
-    "tslint-config-skimia": "^1.0.0",
-    "typescript": "^2.3.2"
-  },
-  "jest": {
-    "mapCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.(ts|tsx)"
-    ],
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/build/"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "jest-cli": "^21.0.2",
+    "opener": "^1.4.3"
   },
   "dependencies": {
     "quarkit-mixin": "^0.3.0"
+  },
+  "jest": {
+    "modulePaths": ["../"]
   }
 }

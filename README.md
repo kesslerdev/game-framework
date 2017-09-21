@@ -14,10 +14,7 @@
 ```bash
 git clone git@github.com:kesslerdev/quarkit.git
 cd quarkit
-yarn run bootstrap
-cd example
-yarn
-yarn start
+yarn run demo
 ```
 
 ### Core Packages
@@ -27,3 +24,4 @@ yarn start
 | [`quarkit-core`](/packages/quarkit-core) | [![npm](https://img.shields.io/npm/v/quarkit-core.svg?style=flat-square)](https://www.npmjs.com/package/quarkit-core) | [![Dependency Status](https://david-dm.org/kesslerdev/quarkit.svg?path=packages/quarkit-core&style=flat-square)](https://david-dm.org/kesslerdev/quarkit?path=packages/quarkit-core) |
 | [`quarkit-mixin`](/packages/quarkit-mixin) | [![npm](https://img.shields.io/npm/v/quarkit-mixin.svg?style=flat-square)](https://www.npmjs.com/package/quarkit-mixin) | [![Dependency Status](https://david-dm.org/kesslerdev/quarkit.svg?path=packages/quarkit-mixin&style=flat-square)](https://david-dm.org/kesslerdev/quarkit?path=packages/quarkit-mixin) |
 | [`quarkit-modules`](/packages/quarkit-modules) | [![npm](https://img.shields.io/npm/v/quarkit-mixin.svg?style=flat-square)](https://www.npmjs.com/package/quarkit-modules) | [![Dependency Status](https://david-dm.org/kesslerdev/quarkit.svg?path=packages/quarkit-modules&style=flat-square)](https://david-dm.org/kesslerdev/quarkit?path=packages/quarkit-modules) |
+| [`quarkit-redux`](/packages/quarkit-redux) | [![npm](https://img.shields.io/npm/v/quarkit-redux.svg?style=flat-square)](https://www.npmjs.com/package/quarkit-redux) | [![Dependency Status](https://david-dm.org/kesslerdev/quarkit.svg?path=packages/quarkit-redux&style=flat-square)](https://david-dm.org/kesslerdev/quarkit?path=packages/quarkit-redux) |

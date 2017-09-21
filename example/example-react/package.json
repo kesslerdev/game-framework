@@ -1,0 +1,33 @@
+{
+  "name": "example-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material/button": "^0.6.0",
+    "@material/list": "^0.2.18",
+    "humanize-plus": "^1.8.2",
+    "material-design-icons": "^3.0.1",
+    "quarkit-core": "file:../../packages/quarkit-core",
+    "quarkit-mixin": "file:../../packages/quarkit-mixin",
+    "quarkit-modules": "file:../../packages/quarkit-modules",
+    "quarkit-redux": "file:../../packages/quarkit-redux",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.11",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "styled-components": "^2.1.2"
+  },
+  "scripts": {
+    "postinstall": "linklocal -r",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "linklocal": "^2.8.1"
+  }
+}
