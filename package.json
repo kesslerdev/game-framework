@@ -39,7 +39,11 @@
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.8.0",
+<<<<<<< HEAD
     "lerna": "^2.2.0"
+=======
+    "lerna": "^2.2.2"
+>>>>>>> 97aada934f6368147fd70c1bf75f08941a859d03
   },
   "workspaces": [
     "packages/*"
