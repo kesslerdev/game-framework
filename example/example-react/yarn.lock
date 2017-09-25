@@ -5045,10 +5045,27 @@ qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
-quarkit-core@^0.1.2, "quarkit-core@file:../../packages/quarkit-core":
+quarkit-core@^0.1.2:
   version "0.1.2"
+  resolved "https://registry.yarnpkg.com/quarkit-core/-/quarkit-core-0.1.2.tgz#bbaac196654aa19bc17492bb54c2c7f2d8cc7ed8"
   dependencies:
     quarkit-mixin "^0.3.0"
+
+"quarkit-core@file:../../packages/quarkit-core":
+  version "0.2.1"
+  dependencies:
+    quarkit-mixin "^0.3.0"
+
+quarkit-mathjs@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/quarkit-mathjs/-/quarkit-mathjs-0.0.1.tgz#6fe8923819d152582ea17a2af6da73becff0de92"
+  dependencies:
+    complex.js "2.0.1"
+    decimal.js "7.1.1"
+    fraction.js "4.0.0"
+    seed-random "2.2.0"
+    tiny-emitter "1.0.2"
+    typed-function "0.10.5"
 
 quarkit-mathjs@^0.0.6:
   version "0.0.6"
@@ -5066,17 +5083,25 @@ quarkit-mixin@^0.3.0:
   resolved "https://registry.yarnpkg.com/quarkit-mixin/-/quarkit-mixin-0.3.0.tgz#452eb96fa0e0ae8e89c4e14634e66b72857f6682"
 
 "quarkit-mixin@file:../../packages/quarkit-mixin":
-  version "0.3.0"
+  version "0.4.1"
 
-quarkit-modules@^0.3.0, "quarkit-modules@file:../../packages/quarkit-modules":
+quarkit-modules@^0.3.0:
   version "0.3.0"
+  resolved "https://registry.yarnpkg.com/quarkit-modules/-/quarkit-modules-0.3.0.tgz#5e4109070f9994a51ae0d09d9bc3af5a4b329a94"
+  dependencies:
+    quarkit-core "^0.1.2"
+    quarkit-mathjs "^0.0.1"
+    quarkit-mixin "^0.3.0"
+
+"quarkit-modules@file:../../packages/quarkit-modules":
+  version "0.4.1"
   dependencies:
     quarkit-core "^0.1.2"
     quarkit-mathjs "^0.0.6"
     quarkit-mixin "^0.3.0"
 
 "quarkit-redux@file:../../packages/quarkit-redux":
-  version "0.1.2"
+  version "0.1.3"
   dependencies:
     quarkit-core "^0.1.2"
     quarkit-mixin "^0.3.0"

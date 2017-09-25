@@ -28,7 +28,7 @@
     "opener": "^1.4.3"
   },
   "dependencies": {
-    "quarkit-mixin": "^0.3.0"
+    "quarkit-mixin": "^0.4.1"
   },
   "jest": {
     "modulePaths": [
