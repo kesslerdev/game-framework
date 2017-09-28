@@ -1,20 +1,10 @@
 const math = require('quarkit-mathjs')
 
-export class StaticVariable {
-  value
-
-  constructor(value) {
-    this.value = value
-  }
-
-  getValue() {
-    return this.value
-  }
-}
-
-export class ExpressionVariable {
+export class Variable {
   expression
   _contextAccessor
+  _onUpdateCallback
+  _oldVal
 
   get Context() {
     return this._contextAccessor()
@@ -28,17 +18,45 @@ export class ExpressionVariable {
     this._contextAccessor = contextAccessor
   }
 
-  getValue() {
-      // TODO: can have a callback to dispatch new value information to expression container
-    const value = math.eval(this.expression, this.Context)
+  setOnUpdateCallback(onUpdateCallback) {
+    this._onUpdateCallback = onUpdateCallback
+  }
+
+  get Value() {
+    if (typeof (this.expression) !== 'string') {
+      return this.expression
+    }
+    console.log(this.Context)
+
+    let value = null
+    try {
+      value = math.eval(this.expression, this.Context)
+    } catch (e) {
+      console.warn(`Error during parsing Expression ${this.expression}, error : `, e)
+    }
+
+    if (this._oldVal !== undefined && value !== null && value !== this._oldVal) {
+      this._onUpdateCallback(this._oldVal, value)
+    }
     console.log(this.expression, value)
+    this._oldVal = value
     return value
+  }
+
+  set Value(value) {
+    this.expression = value
+    // trigger callback if needed
+    console.log(`Update variable evaluated = ${this.Value}`)
   }
 }
 
-export function variableCreator(value) {
-  if (typeof (value) === 'string') {
-    return new ExpressionVariable(value)
-  }
-  return new StaticVariable(value)
+export function variableCreator(
+  value,
+  contextAccessor = () => new {}(),
+  onUpdateCallback = () => {}
+) {
+  const variable = new Variable(value)
+  variable.setContextAccessor(contextAccessor)
+  variable.setOnUpdateCallback(onUpdateCallback)
+  return variable
 }

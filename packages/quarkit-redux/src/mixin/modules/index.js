@@ -1,4 +1,5 @@
 
+export * from './production'
 export * from './purchasable'
 export * from './possessor'
 export * from './resource'

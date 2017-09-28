@@ -11,7 +11,7 @@ export const PurchasableReduxMixin = Mixin((superclass) => class extends mix(sup
       cost: this.DefaultCost.map((cost)=>{
         return {
           resource: getGOReference(cost.Resource),
-          amount: cost.Amount.getValue() // can be updated
+          amount: cost.Amount // can be updated
         }
       })
     })

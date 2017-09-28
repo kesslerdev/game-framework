@@ -1,42 +1,34 @@
-import { Mixin, mix, isApplicationOf } from 'quarkit-mixin'
+import { Mixin, mix } from 'quarkit-mixin'
 import { GameObjectMixin } from 'quarkit-core'
 import { StatefullMixin } from '../stateful'
 import { ResourceMixin, ResourceBagMixin } from '../resource'
-import { ExpressionContainerMixin } from '../expression'
+import { ExpressionContainerMixin, ExpressionPropertyMixin } from '../expression'
 
 
-export const ProductionSlotMixin = Mixin((superclass) => class extends superclass {
+export const ProductionSlotMixin = Mixin((superclass) => class extends mix(superclass).with(ExpressionPropertyMixin) {
 
   static createProductionSlot(resource, amount) {
     const i = new this()
     i.Resource = resource
-    i._amount = amount
+    i.createProperty('Amount', amount)
     return i
   }
-
-  get Amount() {
-    if (typeof this._amount === 'object' && this._amount.getValue) {
-      return this._amount.getValue()
-    }
-
-    return this._amount
-  }
-
-  _amount
   Resource
 })
 
 export class ProductionSlot extends mix().with(ProductionSlotMixin) {}
 
 
-export const ProductionMixin = Mixin((superclass) => class extends mix(superclass).with(GameObjectMixin,StatefullMixin,ExpressionContainerMixin) {
+export const ProductionMixin = Mixin((superclass) => class extends mix(superclass).with(GameObjectMixin, StatefullMixin, ExpressionContainerMixin) {
 
   constructor(...args) {
     super(...args)
     this.Events.on(
-      'set:stateprovider', 
-      stateProvider => this.LastProductionTime,
+      'set:stateprovider',
+      (stateProvider) => this.LastProductionTime,
     )
+
+    this.createProperty('ProductionBaseTime', 100)
   }
 
   static get ProductionSlotClass() {
@@ -47,17 +39,8 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
     return this._productionSlotClass = productionSlotClass
   }
 
-  get ProductionBaseTime() {
-    return this.productionBaseTime.getValue() 
-      || (this.productionBaseTime = this.createVariable(100))
-  }
-
-  set ProductionBaseTime(time) {
-    this.productionBaseTime = this.createVariable(time)
-  }
-
   setProductionBaseTime(time) {
-    this.productionBaseTime = this.createVariable(time)
+    this.productionBaseTime = time
     return this
   }
 
@@ -70,39 +53,53 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
   }
 
   addProductionSlot(resource, amount) {
-    if(!(resource instanceof ResourceMixin)) {
+    if (!(resource instanceof ResourceMixin)) {
       throw new Error('addProductionSlot must be used with ResourceMixin')
     }
-    this.ProductionSlots.push(this.constructor.ProductionSlotClass.createProductionSlot(resource, this.createVariable(amount)))
+    const amountVar = this.createVariable(amount,
+      (oldValue, newValue) => {
+        this.Events.emit('productionSlot:expressionProperty:update', resource, oldValue, newValue)
+      })
+    const prodSlot = this.constructor
+      .ProductionSlotClass.createProductionSlot(resource, amountVar)
+
+    this.ProductionSlots.push(prodSlot)
     return this
   }
 
   loopRelated(go) {
     super.loopRelated(go)
-    //apply production to related resourceBags 
-    if(go instanceof ResourceBagMixin) {
+    // apply production to related resourceBags
+    if (go instanceof ResourceBagMixin) {
       this.applyProduction(go)
     }
   }
 
   applyProduction(resourceBag) {
-    if(!(resourceBag instanceof ResourceBagMixin)) {
+    if (!(resourceBag instanceof ResourceBagMixin)) {
       throw new Error('applyProduction must be used with ResourceBagMixin')
     }
-    const prod  = 1
-    const productionIterations = 
+
+    const productionIterations =
       Math.trunc((Date.now() - this.LastProductionTime) / this.ProductionBaseTime)
     if (productionIterations) {
       this.State.lastProductionTime = Date.now()
-      const production = this.ProductionSlots
-      for (const key in production) {
+
+      this.ProductionSlots.forEach((prodSlot) => {
         resourceBag.incraseResource(
-          production[key].Resource,
-          productionIterations * production[key].Amount,
+          prodSlot.Resource,
+          productionIterations * prodSlot.Amount,
         )
-      }
+      })
+
+      this.Events.emit(
+        'production',
+        productionIterations,
+        this.State.lastProductionTime,
+        this.State.lastProductionTime + this.ProductionBaseTime
+      )
     }
-    return this      
+    return this
   }
 
 })
