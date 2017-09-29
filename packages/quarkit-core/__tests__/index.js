@@ -1,4 +1,4 @@
-import { GameObject } from '../src/quarkit-core'
+import { GameObject } from '../src'
 
 describe('start', () => {
   it('class Start can say hello world', () => {
@@ -7,7 +7,7 @@ describe('start', () => {
     expect(go.slug).toBe('hello')
 
   })
-  
+
   it('GameObject Equality', () => {
     class go extends GameObject{}
 

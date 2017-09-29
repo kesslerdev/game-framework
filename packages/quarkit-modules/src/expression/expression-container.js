@@ -1,7 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { GameObjectMixin } from 'quarkit-core'
-import { variableCreator, ExpressionVariable } from './variable'
-
+import { variableCreator } from './variable'
 
 export const ExpressionContainerMixin = Mixin((superclass) =>
   class extends mix(superclass).with(GameObjectMixin) {
@@ -30,19 +29,21 @@ export const ExpressionContainerMixin = Mixin((superclass) =>
 
     // use a new param to set name for set directly a property accessor for var.getValue()
     // dispatch an event if property value has changed
-    createVariable(value) {
-      const variable = variableCreator(value)
-      if (variable instanceof ExpressionVariable) {
-        variable.setContextAccessor(() => this.__context)
-      }
-      return variable
+    createVariable(value, callback = () => {}) {
+      return variableCreator(value, () => this.__context, callback)
     }
 
     createProperty(key, value = null) {
       if (!this[key]) {
+        const onUpdateCallback = (oldValue, newValue) => {
+          this.Events.emit('expressionProperty:update', key, oldValue, newValue)
+        }
+
+        const variable = this.createVariable(value, onUpdateCallback)
         Object.defineProperty(this, key, {
-          get: () => this[`__${key}`].getValue(),
-          set: (val) => { this[`__${key}`] = this.createVariable(val) },
+          get: () => variable.Value,
+          // do not use now if not reload event
+          set: (val) => { variable.Value = val },
           enumerable: true,
           configurable: true,
         })

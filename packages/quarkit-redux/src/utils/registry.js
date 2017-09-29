@@ -1,33 +1,39 @@
+import { Mixin, mix } from 'quarkit-mixin'
+import { GameRegistryMixin } from 'quarkit-core'
+import objectToArray from '../utils/objectToArray'
+import { ReduxMixin } from '../mixin/redux'
+import { getStateGOStringReference } from './reference'
 
-import { getGOStringReference, getStateGOStringReference } from './reference'
+export const ReduxRegistryMixin = Mixin((superclass) =>
+  class extends mix(superclass).with(GameRegistryMixin) {
+
+    hasGO(reference) {
+      const ref = reference.typeName && reference.slug ?
+      getStateGOStringReference(reference) : reference
+
+      return super.hasGO(ref)
+    }
+
+    getGO(reference) {
+      const ref = reference.typeName && reference.slug ?
+      getStateGOStringReference(reference) : reference
+      return super.getGO(ref)
+    }
+
+    set Dispatch(dispatch) {
+      objectToArray(this.GO).forEach((go) => {
+        if (go instanceof ReduxMixin) {
+          go.setDispatch(dispatch)
+        }
+      })
+    }
+})
+
+export class ReduxRegistry extends mix().with(ReduxRegistryMixin) {}
+
 
 // can have an extended registry can provide dispatcher to all new mixin with dispatcher
-class Registry {
-  get GO() {
-    return this._objects || (this._objects = {})
-  }
 
-  registerGO(go) {
-    this.GO[getGOStringReference(go)] = go
-  }
-
-  hasGO(reference) {
-    if(reference.typeName && reference.slug)
-      reference = getStateGOStringReference(reference)
-    
-    return this._objects[reference] ? true : false
-  }
-  getGO(reference) {
-    if(reference.typeName && reference.slug)
-      reference = getStateGOStringReference(reference)
-    
-    if(this._objects[reference])
-      return this._objects[reference]
-    
-    throw new Error(`Unregistred GameObject "${reference}"`)
-  }
-}
-
-const RegistryInst = new Registry()
+const RegistryInst = new ReduxRegistry()
 
 export default RegistryInst

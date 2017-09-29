@@ -16,13 +16,17 @@ const Resources = {
   Gold: getGold(),
 }
 
-const createShop = (name, cost, productionTime, productionAmount) => {
+const createShop = (name, cost, productionTime, productionAmount, resource = Resources.Cash) => {
   const shop = ShopTemplate.createGameObject(name)
-  shop.addCostSlot(Resources.Cash, cost)
+  shop.addCostSlot(resource, cost)
   shop.ProductionBaseTime = productionTime
   shop.addProductionSlot(Resources.Cash, productionAmount)
 
   return shop
+}
+
+const createPremiumShop = (name, cost, productionTime, productionAmount) => {
+  return createShop(name, cost, productionTime, productionAmount, Resources.Gold)
 }
 
 const Shops = {
@@ -31,7 +35,7 @@ const Shops = {
   CarWash: createShop('Car_Wash', 720, 6000, 550),
   PizzaDelivery: createShop('Pizza_Delivery', 8640, 12000, 4400),
   DonutShop: createShop('Donut_Shop', 103680, 24000, 52000),
-  AnciantFabric:createShop('Anciant_Fabric', 700000, 35000, 'round(sqrt(Capitalist.innerBag[1].Amount))'),
+  AnciantFabric:createPremiumShop('Anciant_Fabric', 500, 35000, 'round(sqrt(Capitalist.innerBag[1].Amount))'),
 }
 
 export function createPlayer(name) {
