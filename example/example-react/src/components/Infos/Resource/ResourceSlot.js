@@ -8,13 +8,13 @@ import './ResourceSlot.css'
 
 const ResourceSlot = ({ resourceRef, value, resource }) => (
   <span className={'ResourceSlot' + (resource.premium ? ' ResourceSlot-premium':'')}>
-    {resource.slug}: {Humanize.intComma(value)}
+    {resource.slug}: {value ? Humanize.intComma(value): '???'}
   </span>
 )
 
 ResourceSlot.propTypes = {
   //name: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   premium: PropTypes.bool
 }
 

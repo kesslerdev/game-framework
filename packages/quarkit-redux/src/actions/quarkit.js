@@ -1,8 +1,6 @@
-import Registry from '../utils/registry'
-import objectToArray from '../utils/objectToArray'
-import { ReduxMixin } from '../mixin/redux'
-
+import { objectToArray, Registry, GameLoop } from '../utils'
 import { addPlayer } from './player'
+import { updateTime } from './time'
 
 /*
  * action types
@@ -17,14 +15,14 @@ export const INIT_GAME = 'INIT_GAME'
  */
 
 export function registerGameObject(go) {
-  return { 
+  return {
     type: REGISTER_GAME_OBJECT,
     go: go.defaultState({})
   }
 }
 
 export function loadAllGameObjects() {
-  return { 
+  return {
     type: LOAD_ALL_GAME_OBJECT,
     go: objectToArray(Registry.GO).map((go) => go.defaultState({}))
   }
@@ -33,21 +31,22 @@ export function loadAllGameObjects() {
 export function initGame(player) {
   return function (dispatch) {
     console.info('Starting Quarkit..')
-    
-    objectToArray(Registry.GO).map((go) => {
-      if(go instanceof ReduxMixin)
-        go.dispatch = dispatch
-    })
+    console.info('Register Dispatcher with ReduxMixins')
+    Registry.Dispatch = dispatch
 
+    console.info('Load all GameObjects in Redux State')
     dispatch(loadAllGameObjects())
+    console.info('Load player in Redux State')
     dispatch(addPlayer(player))
     console.info('OK')
-    
-    console.info('loop init ticks 300 ms')
 
-    setInterval(()=>{
-      console.info('tick')
-      player.loop()
-    }, 300)
-  }  
+    console.info('loop init ticks 300 ms')
+    GameLoop.TicksTime = 250
+    console.info('Register Player in GameLoop')
+    GameLoop.registerGameObject(player)
+    console.info('Register DateUpdate in GameLoop')
+    GameLoop.registerFunctionCall(() => { dispatch(updateTime(Date.now())) })
+    console.info('GameLoop Start')
+    GameLoop.start()
+  }
 }

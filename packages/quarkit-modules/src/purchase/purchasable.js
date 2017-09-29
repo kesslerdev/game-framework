@@ -5,8 +5,8 @@ import { StateProviderMixin, StatefullMixin } from '../stateful'
 export const PurchasableMixin = Mixin((superclass) =>
 class extends mix(superclass).with(CostMixin) {
   canPurchaseFor(owner) {
-    return this.DefaultCost.every((cos) =>
-      owner.getResourceSlot(cos.Resource).Amount >= cos.Amount.getValue()
+    return this.DefaultCost.every((cost) =>
+      owner.getResourceSlot(cost.Resource).Amount >= cost.Amount
     )
   }
 
@@ -15,9 +15,9 @@ class extends mix(superclass).with(CostMixin) {
       throw new Error('cannot purchase pas la monnaie')
     }
 
-    this.DefaultCost.map((cos) => {
-      console.log(`- ${cos.Amount.getValue()} ${cos.Resource.slug}`)
-      return owner.decraseResource(cos.Resource, cos.Amount.getValue())
+    this.DefaultCost.map((cost) => {
+      console.log(`- ${cost.Amount} ${cost.Resource.slug}`)
+      return owner.decraseResource(cost.Resource, cost.Amount)
     })
 
     return this.applyFor(owner)

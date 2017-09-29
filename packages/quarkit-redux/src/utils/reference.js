@@ -13,10 +13,6 @@ export const getReference = (goState) => {
   }
 }
 
-export const getGOStringReference = (go) => {
-  return `${go.constructor.name}#${go.slug}`
-}
-
 export const getStateGOStringReference = (stateGo) => {
   return `${stateGo.typeName}#${stateGo.slug}`
 }

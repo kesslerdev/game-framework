@@ -1,21 +1,19 @@
 import { Mixin, mix } from 'quarkit-mixin'
-import { ExpressionContainerMixin } from '../expression'
+import { ExpressionContainerMixin, ExpressionPropertyMixin } from '../expression'
 import { ResourceMixin } from '../resource'
 
-export const CostSlotMixin = Mixin((superclass) => class extends superclass {
+export const CostSlotMixin = Mixin((superclass) => class extends mix(superclass).with(ExpressionPropertyMixin) {
   static createCostSlot(resource, amount) {
     const i = new this()
     i.Resource = resource
-    i.Amount = amount
+    i.createProperty('Amount', amount)
     return i
   }
-  
-  Amount
+
   Resource
 })
-  
+
 export class CostSlot extends mix().with(CostSlotMixin) {}
-  
 
 
 export const DefaultCostList = 'default'
@@ -29,28 +27,34 @@ export const CostMixin = Mixin((superclass) => class extends mix(superclass).wit
   static set CostSlotClass(costSlotClass) {
     return this._costSlotClass = costSlotClass
   }
-    //as Dictionnary
+    // as Dictionnary
   get DefaultCost() {
-      return this.getCostList(DefaultCostList)
+    return this.getCostList(DefaultCostList)
   }
 
   getCostList(name) {
-      if (!this.costs) {
-          this.costs = {}
-          this.costs[DefaultCostList] = []
-      }
-      if (!this.costs[name]) {
-          this.costs[name] = []
-      }
+    if (!this.costs) {
+      this.costs = {}
+      this.costs[DefaultCostList] = []
+    }
+    if (!this.costs[name]) {
+      this.costs[name] = []
+    }
 
-      return this.costs[name]
+    return this.costs[name]
   }
 
   addCostSlot(resource, amount, list = DefaultCostList) {
-    if(!(resource instanceof ResourceMixin)) {
+    if (!(resource instanceof ResourceMixin)) {
       throw new Error('addCostSlot must be used with ResourceMixin')
     }
-    this.getCostList(list).push(this.constructor.CostSlotClass.createCostSlot(resource, this.createVariable(amount)))
-        return this
-    }
+    const amountVar = this.createVariable(amount,
+      (oldValue, newValue) => { this.Events.emit('costSlot:expressionProperty:update', list, resource, oldValue, newValue) })
+
+    const costSlot = this.constructor
+      .CostSlotClass.createCostSlot(resource, amountVar)
+
+    this.getCostList(list).push(costSlot)
+    return this
+  }
 })
