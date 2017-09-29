@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux'
-import { goArrayReducer, playerReducer } from 'quarkit-redux'
+import { goArrayReducer, playerReducer, timeReducer } from 'quarkit-redux'
 
 
 
 const appReducer = combineReducers({
   player: playerReducer,
   go: goArrayReducer,
+  time: timeReducer,
 })
 
 const rootReducer = (state, action) => {

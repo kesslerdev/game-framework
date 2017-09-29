@@ -2,7 +2,7 @@
   "name": "quarkit-core",
   "version": "0.2.2",
   "description": "",
-  "main": "./build/quarkit-core.js",
+  "main": "./build/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src -d build",

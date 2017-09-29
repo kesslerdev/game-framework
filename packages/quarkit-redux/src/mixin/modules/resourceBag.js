@@ -8,13 +8,15 @@ import { ADD_RESOURCE, SET_RESOURCE_AMOUNT } from '../../actions'
 
 export const ResourceBagReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, ResourceBagMixin) {
 
-  supportsReduce(state, action) {
-    return (
-      (action.type === ADD_RESOURCE || action.type === SET_RESOURCE_AMOUNT) &&
-        action.resourceBag.slug === state.slug && action.resourceBag.typeName === state.typeName
-      )
-    // if parent support the reduce
-    || super.supportsReduce(state, action)
+  supportsReduce() {
+    const supports = super.supportsReduce()
+
+    supports.push([
+      [ADD_RESOURCE, SET_RESOURCE_AMOUNT],
+      (state, action) => action.resourceBag,
+    ])
+
+    return supports
   }
 
   defaultState(state = {}) {

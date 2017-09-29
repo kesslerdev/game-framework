@@ -7,13 +7,15 @@ import { PURCHASE_FOR } from '../../actions'
 
 export const PossessorReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, PossessorMixin) {
 
-  supportsReduce(state, action) {
-    return (
-      action.type === PURCHASE_FOR && 
-      action.possessor.slug === state.slug && 
-      action.possessor.typeName === state.typeName
-    ) // if parent support the reduce
-      || super.supportsReduce(state, action)
+  supportsReduce() {
+    const supports = super.supportsReduce()
+
+    supports.push([
+      [PURCHASE_FOR],
+      (state, action) => action.possessor,
+    ])
+
+    return supports
   }
 
   defaultState(state = {}) {

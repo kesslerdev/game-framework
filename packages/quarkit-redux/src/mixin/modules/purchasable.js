@@ -8,12 +8,12 @@ export const PurchasableReduxMixin = Mixin((superclass) => class extends mix(sup
   defaultState(state = {}) {
     return Object.assign(state, super.defaultState(state), {
       purchasable: true,
-      cost: this.DefaultCost.map((cost)=>{
+      cost: this.DefaultCost.map((cost) => {
         return {
           resource: getGOReference(cost.Resource),
-          amount: cost.Amount // can be updated
+          amount: cost.Amount, // can be updated
         }
-      })
+      }),
     })
   }
 })

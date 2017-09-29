@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import HumanizeDuration  from 'humanize-duration'
 import "@material/list/dist/mdc.list.css"
 import Purchase from './Purchase'
@@ -6,7 +7,7 @@ import ResourceBag from '../Resource/ResourceBag'
 import './Purchasable.css'
 
 
-const Purchasable = ({ purchasable, possessor}) => {
+const Purchasable = ({ purchasable, possessor, date}) => {
 
   const isPurchased = () => {
     return possessor.possessions.find(
@@ -22,7 +23,7 @@ const Purchasable = ({ purchasable, possessor}) => {
     Building : {purchasable.slug}
               <span className="mdc-list-item__text__secondary">
                 <ResourceBag bag={purchasable.productions} />
-                {purchasable.nextProductionTime ? HumanizeDuration(purchasable.nextProductionTime - Date.now(), { round: true }) : ''}
+                {purchasable.nextProductionTime ? HumanizeDuration(purchasable.nextProductionTime - date, { round: true }) : ''}
               </span>
     </span>
     {isPurchased() ? <i className="material-icons mdc-list-item__end-detail" style={{color:'green'}} aria-hidden="true">check</i> :
@@ -31,5 +32,14 @@ const Purchasable = ({ purchasable, possessor}) => {
   );
 }
 
+const mapStateToProps = (state, props) => {
+  return {
+    date: state.time.current,
+  }
+}
+
+const DataPurchasable = connect(
+  mapStateToProps
+)(Purchasable)
  //
-export default Purchasable
+export default DataPurchasable

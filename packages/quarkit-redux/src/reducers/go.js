@@ -3,10 +3,11 @@ import Registry from '../utils/registry'
 import { ReduxMixin } from '../mixin'
 
 export const goReducer = (state = [], action) => {
-  if(Registry.hasGO(state)) {
+  if (Registry.hasGO(state)) {
     const go = Registry.getGO(state)
-    if(go instanceof ReduxMixin && go.supportsReduce(state, action))
-      state = go.reduce(state, action)
+    if (go instanceof ReduxMixin && go.canReduce(state, action)) {
+      return go.reduce(state, action)
+    }
   }
 
   return state
@@ -17,7 +18,7 @@ export const goArrayReducer = (state = [], action) => {
     case REGISTER_GAME_OBJECT:
       return [
         ...state,
-        { ...action.go }
+        { ...action.go },
       ]
     case LOAD_ALL_GAME_OBJECT:
       return [

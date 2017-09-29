@@ -10,21 +10,29 @@ export const ProductionReduxMixin = Mixin((superclass) =>
 
     constructor(...args) {
       super(...args)
+
       this.Events.on(
-        'productionSlot:expressionProperty:update',
-        (resource, oldValue, newValue) => {
-          if (this.dispatch) {
-            this.dispatch(
-              updateProduction(getGOReference(this), getGOReference(resource), newValue)
-            )
-          }
+        'set:stateprovider',
+        (stateProvider) => {
+          this.dispatch(
+            updateNextProductionTime(getGOReference(this),
+              this.LastProductionTime + this.ProductionBaseTime)
+          )
+          // tricks for update vars
+          this.defaultState()
+        },
+      )
+      this.Events.on(
+        'productionSlot:expressionProperty:update', (resource, oldValue, newValue) => {
+          this.dispatch(
+            updateProduction(getGOReference(this), getGOReference(resource), newValue)
+          )
         },
       )
 
       this.Events.on(
-        'expressionProperty:update',
-        (key, oldValue, newValue) => {
-          if (this.dispatch && key === 'ProductionBaseTime') {
+        'expressionProperty:update', (key, oldValue, newValue) => {
+          if (key === 'ProductionBaseTime') {
             this.dispatch(
               updateProductionTime(getGOReference(this), newValue)
             )
@@ -33,36 +41,31 @@ export const ProductionReduxMixin = Mixin((superclass) =>
       )
 
       this.Events.on(
-        'production',
-        (prodIterations, lastProd, nextProd) => {
-          if (this.dispatch) {
-            this.dispatch(
-              updateNextProductionTime(getGOReference(this), nextProd)
-            )
-          }
+        'production', (prodIterations, lastProd, nextProd) => {
+          this.dispatch(
+            updateNextProductionTime(getGOReference(this), nextProd)
+          )
         },
       )
     }
 
     // need clean implementation
-    supportsReduce(state, action) {
-      return (
-          action.type === UPDATE_PRODUCTION &&
-          action.production.slug === state.slug &&
-          action.production.typeName === state.typeName
-        )
-        || (
-          action.type === UPDATE_NEXT_PRODUCTION_TIME &&
-          action.production.slug === state.slug &&
-          action.production.typeName === state.typeName
-        )
-        || (
-          action.type === UPDATE_PRODUCTION_TIME &&
-          action.production.slug === state.slug &&
-          action.production.typeName === state.typeName
-        )
-         // if parent support the reduce
-        || super.supportsReduce(state, action)
+    supportsReduce() {
+      const supports = super.supportsReduce()
+      // provide an array :
+      // first element: an array of actions
+      // second: a function takes (state, action) as parameter & can
+      // return a bool or an object (see bellow)
+      // support reduce if action is one of defined && the 2nd element function
+      // return true of the correct object
+      supports.push([
+        // perform an || on all actions
+        [UPDATE_PRODUCTION, UPDATE_NEXT_PRODUCTION_TIME, UPDATE_PRODUCTION_TIME],
+        // can return an object, in this case the condition is
+        // object.slug === state.slug && object.typeName === state.typeName
+        (state, action) => action.production,
+      ])
+      return supports
     }
 
     defaultState(state = {}) {

@@ -1,5 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { EventEmitter } from 'events'
+import getGOReference from './utils/reference'
 
 export const GameObjectMixin = Mixin((superclass) => class extends superclass {
 
@@ -43,6 +44,9 @@ export const GameObjectMixin = Mixin((superclass) => class extends superclass {
     return []
   }
 
+  toString() {
+    return getGOReference(this)
+  }
 
 })
 

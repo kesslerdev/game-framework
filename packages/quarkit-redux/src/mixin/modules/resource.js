@@ -6,7 +6,7 @@ export const ResourceReduxMixin = Mixin((superclass) => class extends mix(superc
 
   defaultState(state = {}) {
     return Object.assign(state, super.defaultState(state), {
-      premium: this.premium ? true : false
+      premium: this.premium === true,
     })
   }
 })
