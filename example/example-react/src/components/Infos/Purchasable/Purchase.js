@@ -11,12 +11,12 @@ const Purchase = ({ possessor, purchasable, onPurchaseClick }) => {
     return Registry.getGO(purchasable).canPurchaseFor(Registry.getGO(possessor))
   }
   return (
-    <button style={{width:'auto'}} disabled={!canPurchase()} className="mdc-button mdc-list-item__end-detail material-icons" onClick={()=>onPurchaseClick(purchasable, possessor)}>
-      Buy {purchasable.cost.map((cost) => cost.amount+' '+cost.resource.slug) }
+    <button style={{width:'auto'}} disabled={!canPurchase()} className="mdc-button mdc-list-item__end-detail" onClick={()=>onPurchaseClick(purchasable, possessor)}>
+      Buy {purchasable.cost.map((cost) => `${cost.amount} ${cost.resource.slug}`) }
     </button>
   )
 }
-  
+
 const mapDispatchToProps = dispatch => {
   return {
     onPurchaseClick: (purchasable, possessor) => {
