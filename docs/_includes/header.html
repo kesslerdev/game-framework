@@ -4,10 +4,10 @@
   <section class="site-header">
       <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
       <nav class="site-nav">
+        <a class="page-link" href="{{site.baseurl}}/mixin">Mixin</a>
+        <a class="page-link" href="{{site.baseurl}}/core">Game Core</a>
         <a class="page-link" href="{{site.baseurl}}/modules">Modules</a>
-        <!--<a class="page-link" href="{{site.baseurl}}/develop/custom-rules">Develop</a>
-        <a class="page-link" href="{{site.baseurl}}/usage/cli">Usage</a>
-        <a class="page-link" href="{{site.baseurl}}/news">News</a>-->
+        <a class="page-link" href="{{site.baseurl}}/redux">Redux</a>
       </nav>
   </section>
   {% if page.title == site.title %}
@@ -17,8 +17,8 @@
       <h2 class="project-tagline">{{page.subtitle}}</h2>
     {% endif %}
     <a href="{{site.github_url}}" class="btn">View on GitHub</a>
-    <a href="{{site.baseurl}}/modules" class="btn">Learn More</a>
-    <a href="{{site.github_url}}/tarball/master" class="btn">Download .tar.gz</a>
+    <a href="{{site.baseurl}}/mixin" class="btn">Mixins basics</a>
+    <a href="{{site.baseurl}}/core" class="btn">Game basics</a>
   </section>
   {% endif %}
 </header>
