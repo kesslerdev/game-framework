@@ -1,5 +1,6 @@
 {
   "name": "example-react",
+  "homepage" : "http://kesslerdev.github.io/quarkit/demo-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
