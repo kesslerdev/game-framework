@@ -3,6 +3,11 @@ import { GameObjectMixin } from 'quarkit-core'
 import { StateProviderMixin } from './state-provider'
 
 export const StatefullMixin = Mixin((superclass) => class extends GameObjectMixin(superclass) {
+
+  hasState() {
+    return this.__state !== undefined
+  }
+
   get State() {
     if (!this.__state) {
       throw new Error('unable to use an Uninitialized State please call withState() before')

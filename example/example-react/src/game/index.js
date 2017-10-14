@@ -19,8 +19,9 @@ const Resources = {
 const createShop = (name, cost, productionTime, productionAmount, resource = Resources.Cash) => {
   const shop = ShopTemplate.createGameObject(name)
   shop.addCostSlot(resource, cost)
+  shop.addlevelUpCostSlot(Resources.Cash, `this.Level * ${cost}`)
   shop.ProductionBaseTime = productionTime
-  shop.addProductionSlot(Resources.Cash, productionAmount)
+  shop.addProductionSlot(Resources.Cash, `this.Level * ${productionAmount}`)
 
   return shop
 }
@@ -34,6 +35,7 @@ const Shops = {
   NewsPaperDelivery: createShop('News_Paper_Delivery', 60, 3000, 60),
   CarWash: createShop('Car_Wash', 720, 6000, 550),
   PizzaDelivery: createShop('Pizza_Delivery', 8640, 12000, 4400),
+  FabrikDeVodka: createShop('Fabrik_De_Vodka', 15000, 10000, '(this.Level * round(sqrt(Capitalist.innerBag[1].Amount)))'),
   DonutShop: createShop('Donut_Shop', 103680, 24000, 52000),
   AnciantFabric:createPremiumShop('Anciant_Fabric', 500, 35000, 'round(sqrt(Capitalist.innerBag[1].Amount))'),
 }

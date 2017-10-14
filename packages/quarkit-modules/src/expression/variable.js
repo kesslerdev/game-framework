@@ -26,7 +26,6 @@ export class Variable {
     if (typeof (this.expression) !== 'string') {
       return this.expression
     }
-    console.log(this.Context)
 
     let value = null
     try {
@@ -38,7 +37,6 @@ export class Variable {
     if (this._oldVal !== undefined && value !== null && value !== this._oldVal) {
       this._onUpdateCallback(this._oldVal, value)
     }
-    console.log(this.expression, value)
     this._oldVal = value
     return value
   }
