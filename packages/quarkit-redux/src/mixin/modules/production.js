@@ -14,25 +14,29 @@ export const ProductionReduxMixin = Mixin((superclass) =>
       this.Events.on(
         'set:stateprovider',
         (stateProvider) => {
-          this.dispatch(
-            updateNextProductionTime(getGOReference(this),
-              this.LastProductionTime + this.ProductionBaseTime)
-          )
+          if (this.canDispatch()) {
+            this.dispatch(
+              updateNextProductionTime(getGOReference(this),
+                this.LastProductionTime + this.ProductionBaseTime)
+            )
+          }
           // tricks for update vars
           this.defaultState()
         },
       )
       this.Events.on(
         'productionSlot:expressionProperty:update', (resource, oldValue, newValue) => {
-          this.dispatch(
-            updateProduction(getGOReference(this), getGOReference(resource), newValue)
-          )
+          if (this.canDispatch()) {
+            this.dispatch(
+              updateProduction(getGOReference(this), getGOReference(resource), newValue)
+            )
+          }
         },
       )
 
       this.Events.on(
         'expressionProperty:update', (key, oldValue, newValue) => {
-          if (key === 'ProductionBaseTime') {
+          if (key === 'ProductionBaseTime' && this.canDispatch()) {
             this.dispatch(
               updateProductionTime(getGOReference(this), newValue)
             )
@@ -42,9 +46,11 @@ export const ProductionReduxMixin = Mixin((superclass) =>
 
       this.Events.on(
         'production', (prodIterations, lastProd, nextProd) => {
-          this.dispatch(
-            updateNextProductionTime(getGOReference(this), nextProd)
-          )
+          if (this.canDispatch()) {
+            this.dispatch(
+              updateNextProductionTime(getGOReference(this), nextProd)
+            )
+          }
         },
       )
     }

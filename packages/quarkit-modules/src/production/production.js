@@ -10,7 +10,7 @@ export const ProductionSlotMixin = Mixin((superclass) => class extends mix(super
   static createProductionSlot(resource, amount) {
     const i = new this()
     i.Resource = resource
-    i.createProperty('Amount', amount)
+    i.createExpression('Amount', amount)
     return i
   }
   Resource
@@ -28,7 +28,9 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
       (stateProvider) => this.LastProductionTime,
     )
 
-    this.createProperty('ProductionBaseTime', 100)
+    this.createExpression('ProductionBaseTime', 100)
+
+    this.createStateProperty('LastProductionTime', () => Date.now())
   }
 
   static get ProductionSlotClass() {
@@ -40,12 +42,8 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
   }
 
   setProductionBaseTime(time) {
-    this.productionBaseTime = time
+    this.ProductionBaseTime = time
     return this
-  }
-
-  get LastProductionTime() {
-    return this.State.lastProductionTime || (this.State.lastProductionTime = Date.now())
   }
     // as Dictionnary
   get ProductionSlots() {
@@ -83,7 +81,7 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
     const productionIterations =
       Math.trunc((Date.now() - this.LastProductionTime) / this.ProductionBaseTime)
     if (productionIterations) {
-      this.State.lastProductionTime = Date.now()
+      this.LastProductionTime = Date.now()
 
       this.ProductionSlots.forEach((prodSlot) => {
         resourceBag.incraseResource(
@@ -95,8 +93,8 @@ export const ProductionMixin = Mixin((superclass) => class extends mix(superclas
       this.Events.emit(
         'production',
         productionIterations,
-        this.State.lastProductionTime,
-        this.State.lastProductionTime + this.ProductionBaseTime
+        this.LastProductionTime,
+        this.LastProductionTime + this.ProductionBaseTime
       )
     }
     return this

@@ -4,7 +4,7 @@ import { Variable } from '../expression'
 export const ExpressionPropertyMixin = Mixin((superclass) => class extends superclass {
 
   // value can be a variable ;)
-  createProperty(name, value) {
+  createExpression(name, value) {
     if (value instanceof Variable) {
       const varName = `_${name}_variable`
       this[varName] = value

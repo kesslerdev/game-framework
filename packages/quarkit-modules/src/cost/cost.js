@@ -6,7 +6,7 @@ export const CostSlotMixin = Mixin((superclass) => class extends mix(superclass)
   static createCostSlot(resource, amount) {
     const i = new this()
     i.Resource = resource
-    i.createProperty('Amount', amount)
+    i.createExpression('Amount', amount)
     return i
   }
 

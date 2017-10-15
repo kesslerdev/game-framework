@@ -35,7 +35,7 @@ export const ResourceBagReduxMixin = Mixin((superclass) => class extends mix(sup
 
   incraseResource(resource, amount) {
     super.incraseResource(resource, amount)
-    if (this.dispatch) {
+    if (this.canDispatch()) {
       this.dispatch(
         setResourceAmount(getGOReference(this),
           getGOReference(resource), super.getResourceSlot(resource).Amount)

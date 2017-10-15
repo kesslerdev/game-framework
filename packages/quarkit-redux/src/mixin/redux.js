@@ -44,6 +44,9 @@ export const ReduxMixin = Mixin((superclass) =>
       this.__dispatch = dispatch
     }
 
+    canDispatch() {
+      return this.__dispatch !== undefined
+    }
     dispatch(action) {
       if (this.__dispatch) {
         this.__dispatch(action)

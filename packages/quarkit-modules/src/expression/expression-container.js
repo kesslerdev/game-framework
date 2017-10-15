@@ -33,7 +33,7 @@ export const ExpressionContainerMixin = Mixin((superclass) =>
       return variableCreator(value, () => this.__context, callback)
     }
 
-    createProperty(key, value = null) {
+    createExpression(key, value = null) {
       if (!this[key]) {
         const onUpdateCallback = (oldValue, newValue) => {
           this.Events.emit('expressionProperty:update', key, oldValue, newValue)

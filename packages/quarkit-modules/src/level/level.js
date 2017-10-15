@@ -8,6 +8,14 @@ export const LevelCostList = 'level'
 export const LevelMixin = Mixin((superclass) =>
 class extends mix(superclass).with(GameObjectMixin, StatefullMixin, CostMixin) {
 
+  constructor(...args) {
+    // mixins should either 1) not define a constructor, 2) require a specific
+    // constructor signature, or 3) pass along all arguments.
+    super(...args)
+
+    this.createStateProperty('Level', 1)
+  }
+
   get UpgradeCost() {
     return this.getCostList(LevelCostList)
   }
@@ -16,10 +24,6 @@ class extends mix(superclass).with(GameObjectMixin, StatefullMixin, CostMixin) {
     return this.UpgradeCost.every((cost) =>
       owner.getResourceSlot(cost.Resource).Amount >= cost.Amount
     )
-  }
-
-  get Level() {
-    return this.State.level || (this.State.level = 1)
   }
 
   addlevelUpCostSlot(resource, amount) {
@@ -39,7 +43,7 @@ class extends mix(superclass).with(GameObjectMixin, StatefullMixin, CostMixin) {
   }
 
   levelUp() {
-    this.State.level += 1
-    return this.State.level
+    this.Level += 1
+    return this.Level
   }
 })

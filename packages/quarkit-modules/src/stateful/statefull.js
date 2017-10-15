@@ -16,6 +16,24 @@ export const StatefullMixin = Mixin((superclass) => class extends GameObjectMixi
     return this.__state
   }
 
+  createStateProperty(name, value) {
+    if (!this[name]) {
+      Object.defineProperty(this, name, {
+        get: () => {
+          if (!this.hasState()) {
+            return value
+          }
+
+          return this.State[name] || (this.State[name] = (typeof value === "function" ? value() : value))
+        },
+        // do not use now if not reload event
+        set: (val) => { this.State[name] = val },
+        enumerable: true,
+        configurable: true
+      })
+    }
+  }
+
   withState(stateProvider) {
     if(!(stateProvider instanceof StateProviderMixin)) {
       throw new Error('addCostSlot must be used with ResourceMixin')
