@@ -28,6 +28,7 @@
     "opener": "^1.4.3"
   },
   "dependencies": {
+    "loglevel": "^1.5.1",
     "quarkit-mixin": "^0.4.1"
   },
   "jest": {

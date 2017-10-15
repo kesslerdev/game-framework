@@ -23,6 +23,8 @@ const createShop = (name, cost, productionTime, productionAmount, resource = Res
   shop.ProductionBaseTime = productionTime
   shop.addProductionSlot(Resources.Cash, `this.Level * ${productionAmount}`)
 
+  shop.Log.setDefaultLevel('debug')
+
   return shop
 }
 
@@ -49,6 +51,7 @@ export function createPlayer(name) {
       .incraseResource(Resources.Cash, 50)
 
     Shops.LemonStand.applyFor(player)
+    player.Log.setDefaultLevel('debug')
     return player
   }
 
