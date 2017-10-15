@@ -35,7 +35,7 @@ class extends mix(superclass).with(GameObjectMixin, StatefullMixin, CostMixin) {
     }
 
     this.UpgradeCost.map((cost) => {
-      console.log(`- ${cost.Amount} ${cost.Resource.slug}`)
+      this.Log.debug(`- ${cost.Amount} ${cost.Resource.slug}`)
       return owner.decraseResource(cost.Resource, cost.Amount)
     })
 
