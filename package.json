@@ -14,7 +14,8 @@
     "test:w": "lerna run test:w --parallel",
     "cover": "lerna run cover",
     "demo": "yarn && yarn run build && cd ./example/example-react/ && yarn && yarn run start",
-    "cover-upload": "codecov"
+    "cover-upload": "codecov",
+    "build-demo": "rm -rf ./docs/demo-react && cd ./example/example-react/ && rm -rf ./build && yarn && yarn run build  && cp -rf ./build ../../docs/demo-react"
   },
   "repository": {
     "type": "git",
