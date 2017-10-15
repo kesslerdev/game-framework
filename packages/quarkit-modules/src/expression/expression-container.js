@@ -16,8 +16,8 @@ export const ExpressionContainerMixin = Mixin((superclass) =>
 
       this.Events.on('context:provide', (key, value) => {
         this.setContext(key, value)
-        if (value instanceof Object) {
-          this.setContext(value.constructor.name, value)
+        if (value.ContextVarName) {
+          this.setContext(value.ContextVarName, value)
         }
       })
 
