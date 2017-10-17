@@ -1,5 +1,5 @@
 import { Mixin, mix } from 'quarkit-mixin'
-import getGOReference from './utils/reference'
+import getGOReference from './utils/getGOStringReference'
 import {
   PropertyMixin,
   EmitterMixin,

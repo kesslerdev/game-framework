@@ -1,6 +1,6 @@
 
-export * from './cache-mixin'
-export * from './emitter-mixin'
-export * from './loggable-mixin'
-export * from './loop-entry-mixin'
-export * from './property-mixin'
+export * from './CacheMixin'
+export * from './EmitterMixin'
+export * from './LoggableMixin'
+export * from './LoopEntryMixin'
+export * from './PropertyMixin'

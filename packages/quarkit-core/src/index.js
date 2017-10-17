@@ -1,4 +1,4 @@
 
-export * from './gameObject'
-export * from './gameLoop'
-export * from './gameRegistry'
+export * from './GameObjectMixin'
+export * from './GameLoopMixin'
+export * from './GameRegistryMixin'
