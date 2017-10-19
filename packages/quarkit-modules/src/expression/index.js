@@ -1,5 +1,6 @@
 
-export * from './expression-container'
-export * from './expression-property'
-export * from './variable'
-export * from './named-context'
+export * from './ExpressionContainerMixin'
+export * from './ExpressionPropertyMixin'
+export * from './Variable'
+export * from './variableCreator'
+export * from './NamedContextVarMixin'

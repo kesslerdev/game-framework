@@ -3,7 +3,7 @@ import { mix } from 'quarkit-mixin'
 import {
   StateGameObjectMixin,
   StateProviderMixin,
-  NamedContextVar,
+  NamedContextVarMixin,
 } from 'quarkit-modules'
 
 import { ResourceReduxMixin, ResourceBagReduxMixin,
@@ -31,5 +31,5 @@ extends mix().with(
   StateProviderMixin, 
   ResourceBagReduxMixin, 
   PossessorReduxMixin,
-  NamedContextVar('Capitalist')
+  NamedContextVarMixin('Capitalist')
 ) { }
