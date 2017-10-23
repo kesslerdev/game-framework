@@ -1,19 +1,6 @@
-import { Mixin, mix } from 'quarkit-mixin'
-import { ResourceMixin } from './resource'
-
-export const ResourceSlotMixin = Mixin((superclass) => class extends superclass {
-
-  static createResourceSlot(resource) {
-    const i = new this()
-    i.Resource = resource
-    return i
-  }
-
-  Amount = 0
-  Resource
-})
-
-export class ResourceSlot extends mix().with(ResourceSlotMixin) {}
+import { Mixin } from 'quarkit-mixin'
+import { ResourceMixin } from './ResourceMixin'
+import { ResourceSlot } from './ResourceSlotMixin'
 
 export const ResourceBagMixin = Mixin((superclass) => class extends superclass {
 

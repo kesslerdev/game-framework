@@ -1,3 +1,4 @@
 
-export * from './resource'
-export * from './resource-bag'
+export * from './ResourceMixin'
+export * from './ResourceSlotMixin'
+export * from './ResourceBagMixin'

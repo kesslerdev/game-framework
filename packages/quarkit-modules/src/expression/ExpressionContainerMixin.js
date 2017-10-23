@@ -1,6 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { GameObjectMixin } from 'quarkit-core'
-import { variableCreator } from './variable'
+import { variableCreator } from './variableCreator'
 
 export const ExpressionContainerMixin = Mixin((superclass) =>
   class extends mix(superclass).with(GameObjectMixin) {

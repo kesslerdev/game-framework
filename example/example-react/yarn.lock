@@ -3996,6 +3996,10 @@ loglevel@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.4.1.tgz#95b383f91a3c2756fd4ab093667e4309161f2bcd"
 
+loglevel@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.5.1.tgz#189078c94ab9053ee215a0acdbf24244ea0f6502"
+
 longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
@@ -5074,6 +5078,7 @@ qs@~6.4.0:
 quarkit-core@^0.2.2, "quarkit-core@file:../../packages/quarkit-core":
   version "0.2.2"
   dependencies:
+    loglevel "^1.5.1"
     quarkit-mixin "^0.4.1"
 
 quarkit-mathjs@^0.0.6:

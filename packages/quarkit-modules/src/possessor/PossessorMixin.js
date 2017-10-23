@@ -1,21 +1,6 @@
-import { Mixin, mix } from 'quarkit-mixin'
-import { GameObjectMixin } from 'quarkit-core'
+import { Mixin } from 'quarkit-mixin'
 import { StateProviderMixin, StatefullMixin } from '../quarkit-modules'
-
-
-export const PossessionActMixin = Mixin((superclass) => class extends superclass {
-
-
-  static createPossessionAct(possession) {
-    const i = new this()
-    i.Possession = possession
-    return i
-  }
-
-  Possession
-})
-
-export class PossessionAct extends mix().with(GameObjectMixin, PossessionActMixin) {}
+import { PossessionAct } from './PossessionActMixin'
 
 export const PossessorMixin = Mixin((superclass) => class extends superclass {
 

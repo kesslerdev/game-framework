@@ -1,2 +1,3 @@
 
-export * from './possessor'
+export * from './PossessorMixin'
+export * from './PossessionActMixin'
