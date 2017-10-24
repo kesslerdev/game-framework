@@ -1,4 +1,4 @@
-import { goReducer } from './go'
+import { goReducer } from './goReducer'
 import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT } from '../actions'
 
 export const playerReducer = (state = {}, action) => {
