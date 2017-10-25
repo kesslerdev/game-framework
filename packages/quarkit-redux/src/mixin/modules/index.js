@@ -1,7 +1,7 @@
 
-export * from './production'
-export * from './purchasable'
-export * from './possessor'
-export * from './resource'
-export * from './level'
-export * from './resourceBag'
+export * from './ProductionReduxMixin'
+export * from './PurchasableReduxMixin'
+export * from './PossessorReduxMixin'
+export * from './ResourceReduxMixin'
+export * from './LevelReduxMixin'
+export * from './ResourceBagReduxMixin'

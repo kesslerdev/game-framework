@@ -1,8 +1,8 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { GameRegistryMixin } from 'quarkit-core'
 import objectToArray from '../utils/objectToArray'
-import { ReduxMixin } from '../mixin/redux'
-import { getStateGOStringReference } from './reference'
+import { ReduxMixin } from '../mixin/ReduxMixin'
+import { getStateGOStringReference } from './Reference'
 
 export const ReduxRegistryMixin = Mixin((superclass) =>
   class extends mix(superclass).with(GameRegistryMixin) {

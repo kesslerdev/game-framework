@@ -1,3 +1,3 @@
 
-export * from './game-object'
-export * from './resource'
+export * from './GameObjectSelectors'
+export * from './getResourceSlot'
