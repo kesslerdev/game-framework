@@ -1,6 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { GameObjectMixin } from 'quarkit-core'
-import Registry from '../utils/registry'
+import Registry from '../utils/ReduxRegistryMixin'
 
 export const RegistrableMixin = Mixin((superclass) =>
   class extends mix(superclass).with(GameObjectMixin) {

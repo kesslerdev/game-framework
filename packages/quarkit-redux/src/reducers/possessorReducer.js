@@ -1,5 +1,5 @@
 import { PURCHASE_FOR } from '../actions/purchasable'
-import Registry from '../utils/registry'
+import Registry from '../utils/ReduxRegistryMixin'
 
 const defaultState = {
   possessions : []

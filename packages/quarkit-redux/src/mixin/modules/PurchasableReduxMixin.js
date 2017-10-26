@@ -1,6 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { PurchasableMixin } from 'quarkit-modules'
-import { ReduxMixin } from '../redux'
+import { ReduxMixin } from '../ReduxMixin'
 import { getGOReference } from '../../utils'
 
 export const PurchasableReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, PurchasableMixin) {

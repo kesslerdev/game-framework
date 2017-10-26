@@ -1,6 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { PossessorMixin } from 'quarkit-modules'
-import { ReduxMixin } from '../redux'
+import { ReduxMixin } from '../ReduxMixin'
 import { getGOReference } from '../../utils'
 import { possessorReducer } from '../../reducers'
 import { PURCHASE_FOR } from '../../actions'

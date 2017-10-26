@@ -1,6 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { ProductionMixin } from 'quarkit-modules'
-import { ReduxMixin } from '../redux'
+import { ReduxMixin } from '../ReduxMixin'
 import { getGOReference } from '../../utils'
 import { productionReducer } from '../../reducers'
 import { UPDATE_PRODUCTION, UPDATE_PRODUCTION_TIME, UPDATE_NEXT_PRODUCTION_TIME, updateProduction, updateProductionTime, updateNextProductionTime } from '../../actions'

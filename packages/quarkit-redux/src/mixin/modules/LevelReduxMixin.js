@@ -1,6 +1,6 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { LevelMixin, LevelCostList } from 'quarkit-modules'
-import { ReduxMixin } from '../redux'
+import { ReduxMixin } from '../ReduxMixin'
 import { getGOReference } from '../../utils'
 import { levelReducer } from '../../reducers'
 import { LEVEL_UP, UPDATE_LEVEL_UP_COST, updateLevelUpCost } from '../../actions'

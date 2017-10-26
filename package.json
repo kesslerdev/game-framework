@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "build:docs": "node docs.build.js",
-    "clean": "lerna clean --yes && rimraf node_modules && rimraf ./example/example-react/node_modules",
-    "build": "lerna run build",
+    "clean": "lerna clean --yes && rimraf ./example/example-react/node_modules && yarn run build:clean && rimraf node_modules",
+    "clean:build": "rimraf ./packages/*/build",
+    "build": "yarn run build:clean && lerna run build",
     "build:w": "lerna run build:w --parallel",
     "publish": "lerna publish",
     "test": "lerna run test",
@@ -40,7 +41,8 @@
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.8.0",
-    "lerna": "^2.2.0"
+    "lerna": "^2.2.0",
+    "rimraf": "^2.6.2"
   },
   "workspaces": [
     "packages/*"

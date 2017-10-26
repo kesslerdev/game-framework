@@ -1,10 +1,9 @@
 import { Mixin, mix } from 'quarkit-mixin'
 import { ResourceBagMixin } from 'quarkit-modules'
-import { ReduxMixin } from '../redux'
-import { setResourceAmount } from '../../actions'
+import { ReduxMixin } from '../ReduxMixin'
+import { setResourceAmount, ADD_RESOURCE, SET_RESOURCE_AMOUNT } from '../../actions'
 import { getGOReference } from '../../utils'
 import { resourceBagReducer } from '../../reducers'
-import { ADD_RESOURCE, SET_RESOURCE_AMOUNT } from '../../actions'
 
 export const ResourceBagReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, ResourceBagMixin) {
 
