@@ -24,7 +24,7 @@ export const StatefullMixin = Mixin((superclass) => class extends GameObjectMixi
             return value
           }
 
-          return this.State[name] || (this.State[name] = (typeof value === "function" ? value() : value))
+          return this.State[name] || (this.State[name] = (typeof value === 'function' ? value() : value))
         },
         // do not use now if not reload event
         set: (val) => { this.State[name] = val },

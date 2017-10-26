@@ -15,8 +15,8 @@ export const LOGOUT = 'LOGOUT'
 
 export function addPlayer(player) {
   Registry.registerGO(player)
-  
-  return { 
+
+  return {
     type: LOGIN_SUCCESS,
     player: player.defaultState({}),
   }

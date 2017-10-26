@@ -17,14 +17,14 @@ export const INIT_GAME = 'INIT_GAME'
 export function registerGameObject(go) {
   return {
     type: REGISTER_GAME_OBJECT,
-    go: go.defaultState({})
+    go: go.defaultState({}),
   }
 }
 
 export function loadAllGameObjects() {
   return {
     type: LOAD_ALL_GAME_OBJECT,
-    go: objectToArray(Registry.GO).map((go) => go.defaultState({}))
+    go: objectToArray(Registry.GO).map((go) => go.defaultState({})),
   }
 }
 

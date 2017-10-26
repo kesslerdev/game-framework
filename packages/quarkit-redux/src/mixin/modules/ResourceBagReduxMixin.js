@@ -5,53 +5,54 @@ import { setResourceAmount, ADD_RESOURCE, SET_RESOURCE_AMOUNT } from '../../acti
 import { getGOReference } from '../../utils'
 import { resourceBagReducer } from '../../reducers'
 
-export const ResourceBagReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, ResourceBagMixin) {
+export const ResourceBagReduxMixin
+  = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, ResourceBagMixin) {
 
-  supportsReduce() {
-    const supports = super.supportsReduce()
+    supportsReduce() {
+      const supports = super.supportsReduce()
 
-    supports.push([
+      supports.push([
       [ADD_RESOURCE, SET_RESOURCE_AMOUNT],
-      (state, action) => action.resourceBag,
-    ])
+        (state, action) => action.resourceBag,
+      ])
 
-    return supports
-  }
+      return supports
+    }
 
-  defaultState(state = {}) {
-    return Object.assign(state, super.defaultState(state), {
-      innerBag: this.innerBag.map((rez) => ({
-        resource: getGOReference(rez.Resource),
-        amount: rez.Amount,
-      })),
-    })
-  }
+    defaultState(state = {}) {
+      return Object.assign(state, super.defaultState(state), {
+        innerBag: this.innerBag.map((rez) => ({
+          resource: getGOReference(rez.Resource),
+          amount: rez.Amount,
+        })),
+      })
+    }
 
-  reduce(state = this.defaultState(), action) {
+    reduce(state = this.defaultState(), action) {
      // return resourceBagReducer with usage of parent reducer
-    return resourceBagReducer(super.reduce(state, action), action)
-  }
-
-  incraseResource(resource, amount) {
-    super.incraseResource(resource, amount)
-    if (this.canDispatch()) {
-      this.dispatch(
-        setResourceAmount(getGOReference(this),
-          getGOReference(resource), super.getResourceSlot(resource).Amount)
-      )
+      return resourceBagReducer(super.reduce(state, action), action)
     }
 
-    return this
-  }
+    incraseResource(resource, amount) {
+      super.incraseResource(resource, amount)
+      if (this.canDispatch()) {
+        this.dispatch(
+          setResourceAmount(getGOReference(this),
+            getGOReference(resource), super.getResourceSlot(resource).Amount)
+        )
+      }
 
-  decraseResource(resource, amount) {
-    const ret = super.decraseResource(resource, amount)
-    if (this.dispatch) {
-      this.dispatch(
-        setResourceAmount(getGOReference(this), getGOReference(resource), ret)
-      )
+      return this
     }
 
-    return ret
-  }
+    decraseResource(resource, amount) {
+      const ret = super.decraseResource(resource, amount)
+      if (this.dispatch) {
+        this.dispatch(
+          setResourceAmount(getGOReference(this), getGOReference(resource), ret)
+        )
+      }
+
+      return ret
+    }
 })

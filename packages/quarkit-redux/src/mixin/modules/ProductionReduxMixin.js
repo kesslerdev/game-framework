@@ -13,7 +13,7 @@ export const ProductionReduxMixin = Mixin((superclass) =>
 
       this.Events.on(
         'set:stateprovider',
-        (stateProvider) => {
+        () => {
           if (this.canDispatch()) {
             this.dispatch(
               updateNextProductionTime(getGOReference(this),
