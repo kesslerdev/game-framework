@@ -3,15 +3,16 @@ import { PurchasableMixin } from 'quarkit-modules'
 import { ReduxMixin } from '../ReduxMixin'
 import { getGOReference } from '../../utils'
 
-export const PurchasableReduxMixin = Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, PurchasableMixin) {
+export const PurchasableReduxMixin =
+  Mixin((superclass) => class extends mix(superclass).with(ReduxMixin, PurchasableMixin) {
 
-  defaultState(state = {}) {
-    return Object.assign(state, super.defaultState(state), {
-      purchasable: true,
-      cost: this.DefaultCost.map((cost) => ({
-        resource: getGOReference(cost.Resource),
-        amount: cost.Amount, // can be updated
-      })),
-    })
-  }
-})
+    defaultState(state = {}) {
+      return Object.assign(state, super.defaultState(state), {
+        purchasable: true,
+        cost: this.DefaultCost.map((cost) => ({
+          resource: getGOReference(cost.Resource),
+          amount: cost.Amount, // can be updated
+        })),
+      })
+    }
+  })

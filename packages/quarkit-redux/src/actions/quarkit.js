@@ -29,7 +29,7 @@ export function loadAllGameObjects() {
 }
 
 export function initGame(player) {
-  return function (dispatch) {
+  return (dispatch) => {
     console.info('Starting Quarkit..')
     console.info('Register Dispatcher with ReduxMixins')
     Registry.Dispatch = dispatch

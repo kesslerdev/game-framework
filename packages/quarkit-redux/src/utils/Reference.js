@@ -1,20 +1,20 @@
 
-export const getGOReference = (go) => {
-  return {
+export const getGOReference = (go) => (
+  {
     typeName: go.constructor.name,
-    slug: go.slug
+    slug: go.slug,
   }
-}
+)
 
-export const getReference = (goState) => {
-  return {
+export const getReference = (goState) => (
+  {
     typeName: goState.typeName,
-    slug: goState.slug
+    slug: goState.slug,
   }
-}
+)
 
-export const getStateGOStringReference = (stateGo) => {
-  return `${stateGo.typeName}#${stateGo.slug}`
-}
+export const getStateGOStringReference =
+  (stateGo) => `${stateGo.typeName}#${stateGo.slug}`
+
 
 export default getGOReference
