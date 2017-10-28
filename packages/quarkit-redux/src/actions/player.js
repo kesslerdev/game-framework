@@ -1,4 +1,4 @@
-import Registry from '../utils/registry'
+import Registry from '../utils/ReduxRegistryMixin'
 
 /*
  * action types
@@ -15,8 +15,8 @@ export const LOGOUT = 'LOGOUT'
 
 export function addPlayer(player) {
   Registry.registerGO(player)
-  
-  return { 
+
+  return {
     type: LOGIN_SUCCESS,
     player: player.defaultState({}),
   }

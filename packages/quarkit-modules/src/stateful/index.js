@@ -1,4 +1,4 @@
 
-export * from './state-provider'
-export * from './statefull'
-export * from './state-gameobject' 
+export * from './StateProviderMixin'
+export * from './StatefullMixin'
+export * from './StateGameObjectMixin'

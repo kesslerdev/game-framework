@@ -3,5 +3,6 @@
     //"typescript.tsdk": "./node_modules/typescript/lib"
     "editor.detectIndentation": false,
     "editor.tabSize": 2,
-    "editor.insertSpaces": true
-}
+    "editor.insertSpaces": true,
+    "eslint.enable": true
+  }

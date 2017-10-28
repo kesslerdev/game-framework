@@ -1,7 +1,7 @@
 import objectToArray from './objectToArray'
-import Registry from './registry'
+import Registry from './ReduxRegistryMixin'
 import GameLoop from './gameLoop'
 
-export * from './reference'
+export * from './Reference'
 
 export { objectToArray, Registry, GameLoop }

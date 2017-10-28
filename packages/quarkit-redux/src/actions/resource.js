@@ -1,6 +1,5 @@
 import { getReference } from '../utils'
-import { getResourceSlot } from '../selectors'
-import Registry from '../utils/registry'
+
 /*
  * action types
  */
@@ -14,7 +13,7 @@ export const UPDATE_RESOURCE_BAG = 'UPDATE_RESOURCE_BAG'
  */
 
 export function addResource(resourceBag, resource) {
-  return { 
+  return {
     type: ADD_RESOURCE,
     resourceBag: getReference(resourceBag),
     resource: getReference(resource),
@@ -22,7 +21,7 @@ export function addResource(resourceBag, resource) {
 }
 
 export function setResourceAmount(resourceBag, resource, newValue) {
-  return { 
+  return {
     type: SET_RESOURCE_AMOUNT,
     resource: getReference(resource),
     resourceBag: getReference(resourceBag),

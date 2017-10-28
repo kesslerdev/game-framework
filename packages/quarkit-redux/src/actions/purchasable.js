@@ -1,4 +1,4 @@
-import Registry from '../utils/registry'
+import Registry from '../utils/ReduxRegistryMixin'
 import { getReference } from '../utils'
 
 /*
@@ -13,10 +13,9 @@ export const PURCHASE_FOR = 'PURCHASE_FOR'
  */
 
 export function purchaseFor(purchasable, possessor) {
-
   Registry.getGO(purchasable).purchaseFor(Registry.getGO(possessor))
-  
-  return { 
+
+  return {
     type: PURCHASE_FOR,
     purchasable: getReference(purchasable),
     possessor: getReference(possessor),
