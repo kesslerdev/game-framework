@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "build:docs": "node docs.build.js",
-    "clean": "lerna clean --yes && rimraf ./example/example-react/node_modules && yarn run build:clean && rimraf node_modules",
+    "clean": "lerna clean --yes && rimraf ./example/example-react/node_modules && yarn run clean:build && rimraf node_modules",
     "clean:build": "rimraf ./packages/*/build",
-    "build": "yarn run build:clean && lerna run build",
+    "build": "yarn run clean:build && lerna run build",
     "build:w": "lerna run build:w --parallel",
     "publish": "lerna publish",
     "test": "lerna run test",

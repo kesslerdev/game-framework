@@ -1,6 +1,6 @@
 
 export const NamedContextVarMixin = (name) => (superclass) => class extends superclass {
-  get ContextVarName() {
+  static get ContextVarName() {
     return name
   }
 }
