@@ -1,33 +1,47 @@
 {
-  "parser": "babel-eslint",
   "extends": "airbnb",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+  "rules": {
+    "semi": [
+      1,
+      "never"
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "ignoreStrings": true,
+        "ignorePattern": "=>"
+      }
+    ],
+    "no-confusing-arrow": 0,
+    "no-shadow": 0,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-bitwise": 0
   },
+  "parser": "babel-eslint",
   "plugins": [
-    "babel",
     "jest"
   ],
-  "rules": {
-    "new-cap": ["error", { "capIsNew": false }],
-    "semi": ["error", "never"],
-    "arrow-parens": 0,
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "no-unused-expressions": ["error", { "allowTernary": true }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-template-curly-in-string": 0,
-    "guard-for-in": 1,
-    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
-    "no-console": [1, { "allow": ["warn", "error"] }],
-    "import/no-extraneous-dependencies": 0,
-    "import/prefer-default-export": 0,
-    "jsx-quotes": ["error", "prefer-single"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/require-extension": 0,
-    "react/no-unused-prop-types": [1, { "skipShapeProps": true }],
-    "babel/arrow-parens": 1
+  "env": {
+    "jest": true
   }
 }
