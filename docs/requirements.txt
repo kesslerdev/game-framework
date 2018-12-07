@@ -1,0 +1,6 @@
+mkdocs==1.0.4
+pymdown-extensions==5.0
+mkdocs-bootswatch==1.0
+mkdocs-material==3.0.4
+mkdocs-macros-plugin
+pygments

@@ -1,0 +1,39 @@
+{
+  "name": "quarkit-modules",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "scripts": {
+    "pretest": "eslint ./src",
+    "watch": "babel -w src -d dist",
+    "build": "babel src -d dist",
+    "test": "jest --coverage",
+    "watchtest": "jest --coverage --watchAll"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^8.2.5",
+    "babel-jest": "^23.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "jest": "^23.2.0"
+  },
+  "dependencies": {
+    "@stamp/arg-over-prop": "^1.0.4",
+    "@stamp/it": "^1.1.0",
+    "lodash": "^4.17.11",
+    "quarkit-core": "^0.0.0",
+    "quarkit-mathjs": "^0.0.6"
+  }
+}

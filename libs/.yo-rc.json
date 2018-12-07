@@ -1,0 +1,15 @@
+{
+  "quarkit": {
+    "promptValues": {
+      "name": "quarkit-metadata",
+      "type": "lib",
+      "features": [
+        "eslint",
+        "prettier",
+        "babel",
+        "jest"
+      ],
+      "boilerplate": null
+    }
+  }
+}

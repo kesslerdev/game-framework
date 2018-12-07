@@ -1,8 +1,8 @@
 language: node_js
 node_js:
   - "node"
+  - "10"
   - "8"
-  - "7"
 
 cache:
   yarn: true
@@ -18,20 +18,13 @@ before_install:
 install:
   - npm install -g codecov
   - yarn
-  - lerna bootstrap
+  - yarn bootstrap
+  - yarn build
 
 script:
-  - yarn run cover
+  - yarn test
 
 after_success:
   - yarn run cover-upload
-  - cat ./packages/quarkit-mixin/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
-  - cat ./packages/quarkit-core/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
-
-after_failure:
-  - ls -lsa ./node_modules/
-  - ls -lsa ./packages/
-  - ls -lsa ./packages/quarkit-core/node_modules/
-  - ls -lsa ./packages/quarkit-mixin/node_modules/
-  - ls -lsa ./packages/quarkit-modules/node_modules/
-  - ls -lsa ./packages/quarkit-redux/node_modules/
+  - cat ./libs/quarkit-core/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  - cat ./libs/quarkit-modules/coverage/lcov.info | ./node_modules/.bin/codacy-coverage

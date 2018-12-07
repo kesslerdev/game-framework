@@ -1,0 +1,664 @@
+site_name: Quarkit
+docs_dir: src
+site_dir: dist
+repo_name: kesslerdev/quarkit
+repo_url: 'https://github.com/kesslerdev/quarkit'
+edit_uri: edit/master/docs/src
+static_templates:
+  - 404.html
+theme:
+  name: material
+  logo:
+    icon: games
+  palette:
+    primary: light blue
+    accent: light blue
+  feature:
+    tabs: true
+plugins:
+  - macros
+  - search
+markdown_extensions:
+  - admonition
+  - codehilite:
+      linenums: true
+  - toc:
+      permalink: '#'
+nav:
+  - Quarkit: index.md
+  - Quarks Api:
+      - quarks.md
+  - Demo:
+      - 'https://kesslerdev.github.io/quarkit/demo-react/'
+extra:
+  quarks:
+    Quark:
+      methods:
+        clone:
+          type: function
+          name: clone
+          args: []
+          hash: 303f5d67dbe2a7b6955d4ebad358ef1620223c5e6c2340725c5ae7570d598684
+        getQuark:
+          type: function
+          name: ''
+          args: []
+          hash: b119cc2a591a51305b0b53b40c6ed482c18b61d0a22e4279017545000c294907
+      properties: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: ''
+          args:
+            - arg
+          hash: a46002febfecfbf158dc57e9d3c2575b9c23baef100e1dba3f2092b299dc1c00
+      staticProperties:
+        quark: Quark
+        createQuark:
+          type: function
+          name: createQuark
+          args:
+            - name
+          hash: bf7a32301dc0df5cbcd5af6b8110b3c33c08735558ce67dcc9846a3980d344ae
+        getDeepConf:
+          type: function
+          name: getDeepConf
+          args: []
+          hash: bb80a301fec7d8d6a25ac052960f1d77c63117040bd3f5d5e52b5318a9e2a191
+        getConf:
+          type: function
+          name: getConf
+          args: []
+          hash: 30e89d178dd7db80e23724b48de8f59a2da1882a493b31229ae509a97553e7db
+      staticDeepProperties: {}
+      staticPropertyDescriptors:
+        quarks:
+          get:
+            type: function
+            name: get
+            args: []
+            hash: 85dab4ed4061a7227d03de9d07c8919e817a5deccd8f3cc17f49ada7a7c4e773
+      composers:
+        - type: function
+          name: ''
+          args:
+            - '{stamp}'
+          hash: 41ad52ea1386513cb57c42274a17502a18b55646eb516e8f632b69cfa729c632
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Quark
+      quark: Quark
+      quarks: []
+    GameObject:
+      methods:
+        equals:
+          type: function
+          name: equals
+          args:
+            - gameObject
+          hash: 9797fc2ab381b582799c8288f47f430ac744ecacee59df4e1fcaea92583b59bc
+      properties:
+        slug: runtime generated
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: init
+          args:
+            - '{name=null}'
+            - '{stamp}'
+          hash: d02facef97a0b31ed35c622b2a871da75a70bda4acb62de83dd84ad582d8f44c
+      staticProperties:
+        quark: GameObject
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - GameObject
+        interop:
+          methods:
+            loop:
+              type: loop
+              uniq: 'true'
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    f20b1c6d187bff1b1c0bf22c7ac3efb4730f2a7cdcdb9f82096d7d8f8524a112
+            getRelated:
+              type: flattenDeep
+              uniq: 'true'
+              methods: []
+            loopRelated:
+              type: loop
+              uniq: 'true'
+              methods: []
+      quark: GameObject
+      quarks:
+        - Quark
+        - Interop
+    GameLoop:
+      methods:
+        loop:
+          type: function
+          name: loop
+          args: []
+          hash: df9f3136d81900d13636b8c4be1e568732b73d057a92c52595e692a4d759c63f
+        start:
+          type: function
+          name: start
+          args: []
+          hash: 462e27b45b4ceb0afce3dc47b64578cb75492b6799dcd3457286f12301d9a78b
+        stop:
+          type: function
+          name: stop
+          args: []
+          hash: 870d4f60c80e05f47ac2e7c434fc66104e1cb951f0a8e605ab035b1013317641
+      properties:
+        tps: '10'
+        gameObjects: []
+        calls: []
+        interval: {}
+        started: 'false'
+        processing: 'false'
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: ''
+          args:
+            - '{tps}'
+          hash: f11e26abd5fee4538b39337e7aac02d32f211443363f5a1df0c95192186f65b5
+      staticProperties:
+        quark: GameLoop
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - GameLoop
+      quark: GameLoop
+      quarks:
+        - Quark
+    Interop:
+      methods: {}
+      properties: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers: []
+      staticProperties:
+        quark: Interop
+        interopMethodTypes:
+          flattenDeep: flattenDeep
+          reduce: reduce
+          every: every
+          loop: loop
+        createInteropMethod:
+          type: function
+          name: createInteropMethod
+          args:
+            - name
+            - descriptor
+          hash: e441b6b6541b3adc61a9dbb8ccdfbd9987bc60c3a1790279d97b8f1c5508c889
+        implementInteropMethod:
+          type: function
+          name: implementInteropMethod
+          args:
+            - name
+            - method
+          hash: d07c01238167598e2caeaf08ebb382c8a539a1bed160e8d5b05d6ac595def68e
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Interop
+        interop:
+          methods: {}
+      quark: Interop
+      quarks:
+        - Quark
+    Resource:
+      methods: {}
+      properties:
+        premium: 'false'
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: initializer
+          args:
+            - opts
+            - ref
+          hash: 8546af929e75a0f0a4b0a0b0c956bc80b51bac50fa4f588440c1da03378d6817
+      staticProperties:
+        quark: Resource
+        argOverProp:
+          type: function
+          name: argOverProp
+          args: []
+          hash: f017f156092a615eab87bb2203fe856a1e834c55ea3f86e9b3d7553be288e008
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers:
+        - type: function
+          name: ''
+          args:
+            - opts
+          hash: 91283e745e715dd4e817c94df73b7e7ceb04e98a10054a853ae3394cfe527957
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Resource
+        ArgOverProp:
+          - premium
+      quark: Resource
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+    ResourceBag:
+      methods:
+        addResource:
+          type: function
+          name: addResource
+          args:
+            - res
+            - num
+          hash: 863dcf8d135646a15ada68a6b6e34106d5b925779b528eb3528ca9408c9f40f8
+        subResource:
+          type: function
+          name: subResource
+          args:
+            - res
+            - num
+          hash: 46337eb190ad5dbc550246d54995a7a817d829902fc19e383a6d48e111a8c3cb
+        getResource:
+          type: function
+          name: getResource
+          args:
+            - resource
+          hash: d089af0b50d376f0259fb0d31f850ca392b331f0342df7083af05c43f708cc5b
+      properties: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: init
+          args:
+            - _
+          hash: 07f5609fdbc23f05118556dc6a1cbcd0f9de59c7155bbbf9bfae050b238e8b87
+      staticProperties:
+        quark: ResourceBag
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - ResourceBag
+        interop:
+          methods:
+            loop:
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    f20b1c6d187bff1b1c0bf22c7ac3efb4730f2a7cdcdb9f82096d7d8f8524a112
+            applyCostList:
+              methods:
+                - type: function
+                  name: ''
+                  args:
+                    - list
+                    - order
+                  hash: >-
+                    4f3db0b2e1e7bdd21a7d27d5358160fcae840cfab94f0a3ba150548e13e30637
+            canApplyCostList:
+              methods:
+                - type: function
+                  name: ''
+                  args:
+                    - list
+                    - order
+                  hash: >-
+                    d00085c67c82209b32ea26bbafae6e03fbafb4cdee2bd604df589454b188b652
+      quark: ResourceBag
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+        - CostHandler
+    Cost:
+      methods:
+        createExpressionResolver:
+          type: function
+          name: createExpressionResolver
+          args:
+            - expr
+          hash: 874a5c1968a645b0b5a95f43469dd53ff422f48f47a056f4fdeea50258fd2dd8
+        createContext:
+          type: function
+          name: createContext
+          args:
+            - ...args
+          hash: 905d85aed3151bdf350b320ed0c563c6ca74afbd46e651b3088373abc58671e5
+        collectModifiers:
+          type: function
+          name: collectModifiers
+          args:
+            - tags
+            - ...args
+          hash: e5680ea0cc52bd763c063683491bb472a449531f57500a62b49a7178e5e858c2
+        setCost:
+          type: function
+          name: setCost
+          args:
+            - list
+            - gameObject
+            - amount
+          hash: 870d69fdf780976cbe927b9f54f7c23832f1ad03ce5fcc314bc716ac581e4480
+        getCostList:
+          type: function
+          name: getCostList
+          args:
+            - list
+            - go=null
+          hash: 409048be0068e4e7be81510f2c52773ac8ac1833677d96ac5c3b45e345911661
+      properties: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: init
+          args:
+            - _
+          hash: 8edf1524d1610cf277be410a478f4bdb1d253f3bcb0abbfa661cdbc538e20b99
+      staticProperties:
+        quark: Cost
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Expr
+          - Cost
+        interop:
+          methods:
+            modifiers:
+              type: flattenDeep
+              uniq: 'true'
+              methods: []
+      quark: Cost
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+        - Expr
+    CostHandler:
+      methods: {}
+      properties: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers: []
+      staticProperties:
+        quark: CostHandler
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - CostHandler
+        interop:
+          methods:
+            applyCostList:
+              type: reduce
+              uniq: 'true'
+              methods: []
+            canApplyCostList:
+              type: every
+              uniq: 'true'
+              methods: []
+      quark: CostHandler
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+    Possessor:
+      methods:
+        addPosession:
+          type: function
+          name: addPosession
+          args:
+            - go
+          hash: 9ad3a4329ac5731b96171516186acd4631f5f8f8237824251f39cc541c7b0385
+      properties:
+        possessions: []
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers: []
+      staticProperties:
+        quark: Possessor
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Possessor
+        interop:
+          methods:
+            loop:
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    f20b1c6d187bff1b1c0bf22c7ac3efb4730f2a7cdcdb9f82096d7d8f8524a112
+            getRelated:
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    51620e6f3bc2a304ee95813adbb60a26ab5c61eb50803b8933914761d461fc31
+      quark: Possessor
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+        - CostHandler
+    Purchasable:
+      methods:
+        setPurchaseCost:
+          type: function
+          name: setPurchaseCost
+          args:
+            - gameObject
+            - amount
+          hash: 61fdbd6545f959861d3b8d71cfe86d6f571eda16fdf54302c35ed1a012f6835b
+        canPurchaseFor:
+          type: function
+          name: canPurchaseFor
+          args:
+            - go
+          hash: a85b316cbe68b04bbec9c3365791fc7b83cc47557987acc3cf5429aa7841031d
+        purchaseFor:
+          type: function
+          name: purchaseFor
+          args:
+            - go
+          hash: 0ac5c3e7bf9731ba30115a97e140a84a07b04ac80219d4b844d2aa55c0214e5f
+      properties: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers: []
+      staticProperties:
+        quark: Purchasable
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Purchasable
+        interop:
+          methods:
+            loop:
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    f20b1c6d187bff1b1c0bf22c7ac3efb4730f2a7cdcdb9f82096d7d8f8524a112
+        purchase:
+          costList: price
+      quark: Purchasable
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+        - Expr
+        - Cost
+    Production:
+      methods:
+        setProduction:
+          type: function
+          name: setProduction
+          args:
+            - gameObject
+            - amount
+          hash: bb5e115f565d52055c2649528de0c48f5a5c256c4c9d670e94ae78d31d494db2
+        getLastProductionTime:
+          type: function
+          name: getLastProductionTime
+          args: []
+          hash: e17737496378bb7aa909c0ee0253686f1f8a5dd55a7699d288e443d93255c6d1
+        applyProduction:
+          type: function
+          name: applyProduction
+          args:
+            - go
+          hash: 599c447f522304f91800b696fd5f42bce1cd66cedd22599db826bdb3c21a32d8
+      properties:
+        productionTime: '1000'
+        lastProductionTime: {}
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers:
+        - type: function
+          name: initializer
+          args:
+            - opts
+            - ref
+          hash: 8546af929e75a0f0a4b0a0b0c956bc80b51bac50fa4f588440c1da03378d6817
+      staticProperties:
+        quark: Production
+        argOverProp:
+          type: function
+          name: argOverProp
+          args: []
+          hash: f017f156092a615eab87bb2203fe856a1e834c55ea3f86e9b3d7553be288e008
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers:
+        - type: function
+          name: ''
+          args:
+            - opts
+          hash: 91283e745e715dd4e817c94df73b7e7ceb04e98a10054a853ae3394cfe527957
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Production
+        interop:
+          methods:
+            loop:
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    f20b1c6d187bff1b1c0bf22c7ac3efb4730f2a7cdcdb9f82096d7d8f8524a112
+            loopRelated:
+              methods:
+                - type: function
+                  name: ''
+                  args:
+                    - go
+                  hash: >-
+                    0fb16d469184e781aae6a0bada7079f64a7ae642a78efeb6b30c5c4a705e3e6a
+        ArgOverProp:
+          - productionTime
+        production:
+          costList: production
+      quark: Production
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+        - Expr
+        - Cost
+    Level:
+      methods:
+        setLevelCost:
+          type: function
+          name: setLevelCost
+          args:
+            - gameObject
+            - amount
+          hash: dfca88e26b3df782e15d3cf4059a5886b74dea4da1b5710314f06e2064ef7cf0
+        canLevelUp:
+          type: function
+          name: canLevelUp
+          args:
+            - go
+          hash: 34b68712f4a47116b0b623d4145e0845a5e4087fe8f0d1a8633d9217f1bf52fc
+        levelUp:
+          type: function
+          name: levelUp
+          args:
+            - go
+          hash: 4d9e87841fc17717c850c410e844a5ba61535c49b5068398ed0287bbad61a93e
+      properties:
+        level: '1'
+      deepProperties: {}
+      propertyDescriptors: {}
+      initializers: []
+      staticProperties:
+        quark: Level
+      staticDeepProperties: {}
+      staticPropertyDescriptors: {}
+      composers: []
+      configuration: {}
+      deepConfiguration:
+        quarks:
+          - Level
+        interop:
+          methods:
+            loop:
+              methods:
+                - type: function
+                  name: ''
+                  args: []
+                  hash: >-
+                    f20b1c6d187bff1b1c0bf22c7ac3efb4730f2a7cdcdb9f82096d7d8f8524a112
+        level:
+          costList: level
+      quark: Level
+      quarks:
+        - Quark
+        - Interop
+        - GameObject
+        - Expr
+        - Cost
