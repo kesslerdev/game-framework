@@ -15,7 +15,9 @@
     "start": "oao run-script watch --parallel",
     "test": "oao run-script test",
     "docs:statics": "node .scripts/docs.js",
-    "docs": "yarn docs:statics && cd docs && docker build -t quarkit/docs . &&  docker run --rm  -p '8000:8000' -v $(pwd):/mkdocs quarkit/docs"
+    "docs:build": "yarn docs:statics && cd docs.src && docker build -t quarkit/docs .",
+    "docs": "yarn docs:build && docker run --rm -v $(pwd)/docs.src:/mkdocs quarkit/docs build && cp -r $(pwd)/docs.src/dist $(pwd)/docs",
+    "docs:live": "yarn docs:build && docker run --rm  -p '8000:8000' -v $(pwd)/docs.src:/mkdocs quarkit/docs"
   },
   "workspaces": [
     "libs/*",

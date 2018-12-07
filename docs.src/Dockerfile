@@ -11,4 +11,5 @@ RUN apk --no-cache --no-progress add py3-pip \
 
 EXPOSE 8000
 
-CMD [ "mkdocs","serve","-a","0.0.0.0:8000" ]
+ENTRYPOINT [ "mkdocs" ]
+CMD [ "serve","-a","0.0.0.0:8000" ]

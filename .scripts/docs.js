@@ -24,7 +24,7 @@ const docs = Object.keys(quarks).reduce((acc, k) => {
   };
 }, {});
 
-const path = join(__dirname, "..", "docs", "mkdocs.yml");
+const path = join(__dirname, "..", "docs.src", "mkdocs.yml");
 const conf = yaml.safeLoad(readFileSync(path));
 
 writeFileSync(
