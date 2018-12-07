@@ -104,21 +104,21 @@ const stampMeta = {
   staticDeepProperties: {
     Types: {
       Array: {
-        args: [],
+        args: ['???'],
         name: 'Array',
         hash:
           '08f8164f9dadaaffb8e711e82b0556486e4dde0e02aec483a8a6bbe362a6f4d6',
         type: 'function',
       },
       Number: {
-        args: [],
+        args: ['???'],
         name: 'Number',
         hash:
           'aaad838e3936983743cbe7f9ba803b290368ee5348687817843d62a5c66417ce',
         type: 'function',
       },
       String: {
-        args: [],
+        args: ['???'],
         hash:
           '165421a5ddea98fdd4ea7e583947daf6bc0df5352ec6c4bed6678e03dee41eee',
         name: 'String',

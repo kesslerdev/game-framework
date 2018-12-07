@@ -1,7 +1,6 @@
 import {
-  pick, isEqual, flatten, mergeWith, isObject, isArray,
+  pick, isEqual, mergeWith, isObject, isArray, omit,
 } from 'lodash'
-import { omit } from 'timm'
 import stampMetadata from './generate'
 
 const maybe = (a, b = {}) => a || b

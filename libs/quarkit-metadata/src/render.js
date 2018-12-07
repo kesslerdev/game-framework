@@ -14,6 +14,9 @@ const funcArgsRenderer = func => {
 
     return program.body[0].expression.params.map(node => prog.slice(node.start, node.end).replace(/\s+/g, ''))
   } catch (e) {
+    if (typeof func === 'string') {
+      return ['???']
+    }
     return funcArgsRenderer(`(\n function ${func.toString()}\n)`)
   }
 }
