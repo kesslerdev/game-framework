@@ -10,8 +10,6 @@ cache:
     - "node_modules"
 
 before_install:
-  - chmod +x ./travis/install.sh
-  - ./travis/install.sh
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
