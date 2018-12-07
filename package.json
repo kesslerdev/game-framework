@@ -1,48 +1,36 @@
 {
   "name": "quarkit",
-  "version": "0.1.0",
-  "description": "",
   "private": true,
-  "main": "index.js",
-  "scripts": {
-    "build:docs": "node docs.build.js",
-    "clean": "lerna clean --yes && rimraf node_modules && rimraf ./example/example-react/node_modules",
-    "build": "lerna run build",
-    "build:w": "lerna run build:w --parallel",
-    "publish": "lerna publish",
-    "test": "lerna run test",
-    "test:w": "lerna run test:w --parallel",
-    "cover": "lerna run cover",
-    "demo": "yarn && yarn run build && cd ./example/example-react/ && yarn && yarn run start",
-    "cover-upload": "codecov",
-    "build-demo": "rm -rf ./docs/demo-react && cd ./example/example-react/ && rm -rf ./build && yarn && yarn run build  && cp -rf ./build ../../docs/demo-react"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kesslerdev/quarkit.git"
-  },
+  "version": "0.1.1",
+  "description": "a set of stamps to compose a complete game",
   "author": "kesslerdev",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kesslerdev/quarkit/issues"
-  },
-  "homepage": "https://github.com/kesslerdev/quarkit#readme",
-  "devDependencies": {
-    "@types/jest": "^19.2.3",
-    "@types/node": "^7.0.22",
-    "babel-eslint": "^7.0.0",
-    "codacy-coverage": "^2.0.2",
-    "eslint": "^3.11.1",
-    "eslint-config-airbnb": "^11.1.0",
-    "eslint-friendly-formatter": "^2.0.6",
-    "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-import": "^1.15.0",
-    "eslint-plugin-jest": "^20.0.3",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.8.0",
-    "lerna": "^2.2.0"
+  "repository": "https://gitlab.com/kesslerdev/quarkit",
+  "bugs": "https://gitlab.com/kesslerdev/quarkit/issues",
+  "scripts": {
+    "bootstrap": "oao bootstrap",
+    "build": "oao run-script build",
+    "generator": "node .scripts/generator.js",
+    "clean": "node .scripts/clean.js",
+    "start": "oao run-script watch --parallel",
+    "test": "oao run-script test",
+    "docs:statics": "node .scripts/docs.js",
+    "docs:build": "yarn docs:statics && cd docs.src && docker build -t quarkit/docs .",
+    "docs": "yarn docs:build && docker run --rm -v $(pwd)/docs.src:/mkdocs quarkit/docs build && cp -r $(pwd)/docs.src/dist $(pwd)/docs",
+    "docs:live": "yarn docs:build && docker run --rm  -p '8000:8000' -v $(pwd)/docs.src:/mkdocs quarkit/docs"
   },
   "workspaces": [
-    "packages/*"
-  ]
+    "libs/*",
+    "example/*"
+  ],
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "glob": "^7.1.3",
+    "oao": "^1.5.1",
+    "yo": "^2.0.5"
+  },
+  "dependencies": {
+    "js-yaml": "^3.12.0",
+    "rimraf": "^2.6.2"
+  }
 }

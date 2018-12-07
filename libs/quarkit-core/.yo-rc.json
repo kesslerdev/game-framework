@@ -1,0 +1,15 @@
+{
+  "*": {
+    "promptValues": {
+      "name": "quarkit-core",
+      "type": "lib",
+      "features": [
+        "eslint",
+        "prettier",
+        "babel",
+        "jest"
+      ],
+      "boilerplate": null
+    }
+  }
+}
