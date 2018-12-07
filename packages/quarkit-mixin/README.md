@@ -26,4 +26,4 @@ please add examples
 
 ### Take care
 
-- if you reate a mixin with usage of mix().with() for ensure usage of depended mixin an error of mixin undefined car occur due depended mixin at line of usage of mix().with()
+- if you create a mixin with usage of mix().with() for ensure usage of depended mixin an error of mixin undefined car occur due depended mixin at line of usage of mix().with()

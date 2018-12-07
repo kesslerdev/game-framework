@@ -1,4 +1,4 @@
-import * as mixin from '../src/quarkit-mixin'
+import * as mixin from '../src'
 
 const Obj = class {}
 

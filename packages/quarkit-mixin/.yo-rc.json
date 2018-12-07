@@ -1,0 +1,15 @@
+{
+  "quarkit-mixin": {
+    "promptValues": {
+      "name": "quarkit-mixin",
+      "type": "lib",
+      "features": [
+        "eslint",
+        "prettier",
+        "babel",
+        "jest"
+      ],
+      "boilerplate": null
+    }
+  }
+}
